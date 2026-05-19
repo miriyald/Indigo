@@ -1,0 +1,24 @@
+names:
+  5: Version 1.65
+
+components:
+  decompose: overlapping
+
+fonts:
+  TiroTelugu-Regular:
+    source: source/TiroTelugu-Regular.ufo
+    ttf:
+      source: source/TiroTelugu-Regular.input.ttf
+      tables: [GDEF, GSUB, GPOS]
+    meta:
+      slng: [Telu, Latn]
+      dlng: [Telu]
+
+  TiroTelugu-Italic:
+    source: source/TiroTelugu-Italic.ufo
+    ttf:
+      source: source/TiroTelugu-Italic.input.ttf
+      tables: [GDEF, GSUB, GPOS]
+    meta:
+      slng: [Telu, Latn]
+      dlng: [Telu]
