@@ -64,6 +64,70 @@ def contour_bbox_area(glyph, contour_idx):
     return (max(xs) - min(xs)) * (max(ys) - min(ys))
 
 
+def contour_bbox(glyph, contour_idx):
+    start = 0 if contour_idx == 0 else glyph.endPtsOfContours[contour_idx - 1] + 1
+    end = glyph.endPtsOfContours[contour_idx]
+    xs = [glyph.coordinates[i][0] for i in range(start, end + 1)]
+    ys = [glyph.coordinates[i][1] for i in range(start, end + 1)]
+    if not xs or not ys:
+        return (0, 0, 0, 0)
+    return (min(xs), min(ys), max(xs), max(ys))
+
+
+def contour_winding(glyph, contour_idx):
+    """Return signed area. Positive = CW (outer), Negative = CCW (hole) in font coords."""
+    start = 0 if contour_idx == 0 else glyph.endPtsOfContours[contour_idx - 1] + 1
+    end = glyph.endPtsOfContours[contour_idx]
+    area = 0
+    for i in range(start, end + 1):
+        x1, y1 = glyph.coordinates[i]
+        x2, y2 = glyph.coordinates[start + (i - start + 1) % (end - start + 1)]
+        area += (x2 - x1) * (y2 + y1)
+    return area
+
+
+def detect_regions(glyph):
+    """Group contours into regions: each outer CW contour + its CCW hole children.
+    Returns list of (outer_idx, [hole_indices]) tuples."""
+    num = glyph.numberOfContours
+    if num is None or num < 1:
+        return []
+
+    contours = []
+    for ci in range(num):
+        bbox = contour_bbox(glyph, ci)
+        winding = contour_winding(glyph, ci)
+        contours.append({"idx": ci, "bbox": bbox, "is_outer": winding > 0})
+
+    outers = [c for c in contours if c["is_outer"]]
+    inners = [c for c in contours if not c["is_outer"]]
+
+    regions = []
+    assigned_inners = set()
+
+    # Sort outers by area (largest first) so nesting works for complex cases
+    outers.sort(key=lambda c: contour_bbox_area(glyph, c["idx"]), reverse=True)
+
+    for outer in outers:
+        ob = outer["bbox"]
+        holes = []
+        for inner in inners:
+            if inner["idx"] in assigned_inners:
+                continue
+            ib = inner["bbox"]
+            if ib[0] >= ob[0] and ib[1] >= ob[1] and ib[2] <= ob[2] and ib[3] <= ob[3]:
+                holes.append(inner["idx"])
+                assigned_inners.add(inner["idx"])
+        regions.append((outer["idx"], holes))
+
+    # Any unassigned inner contours become standalone regions
+    for inner in inners:
+        if inner["idx"] not in assigned_inners:
+            regions.append((inner["idx"], []))
+
+    return regions
+
+
 def _extract_contours(source_glyph, contour_indices):
     new_glyph = Glyph()
     new_glyph.numberOfContours = len(contour_indices)
@@ -195,19 +259,72 @@ def build_ats_style(font, targets):
 
 # --- Style: manual (per-contour color from JSON mapping) ---
 
-def _parse_glyph_mapping(entry):
-    """Parse a glyph entry into list of (contour_indices, palette_idx) groups."""
+def _parse_glyph_mapping(entry, regions_list):
+    """Parse a glyph entry into list of (contour_indices, palette_idx) layers.
+
+    Supports:
+      - "regions": {"0": 7, "0.h0": 3, "0.h1": 5, "1": 2}
+        Region keys like "0" fill the whole region (outer+holes as cutouts).
+        Hole keys like "0.h0" fill just that hole's interior on top.
+      - "groups": [{"regions": [0], "color": 7}, ...]
+    """
+    layers = []
+
     if "groups" in entry:
-        return [(g["contours"], g["color"]) for g in entry["groups"]]
-    elif "contours" in entry:
-        # Group contours by their assigned color
-        color_to_contours = {}
-        for idx_str, color_idx in entry["contours"].items():
-            if idx_str.startswith("_"):
-                continue
-            color_to_contours.setdefault(color_idx, []).append(int(idx_str))
-        return [(contours, color) for color, contours in sorted(color_to_contours.items())]
-    return []
+        for g in entry["groups"]:
+            contour_indices = _regions_to_contour_indices(regions_list, g["regions"])
+            if contour_indices:
+                layers.append((contour_indices, g["color"]))
+        return layers
+
+    region_entries = entry.get("regions", entry.get("contours", {}))
+
+    # Separate region fills from hole fills
+    region_fills = {}  # ri -> color
+    hole_fills = []    # (contour_idx, color)
+
+    for idx_str, color_idx in region_entries.items():
+        if idx_str.startswith("_"):
+            continue
+        if ".h" in idx_str:
+            # Hole fill: "0.h1" means hole index 1 of region 0
+            parts = idx_str.split(".h")
+            ri = int(parts[0])
+            hi = int(parts[1])
+            if ri < len(regions_list):
+                _, hole_indices = regions_list[ri]
+                if hi < len(hole_indices):
+                    hole_fills.append((hole_indices[hi], color_idx))
+        else:
+            region_fills[int(idx_str)] = color_idx
+
+    # Group regions by color for base layers
+    color_to_regions = {}
+    for ri, color in region_fills.items():
+        color_to_regions.setdefault(color, []).append(ri)
+
+    for color, region_indices in sorted(color_to_regions.items()):
+        contour_indices = _regions_to_contour_indices(regions_list, region_indices)
+        if contour_indices:
+            layers.append((contour_indices, color))
+
+    # Add hole fills as individual layers on top
+    for contour_idx, color in hole_fills:
+        layers.append(([contour_idx], color))
+
+    return layers
+
+
+def _regions_to_contour_indices(regions_list, region_indices):
+    """Convert region indices to flat contour indices (outer + holes)."""
+    contour_indices = []
+    for ri in region_indices:
+        if ri >= len(regions_list):
+            continue
+        outer_idx, hole_indices = regions_list[ri]
+        contour_indices.append(outer_idx)
+        contour_indices.extend(hole_indices)
+    return contour_indices
 
 
 def build_manual_style(font, targets, mapping_data):
@@ -219,7 +336,7 @@ def build_manual_style(font, targets, mapping_data):
     glyph_mappings = mapping_data.get("glyphs", {})
 
     # First pass: determine all layer glyph names needed
-    layer_plan = []  # list of (glyph_name, groups)
+    layer_plan = []
     new_glyph_names = []
 
     for i, name in enumerate(targets):
@@ -228,16 +345,20 @@ def build_manual_style(font, targets, mapping_data):
             continue
 
         num_contours = glyph.numberOfContours
+        regions = detect_regions(glyph)
 
         if name in glyph_mappings:
-            groups = _parse_glyph_mapping(glyph_mappings[name])
-        elif unmapped_strategy == "auto:contour" and num_contours >= 2:
-            areas = [(ci, contour_bbox_area(glyph, ci)) for ci in range(num_contours)]
-            areas.sort(key=lambda x: x[1], reverse=True)
-            largest_idx = areas[0][0]
+            groups = _parse_glyph_mapping(glyph_mappings[name], regions)
+        elif unmapped_strategy == "auto:contour" and len(regions) >= 2:
+            # Largest region gets color 0, rest get color 1
+            region_areas = [(ri, contour_bbox_area(glyph, outer)) for ri, (outer, _) in enumerate(regions)]
+            region_areas.sort(key=lambda x: x[1], reverse=True)
+            largest_ri = region_areas[0][0]
+            largest_contours = _regions_to_contour_indices(regions, [largest_ri])
+            rest_contours = _regions_to_contour_indices(regions, [ri for ri, _ in region_areas[1:]])
             groups = [
-                ([largest_idx], 0),
-                ([ci for ci, _ in areas[1:]], 1),
+                (largest_contours, 0),
+                (rest_contours, 1),
             ]
         elif unmapped_strategy == "auto:ats":
             fill_color_idx = ATS_FILL_COLORS[i % len(ATS_FILL_COLORS)]
