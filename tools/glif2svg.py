@@ -17,7 +17,6 @@ import ufoLib2
 from fontTools.ttLib import TTFont
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.boundsPen import BoundsPen
-from fontTools.pens.recordingPen import RecordingPen
 
 
 MARGIN = 50
@@ -322,7 +321,10 @@ def render_glyph_contours_svg_from_ttf(ttf_font, glyph_name, ascender=800, desce
         return None
 
     hmtx = ttf_font["hmtx"]
-    glyph_width = hmtx[glyph_name][0] if glyph_name in hmtx else 600
+    try:
+        glyph_width = hmtx[glyph_name][0]
+    except (KeyError, IndexError):
+        glyph_width = 600
 
     total_height = ascender - descender
     vb_x = -MARGIN

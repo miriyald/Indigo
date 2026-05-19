@@ -6,3 +6,5 @@
 **/*.bak
 **/working
 **/.DS_Store
+*.pyc
+__pycache__/
