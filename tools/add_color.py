@@ -1,12 +1,13 @@
 """
 Add COLR v0 + CPAL color tables to TiroTelugu font.
 
-Two styles available:
-  --style contour : Split by contour size (largest=black, smaller=red)
+Three styles available:
+  --style region  : Split by region size (largest=black, smaller=red)
   --style ats     : ATS-Chikkamagaluru style (colored fill + dark outline, 9-color palette)
+  --style manual  : Per-region color from JSON mapping
 
 Usage:
-    python tools/add_color.py [--style contour|ats] [input.ttf] [output.ttf]
+    python tools/add_color.py [--style region|ats|manual] [input.ttf] [output.ttf]
 
 Defaults:
     input:  output/indigo/TiroTelugu/TTF/TiroTelugu-Regular.ttf
@@ -23,8 +24,8 @@ from fontTools.ttLib.tables.ttProgram import Program
 from fontTools.colorLib.builder import buildCOLR, buildCPAL
 
 
-# --- Contour style palette (original) ---
-CONTOUR_PALETTE = [
+# --- Region style palette (size heuristic) ---
+REGION_PALETTE = [
     (0, 0, 0, 1.0),            # black (base)
     (0.8, 0.2, 0.2, 1.0),     # red (accent)
 ]
@@ -128,6 +129,51 @@ def detect_regions(glyph):
     return regions
 
 
+def contour_centroid(glyph, contour_idx):
+    xmin, ymin, xmax, ymax = contour_bbox(glyph, contour_idx)
+    return ((xmin + xmax) / 2, (ymin + ymax) / 2)
+
+
+def contour_aspect_ratio(glyph, contour_idx):
+    xmin, ymin, xmax, ymax = contour_bbox(glyph, contour_idx)
+    w = xmax - xmin
+    h = ymax - ymin
+    if w == 0 or h == 0:
+        return 1.0
+    return max(w, h) / min(w, h)
+
+
+SMART_COLOR_BASE = 0
+SMART_COLOR_ABOVE = 5
+SMART_COLOR_BELOW = 3
+SMART_COLOR_CIRCULAR = 2
+SMART_COLOR_ELLIPTICAL = 4
+SMART_ASPECT_THRESHOLD = 1.5
+
+
+def classify_regions_smart(glyph):
+    regions = detect_regions(glyph)
+    if not regions:
+        return {}
+
+    base_idx = max(range(len(regions)), key=lambda i: contour_bbox_area(glyph, regions[i][0]))
+    base_cy = contour_centroid(glyph, regions[base_idx][0])[1]
+
+    mapping = {}
+    for ri, (outer_idx, hole_indices) in enumerate(regions):
+        if ri == base_idx:
+            mapping[str(ri)] = SMART_COLOR_BASE
+        else:
+            cy = contour_centroid(glyph, outer_idx)[1]
+            mapping[str(ri)] = SMART_COLOR_ABOVE if cy > base_cy else SMART_COLOR_BELOW
+
+        for hi, hole_ci in enumerate(hole_indices):
+            ar = contour_aspect_ratio(glyph, hole_ci)
+            mapping[f"{ri}.h{hi}"] = SMART_COLOR_CIRCULAR if ar < SMART_ASPECT_THRESHOLD else SMART_COLOR_ELLIPTICAL
+
+    return mapping
+
+
 def _extract_contours(source_glyph, contour_indices):
     new_glyph = Glyph()
     new_glyph.numberOfContours = len(contour_indices)
@@ -173,9 +219,9 @@ def _clone_glyph(source_glyph):
     return new_glyph
 
 
-# --- Style: contour (original approach) ---
+# --- Style: region (split by size) ---
 
-def build_contour_style(font, targets):
+def build_region_style(font, targets):
     glyf = font["glyf"]
     hmtx = font["hmtx"]
 
@@ -215,7 +261,7 @@ def build_contour_style(font, targets):
             (accent_layer_name, 1),
         ]
 
-    font["CPAL"] = buildCPAL([CONTOUR_PALETTE])
+    font["CPAL"] = buildCPAL([REGION_PALETTE])
     font["COLR"] = buildCOLR(color_layers)
 
     return len(color_layers)
@@ -257,7 +303,7 @@ def build_ats_style(font, targets):
     return len(color_layers)
 
 
-# --- Style: manual (per-contour color from JSON mapping) ---
+# --- Style: manual (per-region color from JSON mapping) ---
 
 def _parse_glyph_mapping(entry, regions_list):
     """Parse a glyph entry into list of (contour_indices, palette_idx) layers.
@@ -332,7 +378,7 @@ def build_manual_style(font, targets, mapping_data):
     hmtx = font["hmtx"]
 
     defaults = mapping_data.get("defaults", {})
-    unmapped_strategy = defaults.get("unmapped_glyphs", "auto:contour")
+    unmapped_strategy = defaults.get("unmapped_glyphs", "auto:region")
     glyph_mappings = mapping_data.get("glyphs", {})
 
     # First pass: determine all layer glyph names needed
@@ -349,7 +395,7 @@ def build_manual_style(font, targets, mapping_data):
 
         if name in glyph_mappings:
             groups = _parse_glyph_mapping(glyph_mappings[name], regions)
-        elif unmapped_strategy == "auto:contour" and len(regions) >= 2:
+        elif unmapped_strategy in ("auto:region", "auto:contour") and len(regions) >= 2:
             # Largest region gets color 0, rest get color 1
             region_areas = [(ri, contour_bbox_area(glyph, outer)) for ri, (outer, _) in enumerate(regions)]
             region_areas.sort(key=lambda x: x[1], reverse=True)
@@ -408,27 +454,81 @@ def build_manual_style(font, targets, mapping_data):
     return len(color_layers)
 
 
+COLOR_FONT_META = {
+    "copyright": "Copyright 2020 The Indigo Project Authors (https://github.com/TiroTypeworks/Indigo). Color version copyright 2026 Dileep Miriyala.",
+    "designer": "Telugu: John Hudson & Fiona Ross. Color: Dileep Miriyala.",
+    "vendor_url": "https://github.com/miriyald/Indigo",
+}
+
+
+def _update_color_name_table(font, family_suffix="Color"):
+    """Update name table to establish the color font as a separate family."""
+    name_table = font["name"]
+
+    # Read base family name from existing name table
+    base_family = None
+    for record in name_table.names:
+        if record.nameID == 1 and record.platformID == 3:
+            base_family = record.toUnicode()
+            break
+    if not base_family:
+        base_family = "Tiro Telugu"
+
+    color_family = f"{base_family} {family_suffix}"
+    ps_family = base_family.replace(" ", "") + family_suffix.replace(" ", "")
+    ps_name = f"{ps_family}-Regular"
+
+    entries = {
+        0: COLOR_FONT_META["copyright"],
+        1: color_family,
+        2: "Regular",
+        4: color_family,
+        6: ps_name,
+        9: COLOR_FONT_META["designer"],
+        11: COLOR_FONT_META["vendor_url"],
+        16: color_family,
+        17: "Regular",
+    }
+
+    for name_id, value in entries.items():
+        name_table.setName(value, name_id, 3, 1, 0x0409)
+        name_table.setName(value, name_id, 1, 0, 0)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Add COLR/CPAL color to TiroTelugu font")
     parser.add_argument("input", nargs="?", help="Input TTF path")
     parser.add_argument("output", nargs="?", help="Output TTF path")
-    parser.add_argument("--style", choices=["contour", "ats", "manual"], default="contour",
-                        help="Color style: contour (split by size), ats (fill, 9 colors), manual (JSON mapping)")
-    parser.add_argument("--mapping", type=Path, help="JSON color mapping file (required for --style manual)")
+    parser.add_argument("--style", choices=["region", "ats", "manual", "contour"], default="region",
+                        help="Color style: region (split by size), ats (fill, 9 colors), manual (JSON mapping)")
+    parser.add_argument("--mapping", type=Path, help="JSON color mapping file (default: color_mapping.json next to input TTF)")
+    parser.add_argument("--family-suffix", default="Color", help="Suffix for color font family name (default: Color)")
     args = parser.parse_args()
 
-    if args.style == "manual" and not args.mapping:
-        parser.error("--mapping is required when --style manual")
+    if args.style == "contour":
+        args.style = "region"
 
     base_dir = Path(__file__).parent.parent
 
-    input_path = Path(args.input) if args.input else base_dir / "output/indigo/TiroTelugu/TTF/TiroTelugu-Regular.ttf"
+    input_path = Path(args.input) if args.input else base_dir / "output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf"
+
+    if args.style == "manual" and not args.mapping:
+        # Check UFO data/ folder first, then next to input TTF
+        ufo_data = base_dir / "source" / (input_path.stem + ".ufo") / "data" / "color_mapping.json"
+        ttf_sibling = input_path.parent / "color_mapping.json"
+        if ufo_data.exists():
+            args.mapping = ufo_data
+        elif ttf_sibling.exists():
+            args.mapping = ttf_sibling
+        else:
+            parser.error(f"--mapping is required when --style manual (no color_mapping.json found in UFO data/ or next to input TTF)")
+
     if args.output:
         output_path = Path(args.output)
     else:
-        suffix_map = {"contour": "-Color.ttf", "ats": "-ColorATS.ttf", "manual": "-ColorManual.ttf"}
+        suffix_map = {"region": "-Color.ttf", "ats": "-ColorATS.ttf", "manual": "-ColorManual.ttf"}
         suffix = suffix_map[args.style]
-        output_path = input_path.with_name(f"TiroTelugu-Regular{suffix}")
+        output_path = input_path.with_name(input_path.stem + suffix)
 
     print(f"Loading {input_path}")
     font = TTFont(str(input_path))
@@ -436,7 +536,7 @@ def main():
     glyf = font["glyf"]
     glyph_order = font.getGlyphOrder()
 
-    if args.style == "contour":
+    if args.style == "region":
         targets = [
             name for name in glyph_order
             if is_telugu_glyph(name)
@@ -457,14 +557,18 @@ def main():
 
     print(f"Found {len(targets)} target Telugu glyphs (style: {args.style})")
 
-    if args.style == "contour":
-        count = build_contour_style(font, targets)
+    if args.style == "region":
+        count = build_region_style(font, targets)
     elif args.style == "ats":
         count = build_ats_style(font, targets)
     else:
         count = build_manual_style(font, targets, mapping_data)
 
     print(f"Added color layers for {count} glyphs")
+
+    _update_color_name_table(font, args.family_suffix)
+    print(f"Updated name table: family = '{font['name'].getDebugName(1)}'")
+
     print(f"Saving {output_path}")
     font.save(str(output_path))
     print("Done!")

@@ -22,11 +22,11 @@ A **region** is a visual unit: an outer contour plus any inner hole contours tha
 
 ## Workflow Steps
 
-### Step 1: Visualize contours
+### Step 1: Visualize regions
 
 ```bash
-python tools/glif2svg.py source/TiroTelugu-Regular.ufo --telugu --contours --output output/svg-contours/
-python tools/glif2svg.py source/TiroTelugu-Regular.ufo --glyph tKa --contours --output output/svg-contours/
+python tools/glif2svg.py source/TiroTelugu-Regular.ufo --telugu --regions --output output/svg-contours/
+python tools/glif2svg.py source/TiroTelugu-Regular.ufo --glyph tKa --regions --output output/svg-contours/
 ```
 
 Each region is rendered in a distinct color with its index number labeled. Holes are correctly grouped with their parent outer contour. Use these SVGs to identify which region index corresponds to which visual element.
@@ -88,14 +88,14 @@ Edit the JSON, re-run steps 4-5. The input font is never modified.
 
 ```json
 "defaults": {
-  "unmapped_contours": 0,
-  "unmapped_glyphs": "auto:contour"
+  "unmapped_regions": 0,
+  "unmapped_glyphs": "auto:region"
 }
 ```
 
-- `unmapped_contours`: palette index for regions not explicitly listed (default: 0 = dark)
+- `unmapped_regions`: palette index for regions not explicitly listed (default: 0 = dark)
 - `unmapped_glyphs`: strategy for glyphs not in the mapping file:
-  - `"auto:contour"` — size-based heuristic (largest region = 0/dark, rest = 1/red)
+  - `"auto:region"` — size-based heuristic (largest region = 0/dark, rest = 1/red)
   - `"auto:ats"` — rotating single color per glyph
   - `"skip"` — no color layers for unmapped glyphs
 

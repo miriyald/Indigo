@@ -1,4 +1,0 @@
-5 - Top Region
-2 - Circular Hole 
-4 - Eliptical Hole
-3 - Bottom Region

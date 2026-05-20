@@ -20,7 +20,7 @@ from pathlib import Path
 from fontTools.ttLib import TTFont
 
 sys.path.insert(0, str(Path(__file__).parent))
-from add_color import is_telugu_glyph, contour_bbox_area, detect_regions, ATS_PALETTE
+from add_color import is_telugu_glyph, contour_bbox_area, detect_regions, classify_regions_smart, ATS_PALETTE
 
 
 def ttf_contour_to_svg_path(glyph, contour_idx):
@@ -124,15 +124,8 @@ def extract_glyph_data(font):
                 "holes": hole_indices
             })
 
-        # Build default mapping (regions=0, holes get rotating colors)
-        default_mapping = {}
-        color_idx = 0
-        fill_colors = [1, 2, 3, 4, 5, 6, 7, 8]
-        for ri, (outer_idx, hole_indices) in enumerate(regions):
-            default_mapping[str(ri)] = 0
-            for hi in range(len(hole_indices)):
-                default_mapping[f"{ri}.h{hi}"] = fill_colors[color_idx % len(fill_colors)]
-                color_idx += 1
+        # Build default mapping using smart position/shape heuristic
+        default_mapping = classify_regions_smart(glyph)
 
         # Build _info string (same format as generate_mapping.py)
         region_info_parts = []
@@ -512,7 +505,7 @@ function buildFullMapping() {
             "description": "Manual region-to-color mapping for TiroTelugu COLR v0",
             "note": "Each region is an outer contour + its holes. Fill respects holes."
         },
-        "defaults": { "unmapped_contours": 0, "unmapped_glyphs": "auto:contour" },
+        "defaults": { "unmapped_regions": 0, "unmapped_glyphs": "auto:region" },
         "glyphs": {}
     };
     for (const g of GLYPHS) {
@@ -567,12 +560,15 @@ renderGlyph(0);
 def main():
     parser = argparse.ArgumentParser(description="Generate interactive color mapping viewer HTML")
     parser.add_argument("input", nargs="?", help="Input TTF path")
-    parser.add_argument("--output", "-o", default="output/color-mapping-viewer.html", help="Output HTML path")
+    parser.add_argument("--output", "-o", help="Output HTML path (default: next to input TTF)")
     args = parser.parse_args()
 
     base_dir = Path(__file__).parent.parent
-    input_path = Path(args.input) if args.input else base_dir / "output/indigo/TiroTelugu/TTF/TiroTelugu-Regular.ttf"
-    output_path = Path(args.output)
+    input_path = Path(args.input) if args.input else base_dir / "output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf"
+    if args.output:
+        output_path = Path(args.output)
+    else:
+        output_path = input_path.parent / (input_path.stem + "-viewer.html")
 
     print(f"Loading {input_path}")
     font = TTFont(str(input_path))

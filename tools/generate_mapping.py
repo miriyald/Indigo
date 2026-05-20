@@ -5,8 +5,10 @@ Detects visual regions in each glyph (outer contour + its holes) and outputs
 a JSON file where users assign palette colors per region.
 
 Usage:
-    python tools/generate_mapping.py [input.ttf] --output data/color_mapping.json
-    python tools/generate_mapping.py [input.ttf] --output data/color_mapping.json --auto-heuristic
+    python tools/generate_mapping.py [input.ttf]
+    python tools/generate_mapping.py [input.ttf] --output path/to/color_mapping.json
+
+Output defaults to color_mapping.json next to the input TTF.
 """
 
 import argparse
@@ -17,20 +19,27 @@ from pathlib import Path
 from fontTools.ttLib import TTFont
 
 sys.path.insert(0, str(Path(__file__).parent))
-from add_color import is_telugu_glyph, contour_bbox_area, detect_regions
+from add_color import is_telugu_glyph, contour_bbox_area, detect_regions, classify_regions_smart
 
 
 def main():
     parser = argparse.ArgumentParser(description="Generate color mapping scaffold JSON")
     parser.add_argument("input", nargs="?", help="Input TTF path")
-    parser.add_argument("--output", "-o", default="data/color_mapping.json", help="Output JSON path")
+    parser.add_argument("--output", "-o", help="Output JSON path (default: next to input TTF)")
     parser.add_argument("--auto-heuristic", action="store_true",
                         help="Pre-fill using size heuristic (largest region=0, rest=1)")
     args = parser.parse_args()
 
     base_dir = Path(__file__).parent.parent
-    input_path = Path(args.input) if args.input else base_dir / "output/indigo/TiroTelugu/TTF/TiroTelugu-Regular.ttf"
-    output_path = Path(args.output)
+    input_path = Path(args.input) if args.input else base_dir / "output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf"
+    if args.output:
+        output_path = Path(args.output)
+    else:
+        ufo_data = base_dir / "source" / (input_path.stem + ".ufo") / "data"
+        if ufo_data.parent.exists():
+            output_path = ufo_data / "color_mapping.json"
+        else:
+            output_path = input_path.parent / "color_mapping.json"
 
     print(f"Loading {input_path}")
     font = TTFont(str(input_path))
@@ -45,7 +54,7 @@ def main():
         and glyf[name].numberOfContours >= 2
     ]
 
-    print(f"Found {len(targets)} multi-contour Telugu glyphs")
+    print(f"Found {len(targets)} multi-region Telugu glyphs")
 
     mapping = {
         "_meta": {
@@ -54,8 +63,8 @@ def main():
             "note": "Each region is an outer contour + its holes. Fill respects holes."
         },
         "defaults": {
-            "unmapped_contours": 0,
-            "unmapped_glyphs": "auto:contour"
+            "unmapped_regions": 0,
+            "unmapped_glyphs": "auto:region"
         },
         "glyphs": {}
     }
@@ -70,21 +79,12 @@ def main():
             continue
 
         region_info = []
-        region_map = {}
-        color_cycle_idx = 0
         for ri, (outer_idx, hole_indices) in enumerate(regions):
             area = contour_bbox_area(glyph, outer_idx)
             holes_str = f"+{len(hole_indices)} holes" if hole_indices else ""
             region_info.append(f"r{ri}(area={area}{holes_str})")
 
-            # Region itself keeps default color (0 = dark)
-            region_map[str(ri)] = 0
-
-            # Each hole gets a rotating color from the palette
-            for hi in range(len(hole_indices)):
-                fill_colors = [1, 2, 3, 4, 5, 6, 7, 8]
-                region_map[f"{ri}.h{hi}"] = fill_colors[color_cycle_idx % len(fill_colors)]
-                color_cycle_idx += 1
+        region_map = classify_regions_smart(glyph)
 
         mapping["glyphs"][name] = {
             "_info": f"{len(regions)} regions: {', '.join(region_info)}",

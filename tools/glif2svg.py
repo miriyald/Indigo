@@ -28,7 +28,7 @@ SVG_TEMPLATE = """\
 </svg>
 """
 
-CONTOUR_VIZ_COLORS = [
+REGION_VIZ_COLORS = [
     "#E63946", "#457B9D", "#2A9D8F", "#E9C46A", "#F4A261",
     "#264653", "#6A0572", "#AB83A1", "#118AB2", "#06D6A0",
 ]
@@ -308,7 +308,7 @@ def _detect_regions_ttf(glyph):
 
 
 def render_glyph_contours_svg_from_ttf(ttf_font, glyph_name, ascender=800, descender=-200):
-    """Render contour/region visualization directly from compiled TTF."""
+    """Render region visualization directly from compiled TTF."""
     glyf = ttf_font["glyf"]
     if glyph_name not in glyf:
         return None
@@ -338,7 +338,7 @@ def render_glyph_contours_svg_from_ttf(ttf_font, glyph_name, ascender=800, desce
 
     # Draw regions (outer + holes as cutouts)
     for ri, (outer_idx, hole_indices) in enumerate(regions):
-        color = CONTOUR_VIZ_COLORS[ri % len(CONTOUR_VIZ_COLORS)]
+        color = REGION_VIZ_COLORS[ri % len(REGION_VIZ_COLORS)]
         combined = _ttf_contour_to_svg_path(glyph, outer_idx)
         for hi in hole_indices:
             combined += " " + _ttf_contour_to_svg_path(glyph, hi)
@@ -364,7 +364,7 @@ def render_glyph_contours_svg_from_ttf(ttf_font, glyph_name, ascender=800, desce
             continue
         cx = (b[0] + b[2]) / 2
         cy = ascender + MARGIN - (b[1] + b[3]) / 2
-        color = CONTOUR_VIZ_COLORS[ri % len(CONTOUR_VIZ_COLORS)]
+        color = REGION_VIZ_COLORS[ri % len(REGION_VIZ_COLORS)]
         parts.append(f'  <text x="{cx:.0f}" y="{cy:.0f}" font-family="monospace" font-size="30" '
                      f'fill="{color}" text-anchor="middle" font-weight="bold">r{ri}</text>')
 
@@ -390,7 +390,7 @@ def render_glyph_contours_svg_from_ttf(ttf_font, glyph_name, ascender=800, desce
     lx = 0
     hole_global_idx = 0
     for ri, (outer_idx, hole_indices) in enumerate(regions):
-        color = CONTOUR_VIZ_COLORS[ri % len(CONTOUR_VIZ_COLORS)]
+        color = REGION_VIZ_COLORS[ri % len(REGION_VIZ_COLORS)]
         parts.append(f'  <rect x="{lx}" y="{legend_y + 8}" width="12" height="12" fill="{color}"/>')
         parts.append(f'  <text x="{lx + 16}" y="{legend_y + 19}" font-family="monospace" font-size="12" fill="#333">r{ri}</text>')
         lx += 60
@@ -437,7 +437,7 @@ def render_glyph_contours_svg(font, glyph_name):
 
     # Draw each region outer (with holes as cutouts)
     for ri, (outer_idx, hole_indices) in enumerate(regions):
-        color = CONTOUR_VIZ_COLORS[ri % len(CONTOUR_VIZ_COLORS)]
+        color = REGION_VIZ_COLORS[ri % len(REGION_VIZ_COLORS)]
         combined_path = all_paths[outer_idx] if outer_idx < len(all_paths) else ""
         for hi in hole_indices:
             if hi < len(all_paths):
@@ -463,7 +463,7 @@ def render_glyph_contours_svg(font, glyph_name):
         xMin, yMin, xMax, yMax = all_bounds[outer_idx]
         cx = (xMin + xMax) / 2
         cy = ascender + MARGIN - (yMin + yMax) / 2
-        color = CONTOUR_VIZ_COLORS[ri % len(CONTOUR_VIZ_COLORS)]
+        color = REGION_VIZ_COLORS[ri % len(REGION_VIZ_COLORS)]
         parts.append(f'  <text x="{cx:.0f}" y="{cy:.0f}" font-family="monospace" font-size="30" '
                      f'fill="{color}" text-anchor="middle" font-weight="bold">r{ri}</text>')
 
@@ -489,7 +489,7 @@ def render_glyph_contours_svg(font, glyph_name):
     lx = 0
     hole_global_idx = 0
     for ri, (outer_idx, hole_indices) in enumerate(regions):
-        color = CONTOUR_VIZ_COLORS[ri % len(CONTOUR_VIZ_COLORS)]
+        color = REGION_VIZ_COLORS[ri % len(REGION_VIZ_COLORS)]
         parts.append(f'  <rect x="{lx}" y="{legend_y + 8}" width="12" height="12" fill="{color}"/>')
         parts.append(f'  <text x="{lx + 16}" y="{legend_y + 19}" font-family="monospace" font-size="12" fill="#333">r{ri}</text>')
         lx += 60
@@ -536,7 +536,7 @@ def render_contour_specimen(font, glyph_names, cols=8, cell_size=160):
 
         parts.append(f'  <g transform="translate({tx},{ty}) scale({scale:.4f},{-scale:.4f})">')
         for ri, (outer_idx, hole_indices) in enumerate(regions):
-            color = CONTOUR_VIZ_COLORS[ri % len(CONTOUR_VIZ_COLORS)]
+            color = REGION_VIZ_COLORS[ri % len(REGION_VIZ_COLORS)]
             combined_path = all_paths[outer_idx] if outer_idx < len(all_paths) else ""
             for hi in hole_indices:
                 if hi < len(all_paths):
@@ -592,9 +592,10 @@ def main():
     parser.add_argument("--glyph", "-g", help="Specific glyph name to render")
     parser.add_argument("--all", action="store_true", help="Render all glyphs")
     parser.add_argument("--telugu", action="store_true", help="Render all Telugu glyphs (t + uppercase)")
-    parser.add_argument("--output", "-o", default="output/svg", help="Output directory")
+    parser.add_argument("--output", "-o", help="Output directory (default: next to input font)")
     parser.add_argument("--specimen", action="store_true", help="Generate a specimen sheet instead of individual files")
-    parser.add_argument("--contours", action="store_true", help="Render regions/holes with distinct colors and labels")
+    parser.add_argument("--regions", action="store_true", help="Render regions/holes with distinct colors and labels")
+    parser.add_argument("--contours", action="store_true", dest="regions", help=argparse.SUPPRESS)
     parser.add_argument("--ttf", help="Compiled TTF for region detection (default: auto-detect from output/)")
     parser.add_argument("--fill", default="#000000", help="Fill color (default: black)")
     args = parser.parse_args()
@@ -618,10 +619,7 @@ def main():
 
     print(f"Rendering {len(glyph_names)} glyphs")
 
-    output_dir = Path(args.output)
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    if args.contours:
+    if args.regions:
         # Use compiled TTF for accurate region/hole detection
         if args.ttf:
             ttf_path = Path(args.ttf)
@@ -636,7 +634,15 @@ def main():
         ascender = font.info.ascender or 800
         descender = font.info.descender or -200
 
-    if args.specimen and args.contours:
+    if args.output:
+        output_dir = Path(args.output)
+    elif args.regions and not args.output:
+        output_dir = ttf_path.parent / "svg-contours"
+    else:
+        output_dir = ufo_path.parent / "svg"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    if args.specimen and args.regions:
         # TTF-based specimen
         glyf = ttf_font["glyf"]
         valid_names = [n for n in glyph_names if n in glyf and glyf[n].numberOfContours and glyf[n].numberOfContours >= 1]
@@ -665,7 +671,7 @@ def main():
             parts_list.append(f'  <g transform="translate({tx},{ty}) scale({scale:.4f},{-scale:.4f})">')
             hole_gi = 0
             for ri, (outer_idx, hole_indices) in enumerate(regions):
-                color = CONTOUR_VIZ_COLORS[ri % len(CONTOUR_VIZ_COLORS)]
+                color = REGION_VIZ_COLORS[ri % len(REGION_VIZ_COLORS)]
                 combined = _ttf_contour_to_svg_path(glyph, outer_idx)
                 for hi in hole_indices:
                     combined += " " + _ttf_contour_to_svg_path(glyph, hi)
@@ -694,7 +700,7 @@ def main():
         out_file = output_dir / f"{ufo_path.stem}-specimen.svg"
         out_file.write_text(svg, encoding="utf-8")
         print(f"Specimen saved: {out_file}")
-    elif args.contours:
+    elif args.regions:
         count = 0
         for name in glyph_names:
             svg = render_glyph_contours_svg_from_ttf(ttf_font, name, ascender, descender)
