@@ -1,15 +1,11 @@
 """
 Generate an interactive HTML viewer for color mapping review.
 
-Reads a UFO source or compiled TTF, extracts region/hole data for each
-Telugu glyph, and produces a self-contained HTML file with:
-- One glyph at a time with regions/holes colored and labeled
-- ATS palette reference bar
-- JSON snippet with default mapping, ready to copy
-- Prev/next navigation and search
+Uses compiled TTF for region/hole detection, and optionally UFO source
+for glyphs where overlap removal merged contours.
 
 Usage:
-    python tools/generate_viewer.py [input.ufo|input.ttf] --output output/color-mapping-viewer.html
+    python tools/generate_viewer.py [input.ttf] --ufo source/TiroTelugu-Regular.ufo
 """
 
 import argparse
@@ -23,10 +19,8 @@ from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.ttLib import TTFont
 
 sys.path.insert(0, str(Path(__file__).parent))
-from add_color import (
-    is_telugu_glyph, contour_bbox_area, detect_regions, classify_regions_smart,
-    detect_regions_ufo, classify_regions_smart_ufo, ATS_PALETTE,
-)
+from add_color import is_telugu_glyph, contour_bbox_area, detect_regions, classify_regions_smart, ATS_PALETTE
+from generate_mapping import classify_contours_ufo
 
 
 def ttf_contour_to_svg_path(glyph, contour_idx):
@@ -106,58 +100,14 @@ def _ufo_contour_bounds(contour, glyphset):
     return [b[0], b[1], b[2], b[3]]
 
 
-def extract_glyph_data_ufo(ufo_font):
-    glyphset = ufo_font.layers.defaultLayer
-    glyphs_data = []
-
-    names = sorted(name for name in glyphset.keys()
-                   if is_telugu_glyph(name) and len(list(glyphset[name].contours)) >= 2)
-
-    for name in names:
-        glyph = glyphset[name]
-        contours = list(glyph.contours)
-
-        regions = detect_regions_ufo(ufo_font, name)
-
-        width = glyph.width if glyph.width else 600
-
-        contour_paths = []
-        contour_bounds_list = []
-        for contour in contours:
-            contour_paths.append(_ufo_contour_to_svg_path(contour, glyphset))
-            contour_bounds_list.append(_ufo_contour_bounds(contour, glyphset))
-
-        region_data = []
-        for outer_idx, hole_indices in regions:
-            region_data.append({"outer": outer_idx, "holes": hole_indices})
-
-        default_mapping = classify_regions_smart_ufo(ufo_font, name, regions)
-
-        region_info_parts = []
-        for ri, (outer_idx, hole_indices) in enumerate(regions):
-            b = _ufo_contour_bounds(contours[outer_idx], glyphset)
-            area = int((b[2] - b[0]) * (b[3] - b[1])) if b else 0
-            holes_str = f"+{len(hole_indices)} holes" if hole_indices else ""
-            region_info_parts.append(f"r{ri}(area={area}{holes_str})")
-        info_str = f"{len(regions)} regions: {', '.join(region_info_parts)}"
-
-        glyphs_data.append({
-            "name": name,
-            "width": width,
-            "contourPaths": contour_paths,
-            "contourBounds": contour_bounds_list,
-            "regions": region_data,
-            "defaultMapping": default_mapping,
-            "info": info_str
-        })
-
-    return glyphs_data
-
-
-def extract_glyph_data(font):
+def extract_glyph_data(font, ufo_font=None, mapping_data=None):
+    """Hybrid extraction: TTF for region/hole glyphs, UFO for merged glyphs."""
     glyf = font["glyf"]
     hmtx = font["hmtx"]
     glyph_order = font.getGlyphOrder()
+
+    ufo_glyphset = ufo_font.layers.defaultLayer if ufo_font else None
+    glyph_mappings = mapping_data.get("glyphs", {}) if mapping_data else {}
 
     glyphs_data = []
 
@@ -165,51 +115,135 @@ def extract_glyph_data(font):
         if not is_telugu_glyph(name):
             continue
         glyph = glyf[name]
-        if glyph.numberOfContours is None or glyph.numberOfContours < 2:
+        if glyph.numberOfContours is None or glyph.numberOfContours < 1:
             continue
 
-        regions = detect_regions(glyph)
+        ttf_contours = glyph.numberOfContours
+        ufo_contour_count = 0
+        if ufo_glyphset and name in ufo_glyphset:
+            ufo_contour_count = len(list(ufo_glyphset[name].contours))
 
         try:
             width = hmtx[name][0]
         except (KeyError, IndexError):
             width = 600
 
-        # Extract SVG paths and bounds for each contour
-        contour_paths = []
-        contour_bounds_list = []
-        for ci in range(glyph.numberOfContours):
-            contour_paths.append(ttf_contour_to_svg_path(glyph, ci))
-            contour_bounds_list.append(contour_bounds(glyph, ci))
+        if ttf_contours >= 2:
+            # TTF has proper region/hole structure
+            regions = detect_regions(glyph)
 
-        # Build region data
-        region_data = []
-        for outer_idx, hole_indices in regions:
-            region_data.append({
-                "outer": outer_idx,
-                "holes": hole_indices
+            contour_paths = []
+            contour_bounds_list = []
+            for ci in range(ttf_contours):
+                contour_paths.append(ttf_contour_to_svg_path(glyph, ci))
+                contour_bounds_list.append(contour_bounds(glyph, ci))
+
+            region_data = []
+            for outer_idx, hole_indices in regions:
+                region_data.append({"outer": outer_idx, "holes": hole_indices})
+
+            saved_entry = glyph_mappings.get(name, {})
+            if "regions" in saved_entry:
+                default_mapping = {k: v for k, v in saved_entry["regions"].items() if not k.startswith("_")}
+            else:
+                default_mapping = classify_regions_smart(glyph)
+
+            region_info_parts = []
+            for ri, (outer_idx, hole_indices) in enumerate(regions):
+                area = contour_bbox_area(glyph, outer_idx)
+                holes_str = f"+{len(hole_indices)} holes" if hole_indices else ""
+                region_info_parts.append(f"r{ri}(area={area}{holes_str})")
+            info_str = f"{len(regions)} regions: {', '.join(region_info_parts)}"
+
+            glyph_entry = {
+                "name": name,
+                "width": width,
+                "contourPaths": contour_paths,
+                "contourBounds": contour_bounds_list,
+                "regions": region_data,
+                "defaultMapping": default_mapping,
+                "info": info_str,
+                "source": "ttf"
+            }
+
+            # Also extract UFO data when overlap removal merged contours
+            if ufo_contour_count >= 2 and ufo_contour_count != ttf_contours:
+                ufo_glyph = ufo_glyphset[name]
+                ufo_contours = list(ufo_glyph.contours)
+
+                ufo_paths = []
+                ufo_bounds_list = []
+                for contour in ufo_contours:
+                    ufo_paths.append(_ufo_contour_to_svg_path(contour, ufo_glyphset))
+                    ufo_bounds_list.append(_ufo_contour_bounds(contour, ufo_glyphset))
+
+                ufo_region_data = []
+                for ci in range(ufo_contour_count):
+                    ufo_region_data.append({"outer": ci, "holes": []})
+
+                if "ufo_contours" in saved_entry:
+                    ufo_default_mapping = {k: v for k, v in saved_entry["ufo_contours"].items() if not k.startswith("_")}
+                else:
+                    ufo_default_mapping = classify_contours_ufo(ufo_font, name)
+
+                ufo_info_parts = []
+                for ci in range(ufo_contour_count):
+                    b = ufo_bounds_list[ci]
+                    area = int((b[2] - b[0]) * (b[3] - b[1])) if b else 0
+                    ufo_info_parts.append(f"uc{ci}(area={area})")
+                ufo_info_str = f"{ufo_contour_count} ufo-contours: {', '.join(ufo_info_parts)}"
+
+                glyph_entry["ufoData"] = {
+                    "contourPaths": ufo_paths,
+                    "contourBounds": ufo_bounds_list,
+                    "regions": ufo_region_data,
+                    "defaultMapping": ufo_default_mapping,
+                    "info": ufo_info_str,
+                }
+
+            glyphs_data.append(glyph_entry)
+
+        elif ufo_contour_count >= 2:
+            # TTF merged contours — use UFO source
+            ufo_glyph = ufo_glyphset[name]
+            contours = list(ufo_glyph.contours)
+
+            contour_paths = []
+            contour_bounds_list = []
+            for contour in contours:
+                contour_paths.append(_ufo_contour_to_svg_path(contour, ufo_glyphset))
+                contour_bounds_list.append(_ufo_contour_bounds(contour, ufo_glyphset))
+
+            # For UFO-sourced glyphs, each contour is its own "region" (no holes)
+            region_data = []
+            for ci in range(ufo_contour_count):
+                region_data.append({"outer": ci, "holes": []})
+
+            saved_entry = glyph_mappings.get(name, {})
+            if "contours" in saved_entry:
+                default_mapping = {k: v for k, v in saved_entry["contours"].items() if not k.startswith("_")}
+            elif "ufo_contours" in saved_entry:
+                default_mapping = {k: v for k, v in saved_entry["ufo_contours"].items() if not k.startswith("_")}
+            else:
+                default_mapping = classify_contours_ufo(ufo_font, name)
+
+            contour_info_parts = []
+            for ci in range(ufo_contour_count):
+                b = contour_bounds_list[ci]
+                area = int((b[2] - b[0]) * (b[3] - b[1])) if b else 0
+                contour_info_parts.append(f"uc{ci}(area={area})")
+            info_str = f"{ttf_contours} ttf, {ufo_contour_count} ufo: {', '.join(contour_info_parts)}"
+
+            glyphs_data.append({
+                "name": name,
+                "width": width,
+                "contourPaths": contour_paths,
+                "contourBounds": contour_bounds_list,
+                "regions": region_data,
+                "defaultMapping": default_mapping,
+                "info": info_str,
+                "source": "ufo"
             })
-
-        # Build default mapping using smart position/shape heuristic
-        default_mapping = classify_regions_smart(glyph)
-
-        # Build _info string (same format as generate_mapping.py)
-        region_info_parts = []
-        for ri, (outer_idx, hole_indices) in enumerate(regions):
-            area = contour_bbox_area(glyph, outer_idx)
-            holes_str = f"+{len(hole_indices)} holes" if hole_indices else ""
-            region_info_parts.append(f"r{ri}(area={area}{holes_str})")
-        info_str = f"{len(regions)} regions: {', '.join(region_info_parts)}"
-
-        glyphs_data.append({
-            "name": name,
-            "width": width,
-            "contourPaths": contour_paths,
-            "contourBounds": contour_bounds_list,
-            "regions": region_data,
-            "defaultMapping": default_mapping,
-            "info": info_str
-        })
 
     return glyphs_data
 
@@ -416,6 +450,7 @@ body {
     <button id="btn-next">Next &rarr;</button>
     <span class="counter" id="counter">...</span>
     <input type="text" id="search" placeholder="Search glyph name...">
+    <button id="btn-view-toggle" style="display:none;">View: TTF Regions</button>
 </div>
 
 <div class="main">
@@ -455,6 +490,9 @@ const HOLE_COLORS = [
 ];
 
 let currentIdx = 0;
+let viewMode = {};
+
+function getViewMode(g) { return viewMode[g.name] || "ttf"; }
 
 function showToast(msg) {
     const t = document.getElementById("toast");
@@ -466,11 +504,15 @@ function showToast(msg) {
 function saveCurrentEdits() {
     const ta = document.getElementById("json-output");
     const g = GLYPHS[currentIdx];
+    const mode = getViewMode(g);
     try {
         const parsed = JSON.parse(ta.value);
         const entry = parsed[g.name];
-        if (entry && entry.regions) {
-            g.defaultMapping = entry.regions;
+        if (!entry) return;
+        if (mode === "ufo" && g.ufoData) {
+            if (entry.contours) g.ufoData.defaultMapping = entry.contours;
+        } else {
+            if (entry.regions) g.defaultMapping = entry.regions;
         }
     } catch(e) {}
 }
@@ -481,12 +523,44 @@ function renderGlyph(idx) {
     currentIdx = idx;
 
     const g = GLYPHS[idx];
-    document.getElementById("counter").textContent = `${g.name} (${idx + 1}/${GLYPHS.length})`;
+    const hasUfo = !!g.ufoData;
+    const mode = getViewMode(g);
+
+    // Show/hide toggle button
+    const toggleBtn = document.getElementById("btn-view-toggle");
+    if (hasUfo) {
+        toggleBtn.style.display = "";
+        toggleBtn.textContent = mode === "ttf" ? "View: TTF Regions" : "View: UFO Contours";
+        toggleBtn.style.borderColor = mode === "ufo" ? "#2a9d8f" : "#555";
+    } else {
+        toggleBtn.style.display = "none";
+    }
+
+    // Select active dataset
+    let contourPaths, contourBounds, regions, defaultMapping, info, source;
+    if (mode === "ufo" && hasUfo) {
+        contourPaths = g.ufoData.contourPaths;
+        contourBounds = g.ufoData.contourBounds;
+        regions = g.ufoData.regions;
+        defaultMapping = g.ufoData.defaultMapping;
+        info = g.ufoData.info;
+        source = "ufo";
+    } else {
+        contourPaths = g.contourPaths;
+        contourBounds = g.contourBounds;
+        regions = g.regions;
+        defaultMapping = g.defaultMapping;
+        info = g.info;
+        source = g.source;
+    }
+
+    const sourceLabel = hasUfo ? (mode === "ufo" ? " [UFO]" : " [TTF]") : "";
+    document.getElementById("counter").textContent = `${g.name}${sourceLabel} (${idx + 1}/${GLYPHS.length})`;
 
     // Build SVG
     const ascender = 800;
     const margin = 50;
-    const totalH = 1000; // ascender - descender
+    const totalH = 1000;
     const vbW = g.width + margin * 2;
     const vbH = totalH + margin * 2;
 
@@ -495,20 +569,19 @@ function renderGlyph(idx) {
 
     // Draw regions (outer + holes as cutouts)
     let holeGlobalIdx = 0;
-    for (let ri = 0; ri < g.regions.length; ri++) {
-        const region = g.regions[ri];
+    for (let ri = 0; ri < regions.length; ri++) {
+        const region = regions[ri];
         const color = REGION_COLORS[ri % REGION_COLORS.length];
-        let path = g.contourPaths[region.outer] || "";
+        let path = contourPaths[region.outer] || "";
         for (const hi of region.holes) {
-            path += " " + (g.contourPaths[hi] || "");
+            path += " " + (contourPaths[hi] || "");
         }
         if (path) {
             svg += `<path d="${path}" fill="${color}" fill-rule="nonzero" opacity="0.55"/>`;
         }
-        // Draw holes filled
         for (let hi = 0; hi < region.holes.length; hi++) {
             const holeColor = HOLE_COLORS[holeGlobalIdx % HOLE_COLORS.length];
-            const holePath = g.contourPaths[region.holes[hi]] || "";
+            const holePath = contourPaths[region.holes[hi]] || "";
             if (holePath) {
                 svg += `<path d="${holePath}" fill="${holeColor}" fill-rule="nonzero" opacity="0.85"/>`;
             }
@@ -518,19 +591,20 @@ function renderGlyph(idx) {
 
     svg += `</g>`;
 
-    // Labels (in SVG-down space)
+    // Labels
     holeGlobalIdx = 0;
-    for (let ri = 0; ri < g.regions.length; ri++) {
-        const region = g.regions[ri];
-        const b = g.contourBounds[region.outer];
+    for (let ri = 0; ri < regions.length; ri++) {
+        const region = regions[ri];
+        const b = contourBounds[region.outer];
         if (b) {
             const cx = (b[0] + b[2]) / 2;
             const cy = ascender + margin - (b[1] + b[3]) / 2;
             const color = REGION_COLORS[ri % REGION_COLORS.length];
-            svg += `<text x="${cx}" y="${cy}" font-family="monospace" font-size="28" fill="${color}" text-anchor="middle" font-weight="bold">r${ri}</text>`;
+            const label = source === "ufo" ? `c${ri}` : `r${ri}`;
+            svg += `<text x="${cx}" y="${cy}" font-family="monospace" font-size="28" fill="${color}" text-anchor="middle" font-weight="bold">${label}</text>`;
         }
         for (let hi = 0; hi < region.holes.length; hi++) {
-            const hb = g.contourBounds[region.holes[hi]];
+            const hb = contourBounds[region.holes[hi]];
             if (hb) {
                 const cx = (hb[0] + hb[2]) / 2;
                 const cy = ascender + margin - (hb[1] + hb[3]) / 2;
@@ -547,10 +621,11 @@ function renderGlyph(idx) {
     // Legend
     let legendHtml = "";
     holeGlobalIdx = 0;
-    for (let ri = 0; ri < g.regions.length; ri++) {
+    for (let ri = 0; ri < regions.length; ri++) {
         const color = REGION_COLORS[ri % REGION_COLORS.length];
-        legendHtml += `<span class="legend-item"><span class="legend-color" style="background:${color}"></span>r${ri}</span>`;
-        for (let hi = 0; hi < g.regions[ri].holes.length; hi++) {
+        const label = source === "ufo" ? `c${ri}` : `r${ri}`;
+        legendHtml += `<span class="legend-item"><span class="legend-color" style="background:${color}"></span>${label}</span>`;
+        for (let hi = 0; hi < regions[ri].holes.length; hi++) {
             const hc = HOLE_COLORS[holeGlobalIdx % HOLE_COLORS.length];
             legendHtml += `<span class="legend-item"><span class="legend-color" style="background:${hc}"></span>${ri}.h${hi}</span>`;
             holeGlobalIdx++;
@@ -560,7 +635,11 @@ function renderGlyph(idx) {
 
     // JSON
     const jsonObj = {};
-    jsonObj[g.name] = { "_info": g.info, "regions": g.defaultMapping };
+    if (source === "ufo") {
+        jsonObj[g.name] = { "_info": info, "_source": "ufo", "contours": defaultMapping };
+    } else {
+        jsonObj[g.name] = { "_info": info, "regions": defaultMapping };
+    }
     document.getElementById("json-output").value = JSON.stringify(jsonObj, null, 2);
 }
 
@@ -575,10 +654,24 @@ function buildFullMapping() {
         "glyphs": {}
     };
     for (const g of GLYPHS) {
-        mapping.glyphs[g.name] = { "_info": g.info, "regions": g.defaultMapping };
+        const mode = getViewMode(g);
+        if (mode === "ufo" && g.ufoData) {
+            mapping.glyphs[g.name] = { "_info": g.ufoData.info, "_source": "ufo", "contours": g.ufoData.defaultMapping };
+        } else {
+            mapping.glyphs[g.name] = { "_info": g.info, "regions": g.defaultMapping };
+        }
     }
     return mapping;
 }
+
+// View toggle
+document.getElementById("btn-view-toggle").addEventListener("click", () => {
+    const g = GLYPHS[currentIdx];
+    if (!g.ufoData) return;
+    const current = getViewMode(g);
+    viewMode[g.name] = current === "ttf" ? "ufo" : "ttf";
+    renderGlyph(currentIdx);
+});
 
 // Navigation
 document.getElementById("btn-prev").addEventListener("click", () => renderGlyph(currentIdx - 1));
@@ -602,10 +695,15 @@ document.getElementById("search").addEventListener("input", (e) => {
 document.getElementById("btn-copy").addEventListener("click", () => {
     saveCurrentEdits();
     const g = GLYPHS[currentIdx];
+    const mode = getViewMode(g);
     const obj = {};
-    obj[g.name] = { "_info": g.info, "regions": g.defaultMapping };
+    if (mode === "ufo" && g.ufoData) {
+        obj[g.name] = { "_info": g.ufoData.info, "_source": "ufo", "contours": g.ufoData.defaultMapping };
+    } else {
+        obj[g.name] = { "_info": g.info, "regions": g.defaultMapping };
+    }
     navigator.clipboard.writeText(JSON.stringify(obj, null, 2));
-    showToast("Copied " + g.name);
+    showToast("Copied " + g.name + " (" + mode + ")");
 });
 
 document.getElementById("btn-copy-all").addEventListener("click", () => {
@@ -625,33 +723,42 @@ renderGlyph(0);
 
 def main():
     parser = argparse.ArgumentParser(description="Generate interactive color mapping viewer HTML")
-    parser.add_argument("input", nargs="?", help="Input UFO or TTF path")
-    parser.add_argument("--output", "-o", help="Output HTML path (default: next to input)")
+    parser.add_argument("input", nargs="?", help="Input TTF path")
+    parser.add_argument("--ufo", type=Path, help="UFO source (for glyphs where TTF merged contours)")
+    parser.add_argument("--output", "-o", help="Output HTML path (default: next to input TTF)")
     args = parser.parse_args()
 
     base_dir = Path(__file__).parent.parent
-    input_path = Path(args.input) if args.input else base_dir / "source" / "TiroTelugu-Regular.ufo"
-    use_ufo = input_path.suffix == ".ufo" or input_path.is_dir()
+    input_path = Path(args.input) if args.input else base_dir / "output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf"
+
+    if not args.ufo:
+        ufo_path = base_dir / "source" / (input_path.stem + ".ufo")
+        if ufo_path.exists():
+            args.ufo = ufo_path
 
     if args.output:
         output_path = Path(args.output)
-    elif use_ufo:
-        ttf_dir = base_dir / "output/indigo-telugu/TiroTelugu/TTF"
-        output_path = ttf_dir / (input_path.stem.replace(".ufo", "") + "-viewer.html")
     else:
         output_path = input_path.parent / (input_path.stem + "-viewer.html")
 
     print(f"Loading {input_path}")
+    font = TTFont(str(input_path))
 
-    if use_ufo:
-        ufo_font = ufoLib2.Font.open(str(input_path))
-        print("Extracting glyph data from UFO...")
-        glyphs_data = extract_glyph_data_ufo(ufo_font)
-    else:
-        font = TTFont(str(input_path))
-        print("Extracting glyph data from TTF...")
-        glyphs_data = extract_glyph_data(font)
+    ufo_font = None
+    if args.ufo:
+        print(f"Loading UFO {args.ufo}")
+        ufo_font = ufoLib2.Font.open(str(args.ufo))
 
+    # Load color mapping if available
+    mapping_data = None
+    if args.ufo:
+        mapping_path = args.ufo / "data" / "color_mapping.json"
+        if mapping_path.exists():
+            print(f"Loading mapping {mapping_path}")
+            mapping_data = json.loads(mapping_path.read_text(encoding="utf-8"))
+
+    print("Extracting glyph data...")
+    glyphs_data = extract_glyph_data(font, ufo_font=ufo_font, mapping_data=mapping_data)
     print(f"  {len(glyphs_data)} glyphs")
 
     # Generate HTML

@@ -8,7 +8,8 @@ Usage:
 import argparse
 from pathlib import Path
 
-SIZES = [24, 36]
+SIZES = [36]
+
 
 def _generate_telugu_comprehensive_test():
     """Generate systematic Telugu character coverage test.
@@ -29,14 +30,16 @@ def _generate_telugu_comprehensive_test():
     special = [f"◌{chr(c)}" for c in range(0x0C00, 0x0C05)]
     groups["Special Marks (U+0C00–0C04)"] = special
 
-    consonants = [chr(c) for c in range(0x0C15, 0x0C3A)]
+    consonants = [chr(c) for c in range(0x0C15, 0x0C3A) if c != 0x0C29]
     consonants += [chr(0x0C58), chr(0x0C59)]
     groups["Consonants (U+0C15–0C39, U+0C58, U+0C59)"] = consonants
 
-    extenders = [chr(c) for c in range(0x0C3E, 0x0C4E)]
+    extenders = [chr(c) for c in range(0x0C3E, 0x0C4E)
+                 if c not in (0x0C45, 0x0C49)]
     extenders += [chr(0x0C55), chr(0x0C56)]
     extenders += [chr(0x0C5D)]
-    groups["Extenders (U+0C3E–0C4D, U+0C55, U+0C56, U+0C5D)"] = [f"◌{e}" for e in extenders]
+    groups["Extenders (U+0C3E–0C4D, U+0C55, U+0C56, U+0C5D)"] = [
+        f"◌{e}" for e in extenders]
 
     numbers = [chr(c) for c in range(0x0C66, 0x0C70)]
     groups["Numbers (U+0C66–0C6F)"] = numbers
@@ -50,7 +53,8 @@ def _generate_telugu_comprehensive_test():
 
     virama = chr(0x0C4D)
     for c1 in consonants:
-        conjuncts = [f"{c1}{virama}{c2}" for c2 in consonants]
+        conjuncts = [f"{c1}{virama}{c2}" for c2 in consonants if c2 not in (
+            chr(0x0C58), chr(0x0C59))]
         groups[f"Conjuncts: {c1}+్"] = conjuncts
 
     return groups
@@ -74,11 +78,14 @@ def _generate_latin_comprehensive_test():
     groups["Punctuation & Symbols"] = punct
 
     ligatures = ["fi", "fl", "ff", "ffi", "ffl"]
-    typo = [chr(0x2014), chr(0x2013), chr(0x201E) + chr(0x201C), chr(0x201C) + chr(0x201D), chr(0x2018) + chr(0x2019), chr(0xAB) + chr(0xBB)]
+    typo = [chr(0x2014), chr(0x2013), chr(0x201E) + chr(0x201C), chr(0x201C) +
+            chr(0x201D), chr(0x2018) + chr(0x2019), chr(0xAB) + chr(0xBB)]
     groups["Ligatures & Typographic"] = ligatures + typo
 
-    groups["Latin Extended-A (U+0100–017F)"] = [chr(c) for c in range(0x0100, 0x0180)]
-    groups["Latin Extended-B (U+0180–024F)"] = [chr(c) for c in range(0x0180, 0x0250)]
+    groups["Latin Extended-A (U+0100–017F)"] = [chr(c)
+                                                for c in range(0x0100, 0x0180)]
+    groups["Latin Extended-B (U+0180–024F)"] = [chr(c)
+                                                for c in range(0x0180, 0x0250)]
 
     return groups
 
@@ -341,22 +348,29 @@ hr {{
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate an HTML font test page.")
-    parser.add_argument("font", type=Path, help="Path to font file (.ttf, .otf, .woff, .woff2)")
-    parser.add_argument("-o", "--output", type=Path, help="Output HTML path (default: <font>-test.html)")
-    parser.add_argument("-s", "--script", help="Override script detection (e.g. Telu, Deva, Beng, Taml, Knda, Guru, Latn)")
-    parser.add_argument("--download-link", help="URL or path for font download button")
+    parser = argparse.ArgumentParser(
+        description="Generate an HTML font test page.")
+    parser.add_argument("font", type=Path,
+                        help="Path to font file (.ttf, .otf, .woff, .woff2)")
+    parser.add_argument("-o", "--output", type=Path,
+                        help="Output HTML path (default: <font>-test.html)")
+    parser.add_argument(
+        "-s", "--script", help="Override script detection (e.g. Telu, Deva, Beng, Taml, Knda, Guru, Latn)")
+    parser.add_argument("--download-link",
+                        help="URL or path for font download button")
     parser.add_argument("--author", help="Author name to display on the page")
-    parser.add_argument("--project-url", help="Project URL to link from author name")
+    parser.add_argument(
+        "--project-url", help="Project URL to link from author name")
     args = parser.parse_args()
 
     if args.script:
         tag = SCRIPT_TAG_MAP.get(args.script.lower(), args.script)
         global detect_script
         original_detect = detect_script
-        detect_script = lambda p: tag
+        def detect_script(p): return tag
 
-    generate_html(args.font, args.output, args.download_link, args.author, args.project_url)
+    generate_html(args.font, args.output, args.download_link,
+                  args.author, args.project_url)
 
 
 if __name__ == "__main__":

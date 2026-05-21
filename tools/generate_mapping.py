@@ -1,16 +1,13 @@
 """
 Generate a color mapping scaffold JSON for manual region-to-color assignment.
 
-Detects visual regions in each glyph (outer contour + its holes) and outputs
-a JSON file where users assign palette colors per region.
-
-Supports both UFO source (sees original contours before overlap removal)
-and compiled TTF as input.
+Uses compiled TTF for region/hole detection (correct topology), and optionally
+the UFO source for glyphs where overlap removal merged contours.
 
 Usage:
-    python tools/generate_mapping.py source/TiroTelugu-Regular.ufo
+    python tools/generate_mapping.py --ufo source/TiroTelugu-Regular.ufo
     python tools/generate_mapping.py output/.../TiroTelugu-Regular.ttf
-    python tools/generate_mapping.py [input] --output path/to/color_mapping.json
+    python tools/generate_mapping.py [input.ttf] --ufo [source.ufo] --output path/to/color_mapping.json
 
 Output defaults to source/<font>.ufo/data/color_mapping.json.
 """
@@ -33,74 +30,17 @@ from add_color import (
     SMART_COLOR_BASE,
     SMART_COLOR_ABOVE,
     SMART_COLOR_BELOW,
-    SMART_COLOR_CIRCULAR,
-    SMART_COLOR_ELLIPTICAL,
     SMART_ASPECT_THRESHOLD,
 )
 
 
-def detect_regions_ufo(ufo_font, glyph_name):
-    """Detect regions from UFO source: group outer contours with their hole children."""
+def classify_contours_ufo(ufo_font, glyph_name):
+    """Assign colors to UFO contours by position (for glyphs with no TTF regions)."""
     glyphset = ufo_font.layers.defaultLayer
     glyph = glyphset[glyph_name]
     contours = list(glyph.contours)
-    if not contours:
-        return []
-
-    info = []
-    for i, contour in enumerate(contours):
-        pen = BoundsPen(glyphset)
-        contour.draw(pen)
-        bounds = pen.bounds
-        if bounds is None:
-            info.append({"idx": i, "bounds": (0, 0, 0, 0), "is_outer": True, "area": 0})
-            continue
-
-        pts = [(pt.x, pt.y) for pt in contour]
-        signed_area = 0
-        for j in range(len(pts)):
-            x1, y1 = pts[j]
-            x2, y2 = pts[(j + 1) % len(pts)]
-            signed_area += (x2 - x1) * (y2 + y1)
-
-        bbox_area = (bounds[2] - bounds[0]) * (bounds[3] - bounds[1])
-        info.append({"idx": i, "bounds": bounds, "is_outer": signed_area > 0, "area": bbox_area})
-
-    outers = [c for c in info if c["is_outer"]]
-    inners = [c for c in info if not c["is_outer"]]
-
-    outers.sort(key=lambda c: c["area"], reverse=True)
-
-    regions = []
-    assigned = set()
-
-    for outer in outers:
-        ob = outer["bounds"]
-        holes = []
-        for inner in inners:
-            if inner["idx"] in assigned:
-                continue
-            ib = inner["bounds"]
-            if ib[0] >= ob[0] and ib[1] >= ob[1] and ib[2] <= ob[2] and ib[3] <= ob[3]:
-                holes.append(inner["idx"])
-                assigned.add(inner["idx"])
-        regions.append((outer["idx"], holes))
-
-    for inner in inners:
-        if inner["idx"] not in assigned:
-            regions.append((inner["idx"], []))
-
-    return regions
-
-
-def classify_regions_smart_ufo(ufo_font, glyph_name, regions):
-    """Assign colors based on region position/shape (UFO version)."""
-    if not regions:
+    if len(contours) < 2:
         return {}
-
-    glyphset = ufo_font.layers.defaultLayer
-    glyph = glyphset[glyph_name]
-    contours = list(glyph.contours)
 
     def contour_bounds(ci):
         pen = BoundsPen(glyphset)
@@ -115,48 +55,38 @@ def classify_regions_smart_ufo(ufo_font, glyph_name, regions):
         b = contour_bounds(ci)
         return (b[1] + b[3]) / 2
 
-    def contour_aspect(ci):
-        b = contour_bounds(ci)
-        w = b[2] - b[0]
-        h = b[3] - b[1]
-        if w == 0 or h == 0:
-            return 1.0
-        return max(w, h) / min(w, h)
-
-    base_idx = max(range(len(regions)), key=lambda i: contour_area(regions[i][0]))
-    base_cy = contour_centroid_y(regions[base_idx][0])
+    base_idx = max(range(len(contours)), key=contour_area)
+    base_cy = contour_centroid_y(base_idx)
 
     mapping = {}
-    for ri, (outer_idx, hole_indices) in enumerate(regions):
-        if ri == base_idx:
-            mapping[str(ri)] = SMART_COLOR_BASE
+    for ci in range(len(contours)):
+        if ci == base_idx:
+            mapping[str(ci)] = SMART_COLOR_BASE
         else:
-            cy = contour_centroid_y(outer_idx)
-            mapping[str(ri)] = SMART_COLOR_ABOVE if cy > base_cy else SMART_COLOR_BELOW
-
-        for hi, hole_ci in enumerate(hole_indices):
-            ar = contour_aspect(hole_ci)
-            mapping[f"{ri}.h{hi}"] = SMART_COLOR_CIRCULAR if ar < SMART_ASPECT_THRESHOLD else SMART_COLOR_ELLIPTICAL
+            cy = contour_centroid_y(ci)
+            mapping[str(ci)] = SMART_COLOR_ABOVE if cy > base_cy else SMART_COLOR_BELOW
 
     return mapping
 
 
 def main():
     parser = argparse.ArgumentParser(description="Generate color mapping scaffold JSON")
-    parser.add_argument("input", nargs="?", help="Input UFO or TTF path")
+    parser.add_argument("input", nargs="?", help="Input TTF path")
+    parser.add_argument("--ufo", type=Path, help="UFO source (for glyphs where TTF merged contours)")
     parser.add_argument("--output", "-o", help="Output JSON path")
-    parser.add_argument("--auto-heuristic", action="store_true",
-                        help="Pre-fill using size heuristic (largest region=0, rest=1)")
     args = parser.parse_args()
 
     base_dir = Path(__file__).parent.parent
-    input_path = Path(args.input) if args.input else base_dir / "source" / "TiroTelugu-Regular.ufo"
-    use_ufo = input_path.suffix == ".ufo" or input_path.is_dir()
+
+    input_path = Path(args.input) if args.input else base_dir / "output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf"
+
+    if not args.ufo:
+        ufo_path = base_dir / "source" / (input_path.stem + ".ufo")
+        if ufo_path.exists():
+            args.ufo = ufo_path
 
     if args.output:
         output_path = Path(args.output)
-    elif use_ufo:
-        output_path = input_path / "data" / "color_mapping.json"
     else:
         ufo_data = base_dir / "source" / (input_path.stem + ".ufo") / "data"
         if ufo_data.parent.exists():
@@ -165,12 +95,39 @@ def main():
             output_path = input_path.parent / "color_mapping.json"
 
     print(f"Loading {input_path}")
+    font = TTFont(str(input_path))
+
+    ufo_font = None
+    ufo_glyphset = None
+    if args.ufo:
+        print(f"Loading UFO {args.ufo}")
+        ufo_font = ufoLib2.Font.open(str(args.ufo))
+        ufo_glyphset = ufo_font.layers.defaultLayer
+
+    glyf = font["glyf"]
+    glyph_order = font.getGlyphOrder()
+
+    targets = [
+        name for name in glyph_order
+        if is_telugu_glyph(name)
+        and glyf[name].numberOfContours is not None
+        and glyf[name].numberOfContours >= 1
+    ]
+
+    # Load existing mapping to preserve manual edits
+    existing_glyphs = {}
+    if output_path.exists():
+        try:
+            existing = json.loads(output_path.read_text(encoding="utf-8"))
+            existing_glyphs = existing.get("glyphs", {})
+        except (json.JSONDecodeError, OSError):
+            pass
 
     mapping = {
         "_meta": {
             "palette": "ats",
             "description": "Manual region-to-color mapping for TiroTelugu COLR v0",
-            "note": "Each region is an outer contour + its holes. Fill respects holes."
+            "note": "Entries with 'regions' use TTF topology (outer+holes). Entries with 'contours' use UFO source paths."
         },
         "defaults": {
             "unmapped_regions": 0,
@@ -179,53 +136,22 @@ def main():
         "glyphs": {}
     }
 
-    if use_ufo:
-        ufo = ufoLib2.Font.open(str(input_path))
-        glyphset = ufo.layers.defaultLayer
-        targets = [
-            name for name in glyphset.keys()
-            if is_telugu_glyph(name)
-            and len(list(glyphset[name].contours)) >= 2
-        ]
-        targets.sort()
+    ttf_count = 0
+    ufo_count = 0
 
-        print(f"Found {len(targets)} multi-contour Telugu glyphs (from UFO)")
+    for name in targets:
+        glyph = glyf[name]
+        ttf_contours = glyph.numberOfContours
 
-        for name in targets:
-            contours = list(glyphset[name].contours)
-            regions = detect_regions_ufo(ufo, name)
+        # Check if UFO has more contours than TTF (overlap removal merged some)
+        ufo_contour_count = 0
+        if ufo_glyphset and name in ufo_glyphset:
+            ufo_contour_count = len(list(ufo_glyphset[name].contours))
 
-            region_info = []
-            for ri, (outer_idx, hole_indices) in enumerate(regions):
-                pen = BoundsPen(glyphset)
-                contours[outer_idx].draw(pen)
-                bounds = pen.bounds or (0, 0, 0, 0)
-                area = int((bounds[2] - bounds[0]) * (bounds[3] - bounds[1]))
-                holes_str = f"+{len(hole_indices)} holes" if hole_indices else ""
-                region_info.append(f"r{ri}(area={area}{holes_str})")
+        existing_entry = existing_glyphs.get(name, {})
 
-            region_map = classify_regions_smart_ufo(ufo, name, regions)
-
-            mapping["glyphs"][name] = {
-                "_info": f"{len(regions)} regions: {', '.join(region_info)}",
-                "regions": region_map
-            }
-    else:
-        font = TTFont(str(input_path))
-        glyf = font["glyf"]
-        glyph_order = font.getGlyphOrder()
-
-        targets = [
-            name for name in glyph_order
-            if is_telugu_glyph(name)
-            and glyf[name].numberOfContours is not None
-            and glyf[name].numberOfContours >= 2
-        ]
-
-        print(f"Found {len(targets)} multi-contour Telugu glyphs (from TTF)")
-
-        for name in targets:
-            glyph = glyf[name]
+        if ttf_contours >= 2:
+            # TTF has enough contours for proper region/hole detection
             regions = detect_regions(glyph)
 
             region_info = []
@@ -234,17 +160,66 @@ def main():
                 holes_str = f"+{len(hole_indices)} holes" if hole_indices else ""
                 region_info.append(f"r{ri}(area={area}{holes_str})")
 
-            region_map = classify_regions_smart(glyph)
+            # Preserve existing region mapping if present, otherwise generate
+            if "regions" in existing_entry:
+                region_map = existing_entry["regions"]
+            else:
+                region_map = classify_regions_smart(glyph)
 
-            mapping["glyphs"][name] = {
+            entry = {
                 "_info": f"{len(regions)} regions: {', '.join(region_info)}",
                 "regions": region_map
             }
 
+            # Generate/preserve ufo_contours for dual-view glyphs
+            if ufo_contour_count >= 2 and ufo_contour_count != ttf_contours:
+                if "ufo_contours" in existing_entry:
+                    entry["ufo_contours"] = existing_entry["ufo_contours"]
+                else:
+                    entry["ufo_contours"] = classify_contours_ufo(ufo_font, name)
+
+                contours = list(ufo_glyphset[name].contours)
+                ufo_info_parts = []
+                for ci, contour in enumerate(contours):
+                    pen = BoundsPen(ufo_glyphset)
+                    contour.draw(pen)
+                    bounds = pen.bounds or (0, 0, 0, 0)
+                    area = int((bounds[2] - bounds[0]) * (bounds[3] - bounds[1]))
+                    ufo_info_parts.append(f"uc{ci}({area})")
+                entry["_ufo_info"] = f"{ufo_contour_count} contours: {','.join(ufo_info_parts)}"
+
+            mapping["glyphs"][name] = entry
+            ttf_count += 1
+
+        elif ufo_contour_count >= 2:
+            # TTF has 1 contour (merged) but UFO has multiple — use UFO contours
+            contours = list(ufo_glyphset[name].contours)
+
+            contour_info = []
+            for ci, contour in enumerate(contours):
+                pen = BoundsPen(ufo_glyphset)
+                contour.draw(pen)
+                bounds = pen.bounds or (0, 0, 0, 0)
+                area = int((bounds[2] - bounds[0]) * (bounds[3] - bounds[1]))
+                contour_info.append(f"uc{ci}(area={area})")
+
+            # Preserve existing contour mapping if present
+            if "contours" in existing_entry:
+                contour_map = existing_entry["contours"]
+            else:
+                contour_map = classify_contours_ufo(ufo_font, name)
+
+            mapping["glyphs"][name] = {
+                "_info": f"{ttf_contours} ttf-contour, {ufo_contour_count} ufo-contours: {', '.join(contour_info)}",
+                "_source": "ufo",
+                "contours": contour_map
+            }
+            ufo_count += 1
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(mapping, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Saved mapping scaffold to {output_path}")
-    print(f"  {len(mapping['glyphs'])} glyph entries")
+    print(f"  {len(mapping['glyphs'])} glyph entries ({ttf_count} TTF regions, {ufo_count} UFO contours)")
 
 
 if __name__ == "__main__":

@@ -496,6 +496,21 @@ def _regions_to_contour_indices(regions_list, region_indices):
     return contour_indices
 
 
+def _parse_contours_mapping(entry):
+    """Parse a UFO-sourced 'contours' entry into (contour_indices, palette_idx) groups."""
+    contour_entries = entry.get("contours", {})
+    color_to_contours = {}
+    for idx_str, color_idx in contour_entries.items():
+        if idx_str.startswith("_"):
+            continue
+        color_to_contours.setdefault(color_idx, []).append(int(idx_str))
+
+    layers = []
+    for color, indices in sorted(color_to_contours.items()):
+        layers.append((sorted(indices), color))
+    return layers
+
+
 def build_manual_style(font, targets, mapping_data, ufo_font=None):
     glyf = font["glyf"]
     hmtx = font["hmtx"]
@@ -515,29 +530,33 @@ def build_manual_style(font, targets, mapping_data, ufo_font=None):
         if glyph.numberOfContours is None or glyph.numberOfContours < 1:
             continue
 
-        # Use UFO for region detection when available (sees pre-overlap-removal contours)
-        use_ufo_for_glyph = (ufo_font and ufo_glyphset and name in ufo_glyphset)
+        entry = glyph_mappings.get(name)
+        use_ufo_for_glyph = (entry and entry.get("_source") == "ufo"
+                             and ufo_font and ufo_glyphset and name in ufo_glyphset)
+        # Also use UFO when ufo_contours key is present and UFO source is available
+        use_ufo_contours = (entry and "ufo_contours" in entry
+                            and ufo_font and ufo_glyphset and name in ufo_glyphset)
+
         if use_ufo_for_glyph:
-            ufo_contours = list(ufo_glyphset[name].contours)
-            num_contours = len(ufo_contours)
-            regions = detect_regions_ufo(ufo_font, name)
+            num_contours = len(list(ufo_glyphset[name].contours))
+            groups = _parse_contours_mapping(entry)
+        elif use_ufo_contours:
+            num_contours = len(list(ufo_glyphset[name].contours))
+            groups = _parse_contours_mapping({"contours": entry["ufo_contours"]})
         else:
             num_contours = glyph.numberOfContours
             regions = detect_regions(glyph)
 
-        if name in glyph_mappings:
-            groups = _parse_glyph_mapping(glyph_mappings[name], regions)
-        elif unmapped_strategy in ("auto:region", "auto:contour") and len(regions) >= 2:
-            if use_ufo_for_glyph:
-                smart_map = classify_regions_smart_ufo(ufo_font, name, regions)
-            else:
+            if entry and "regions" in entry:
+                groups = _parse_glyph_mapping(entry, regions)
+            elif unmapped_strategy in ("auto:region", "auto:contour") and len(regions) >= 2:
                 smart_map = classify_regions_smart(glyph)
-            groups = list(_parse_glyph_mapping({"regions": smart_map}, regions))
-        elif unmapped_strategy == "auto:ats":
-            fill_color_idx = ATS_FILL_COLORS[i % len(ATS_FILL_COLORS)]
-            groups = [(list(range(num_contours)), fill_color_idx)]
-        else:
-            continue
+                groups = list(_parse_glyph_mapping({"regions": smart_map}, regions))
+            elif unmapped_strategy == "auto:ats":
+                fill_color_idx = ATS_FILL_COLORS[i % len(ATS_FILL_COLORS)]
+                groups = [(list(range(num_contours)), fill_color_idx)]
+            else:
+                continue
 
         glyph_layers = []
         for contour_indices, palette_idx in groups:
@@ -552,7 +571,7 @@ def build_manual_style(font, targets, mapping_data, ufo_font=None):
                 layer_name = f"{name}.c{palette_idx}_{suffix}"
 
             new_glyph_names.append(layer_name)
-            glyph_layers.append((layer_name, valid_indices, palette_idx, use_ufo_for_glyph))
+            glyph_layers.append((layer_name, valid_indices, palette_idx, use_ufo_for_glyph or use_ufo_contours))
 
         if glyph_layers:
             layer_plan.append((name, glyph_layers))
