@@ -9,8 +9,9 @@ All output artifacts land next to the compiled TTF for a clean, self-contained w
 
 ```
 Source (UFO) --> Build (TTF) --> View Glyphs --> Generate Mapping --> Edit Colors --> Apply Color --> Test Font
-                                                                                         |
-                                                              Port to another language <--+
+    |                              (from UFO)      (from UFO)                       (UFO layers     |
+    +-----------------------------------------------------------------------------------------------+
+                                                                     Port to another language <------+
 ```
 
 ---
@@ -21,7 +22,7 @@ Source (UFO) --> Build (TTF) --> View Glyphs --> Generate Mapping --> Edit Color
 |---|------|---------|-------|--------|
 | 1 | `tirobuild.py` | Compile UFO sources into production TTF/OTF | `.yml` project file | `output/<family>/<font>/TTF/*.ttf` |
 | 2 | `glif2svg.py` | Visualize glyphs as SVG (individual, specimen, or region maps) | UFO source + compiled TTF | `svg/` or `svg-contours/` next to TTF |
-| 3 | `generate_mapping.py` | Generate a color mapping scaffold JSON with smart heuristic defaults | Compiled TTF | `color_mapping.json` next to TTF |
+| 3 | `generate_mapping.py` | Generate a color mapping scaffold JSON with smart heuristic defaults | UFO source or compiled TTF | `color_mapping.json` in UFO data/ |
 | 4 | `generate_viewer.py` | Interactive HTML viewer for reviewing/editing color assignments | Compiled TTF | `*-viewer.html` next to TTF |
 | 5 | `add_color.py` | Apply COLR v0 + CPAL color tables to produce a color font | TTF + mapping JSON | `*-Color*.ttf` next to input |
 | 6 | `fonttest.py` | Generate an HTML test page showing the font at multiple sizes | Any font file | `*-test.html` next to font |
@@ -81,13 +82,19 @@ This is your map for understanding which parts of each glyph can be independentl
 
 ### Step 3: Generate the Color Mapping
 
-Create a JSON scaffold that assigns default colors using a position/shape heuristic:
+Create a JSON scaffold that assigns default colors using a position/shape heuristic.
+Use the UFO source as input to see original contours (before overlap removal merges them):
 
 ```bash
-python tools/generate_mapping.py
+python tools/generate_mapping.py source/TiroTelugu-Regular.ufo
 ```
 
-**Output:** `output/indigo-telugu/TiroTelugu/TTF/color_mapping.json`
+**Output:** `source/TiroTelugu-Regular.ufo/data/color_mapping.json`
+
+You can also generate from the compiled TTF (fewer contours due to overlap removal):
+```bash
+python tools/generate_mapping.py output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf
+```
 
 The smart heuristic assigns:
 | Region/Hole type | Palette index | Color |
@@ -105,8 +112,12 @@ The JSON structure:
   "defaults": { "unmapped_glyphs": "auto:region" },
   "glyphs": {
     "tKa": {
-      "_info": "2 regions: r0(area=280000+1 holes), r1(area=45000)",
-      "regions": { "0": 0, "0.h0": 2, "1": 5 }
+      "_info": "3 regions: r0(area=222480), r1(area=25857), r2(area=71224)",
+      "regions": { "0": 0, "1": 5, "2": 5 }
+    },
+    "tKha": {
+      "_info": "2 regions: r0(area=371520+2 holes), r1(area=15480)",
+      "regions": { "0": 0, "0.h0": 4, "0.h1": 2, "1": 3 }
     }
   }
 }
@@ -146,7 +157,10 @@ Open in a browser. Features:
 Apply the COLR v0 + CPAL color tables using your mapping:
 
 ```bash
-# Using the manual mapping you edited:
+# Using the manual mapping with UFO source for layer extraction (recommended):
+python tools/add_color.py --style manual --ufo source/TiroTelugu-Regular.ufo
+
+# Without UFO (only colors contours that survive in the compiled TTF):
 python tools/add_color.py --style manual
 
 # Or use automatic styles for quick previews:
@@ -155,6 +169,10 @@ python tools/add_color.py --style region     # largest=black, rest=red
 ```
 
 **Output:** `*-ColorManual.ttf`, `*-ColorATS.ttf`, or `*-Color.ttf` next to input
+
+The `--ufo` flag extracts layer glyph outlines from the original UFO source, which
+preserves contours that would otherwise be merged by overlap removal during TTF compilation.
+This is essential for glyphs like `tKa` where the top marks and body share boundaries.
 
 The `manual` style reads `color_mapping.json` and:
 - Creates separate layer glyphs for each color group
@@ -238,22 +256,23 @@ output/indigo-telugu/TiroTelugu/TTF/
 
 ```bash
 TTF=output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf
+UFO=source/TiroTelugu-Regular.ufo
 
 # 1. Build
 python tools/tirobuild.py indigo-telugu.yml
 
 # 2. Visualize (region specimen + individual SVGs)
-python tools/glif2svg.py source/TiroTelugu-Regular.ufo --telugu --regions --specimen --ttf $TTF
-python tools/glif2svg.py source/TiroTelugu-Regular.ufo --telugu --regions --ttf $TTF
+python tools/glif2svg.py $UFO --telugu --regions --specimen --ttf $TTF
+python tools/glif2svg.py $UFO --telugu --regions --ttf $TTF
 
-# 3. Generate mapping
-python tools/generate_mapping.py $TTF
+# 3. Generate mapping (from UFO to see all original contours)
+python tools/generate_mapping.py $UFO
 
 # 4. Review (open in browser)
 python tools/generate_viewer.py $TTF
 
-# 5. Apply color
-python tools/add_color.py --style manual $TTF
+# 5. Apply color (with UFO for layer extraction)
+python tools/add_color.py --style manual --ufo $UFO $TTF
 
 # 6. Test
 python tools/fonttest.py output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular-ColorManual.ttf

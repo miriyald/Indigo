@@ -1,0 +1,7152 @@
+{
+  "_meta": {
+    "palette": "ats",
+    "description": "Manual region-to-color mapping for TiroTelugu COLR v0",
+    "note": "Each region is an outer contour + its holes. Fill respects holes."
+  },
+  "defaults": {
+    "unmapped_regions": 0,
+    "unmapped_glyphs": "auto:region"
+  },
+  "glyphs": {
+    "tA": {
+      "_info": "2 regions: r0(area=418500), r1(area=29524)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tAi": {
+      "_info": "2 regions: r0(area=356940), r1(area=71020)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tAnusvara": {
+      "_info": "2 regions: r0(area=166530), r1(area=288360)",
+      "regions": {
+        "0": 5,
+        "1": 0
+      }
+    },
+    "tAnusvaraAbove": {
+      "_info": "2 regions: r0(area=13923), r1(area=42228)",
+      "regions": {
+        "0": 3,
+        "1": 0
+      }
+    },
+    "tAu": {
+      "_info": "4 regions: r0(area=187413), r1(area=107074), r2(area=66990), r3(area=178600)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tB": {
+      "_info": "3 regions: r0(area=270800), r1(area=187920), r2(area=99858)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tBa": {
+      "_info": "2 regions: r0(area=202500), r1(area=187920)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tBa.post": {
+      "_info": "2 regions: r0(area=369161), r1(area=81524)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tBa.post2": {
+      "_info": "2 regions: r0(area=343753), r1(area=82236)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tBa.pssp": {
+      "_info": "2 regions: r0(area=369161), r1(area=81524)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tBa.pssp2": {
+      "_info": "2 regions: r0(area=343753), r1(area=82236)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tBaa": {
+      "_info": "3 regions: r0(area=192375), r1(area=187920), r2(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tBai": {
+      "_info": "4 regions: r0(area=195000), r1(area=165675), r2(area=187920), r3(area=136095)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tBau": {
+      "_info": "4 regions: r0(area=195000), r1(area=187920), r2(area=50730), r3(area=147815)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tBe": {
+      "_info": "3 regions: r0(area=195000), r1(area=187920), r2(area=136095)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tBee": {
+      "_info": "4 regions: r0(area=195000), r1(area=187920), r2(area=136095), r3(area=44496)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tBh": {
+      "_info": "4 regions: r0(area=270800), r1(area=15480), r2(area=187920), r3(area=99858)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tBh.presub": {
+      "_info": "4 regions: r0(area=270800), r1(area=11398), r2(area=187920), r3(area=99858)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tBha": {
+      "_info": "5 regions: r0(area=192385), r1(area=15480), r2(area=191160), r3(area=29232), r4(area=72145)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tBha.post": {
+      "_info": "3 regions: r0(area=369161), r1(area=10224), r2(area=81524)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tBha.post2": {
+      "_info": "3 regions: r0(area=343753), r1(area=10224), r2(area=82236)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tBha.presub": {
+      "_info": "5 regions: r0(area=192385), r1(area=11398), r2(area=191160), r3(area=29232), r4(area=72145)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tBha.pssp": {
+      "_info": "3 regions: r0(area=369161), r1(area=10224), r2(area=81524)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tBha.pssp2": {
+      "_info": "3 regions: r0(area=343753), r1(area=10224), r2(area=82236)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tBhaa": {
+      "_info": "4 regions: r0(area=192375), r1(area=15480), r2(area=187920), r3(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tBhaa.presub": {
+      "_info": "4 regions: r0(area=192375), r1(area=11398), r2(area=187920), r3(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tBhai": {
+      "_info": "5 regions: r0(area=195000), r1(area=165675), r2(area=15480), r3(area=187920), r4(area=136095)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tBhau": {
+      "_info": "5 regions: r0(area=195000), r1(area=15480), r2(area=187920), r3(area=50730), r4(area=147815)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tBhau.presub": {
+      "_info": "5 regions: r0(area=195000), r1(area=11398), r2(area=187920), r3(area=50730), r4(area=147815)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tBhe": {
+      "_info": "4 regions: r0(area=195000), r1(area=15480), r2(area=187920), r3(area=136095)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tBhe.presub": {
+      "_info": "4 regions: r0(area=195000), r1(area=11398), r2(area=187920), r3(area=136095)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tBhee": {
+      "_info": "5 regions: r0(area=195000), r1(area=15480), r2(area=187920), r3(area=136095), r4(area=44496)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tBhee.presub": {
+      "_info": "5 regions: r0(area=195000), r1(area=11398), r2(area=187920), r3(area=136095), r4(area=44496)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tBhi": {
+      "_info": "3 regions: r0(area=451950), r1(area=15480), r2(area=188280)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tBhi.presub": {
+      "_info": "3 regions: r0(area=451950), r1(area=11398), r2(area=188280)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tBhii": {
+      "_info": "4 regions: r0(area=451950), r1(area=15480), r2(area=188280), r3(area=40572)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tBhii.presub": {
+      "_info": "4 regions: r0(area=451950), r1(area=11398), r2(area=188280), r3(area=40572)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tBho": {
+      "_info": "4 regions: r0(area=295368), r1(area=15480), r2(area=187920), r3(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tBho.presub": {
+      "_info": "4 regions: r0(area=295368), r1(area=11398), r2(area=187920), r3(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tBhoo": {
+      "_info": "5 regions: r0(area=295368), r1(area=15480), r2(area=187920), r3(area=86996), r4(area=40788)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tBhoo.presub": {
+      "_info": "5 regions: r0(area=295368), r1(area=11398), r2(area=187920), r3(area=86996), r4(area=40788)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tBhu": {
+      "_info": "6 regions: r0(area=218160), r1(area=15480), r2(area=191160), r3(area=190750), r4(area=29232), r5(area=72145)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tBhu.presub": {
+      "_info": "6 regions: r0(area=218160), r1(area=11398), r2(area=191160), r3(area=190750), r4(area=29232), r5(area=72145)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tBhuu": {
+      "_info": "7 regions: r0(area=205713), r1(area=15480), r2(area=191160), r3(area=190750), r4(area=29232), r5(area=72145), r6(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tBhuu.presub": {
+      "_info": "7 regions: r0(area=205713), r1(area=11398), r2(area=191160), r3(area=190750), r4(area=29232), r5(area=72145), r6(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tBi": {
+      "_info": "2 regions: r0(area=451950), r1(area=188280)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tBii": {
+      "_info": "3 regions: r0(area=451950), r1(area=188280), r2(area=40572)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tBo": {
+      "_info": "3 regions: r0(area=295368), r1(area=187920), r2(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tBoo": {
+      "_info": "4 regions: r0(area=295368), r1(area=187920), r2(area=86996), r3(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tBu": {
+      "_info": "3 regions: r0(area=211140), r1(area=187920), r2(area=202500)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tBuu": {
+      "_info": "4 regions: r0(area=202500), r1(area=187920), r2(area=199044), r3(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tC": {
+      "_info": "4 regions: r0(area=361518), r1(area=114240), r2(area=26200), r3(area=105468)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tCa": {
+      "_info": "5 regions: r0(area=192066), r1(area=114240), r2(area=26200), r3(area=30272), r4(area=74412)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tCa.post": {
+      "_info": "3 regions: r0(area=369161), r1(area=54054), r2(area=16082)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tCa.post2": {
+      "_info": "3 regions: r0(area=343753), r1(area=54054), r2(area=16082)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tCa.pssp": {
+      "_info": "3 regions: r0(area=369161), r1(area=54054), r2(area=16082)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tCa.pssp2": {
+      "_info": "3 regions: r0(area=343753), r1(area=54054), r2(area=16082)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tCaa": {
+      "_info": "4 regions: r0(area=213661), r1(area=113202), r2(area=26200), r3(area=188496)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tCai": {
+      "_info": "5 regions: r0(area=187782), r1(area=114240), r2(area=26200), r3(area=144535), r4(area=177425)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 3
+      }
+    },
+    "tCandrabindu": {
+      "_info": "2 regions: r0(area=72400), r1(area=13688)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tCau": {
+      "_info": "5 regions: r0(area=187782), r1(area=114240), r2(area=26200), r3(area=76128), r4(area=178600)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tCe": {
+      "_info": "4 regions: r0(area=187782), r1(area=114240), r2(area=26200), r3(area=144535)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tCee": {
+      "_info": "5 regions: r0(area=187782), r1(area=114240), r2(area=26200), r3(area=144535), r4(area=46144)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tCh": {
+      "_info": "5 regions: r0(area=361518), r1(area=15480), r2(area=114240), r3(area=26200), r4(area=105468)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tCh.presub": {
+      "_info": "5 regions: r0(area=361518), r1(area=11398), r2(area=114240), r3(area=26200), r4(area=105468)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tCha": {
+      "_info": "6 regions: r0(area=192066), r1(area=15480), r2(area=114240), r3(area=26200), r4(area=30272), r5(area=74412)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tCha.post": {
+      "_info": "4 regions: r0(area=369161), r1(area=10224), r2(area=54054), r3(area=16082)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tCha.post2": {
+      "_info": "4 regions: r0(area=343753), r1(area=10224), r2(area=54054), r3(area=16082)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tCha.presub": {
+      "_info": "6 regions: r0(area=192066), r1(area=11398), r2(area=114240), r3(area=26200), r4(area=30272), r5(area=74412)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tCha.pssp": {
+      "_info": "4 regions: r0(area=369161), r1(area=10224), r2(area=54054), r3(area=16082)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tCha.pssp2": {
+      "_info": "4 regions: r0(area=343753), r1(area=10224), r2(area=54054), r3(area=16082)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tChaa": {
+      "_info": "5 regions: r0(area=213661), r1(area=15480), r2(area=113202), r3(area=26200), r4(area=188496)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 3
+      }
+    },
+    "tChaa.presub": {
+      "_info": "5 regions: r0(area=213661), r1(area=11398), r2(area=113202), r3(area=26200), r4(area=188496)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 3
+      }
+    },
+    "tChai": {
+      "_info": "6 regions: r0(area=187782), r1(area=177425), r2(area=15480), r3(area=114240), r4(area=26200), r5(area=144535)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tChau": {
+      "_info": "6 regions: r0(area=187782), r1(area=15480), r2(area=114240), r3(area=26200), r4(area=76128), r5(area=178600)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tChau.presub": {
+      "_info": "6 regions: r0(area=187782), r1(area=11398), r2(area=114240), r3(area=26200), r4(area=76128), r5(area=178600)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tChe": {
+      "_info": "5 regions: r0(area=187782), r1(area=15480), r2(area=114240), r3(area=26200), r4(area=144535)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tChe.presub": {
+      "_info": "5 regions: r0(area=187782), r1(area=11398), r2(area=114240), r3(area=26200), r4(area=144535)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tChee": {
+      "_info": "6 regions: r0(area=187782), r1(area=15480), r2(area=114240), r3(area=26200), r4(area=144535), r5(area=46144)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tChee.presub": {
+      "_info": "6 regions: r0(area=187782), r1(area=11398), r2(area=114240), r3(area=26200), r4(area=144535), r5(area=46144)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tChi": {
+      "_info": "4 regions: r0(area=455094), r1(area=15480), r2(area=113864), r3(area=26200)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tChi.presub": {
+      "_info": "4 regions: r0(area=455094), r1(area=11398), r2(area=113864), r3(area=26200)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tChii": {
+      "_info": "5 regions: r0(area=455094), r1(area=15480), r2(area=113864), r3(area=26200), r4(area=40572)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tChii.presub": {
+      "_info": "5 regions: r0(area=455094), r1(area=11398), r2(area=113864), r3(area=26200), r4(area=40572)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tCho": {
+      "_info": "5 regions: r0(area=358608), r1(area=15480), r2(area=114240), r3(area=26200), r4(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tCho.presub": {
+      "_info": "5 regions: r0(area=358608), r1(area=11398), r2(area=114240), r3(area=26200), r4(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tChoo": {
+      "_info": "6 regions: r0(area=358608), r1(area=15480), r2(area=114240), r3(area=26200), r4(area=87474), r5(area=41200)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tChoo.presub": {
+      "_info": "6 regions: r0(area=358608), r1(area=11398), r2(area=114240), r3(area=26200), r4(area=87474), r5(area=41200)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tChu": {
+      "_info": "7 regions: r0(area=211140), r1(area=15480), r2(area=114240), r3(area=26200), r4(area=191528), r5(area=30272), r6(area=74412)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tChu.presub": {
+      "_info": "7 regions: r0(area=211140), r1(area=11398), r2(area=114240), r3(area=26200), r4(area=190452), r5(area=30272), r6(area=74412)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tChuu": {
+      "_info": "8 regions: r0(area=199044), r1(area=15480), r2(area=114240), r3(area=26200), r4(area=191528), r5(area=30272), r6(area=74412), r7(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tChuu.presub": {
+      "_info": "8 regions: r0(area=199044), r1(area=11398), r2(area=114240), r3(area=26200), r4(area=190452), r5(area=30272), r6(area=74412), r7(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tCi": {
+      "_info": "3 regions: r0(area=455094), r1(area=113864), r2(area=26200)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tCii": {
+      "_info": "4 regions: r0(area=455094), r1(area=113864), r2(area=26200), r3(area=40572)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tCo": {
+      "_info": "4 regions: r0(area=358608), r1(area=114240), r2(area=26200), r3(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tCoo": {
+      "_info": "5 regions: r0(area=358608), r1(area=114240), r2(area=26200), r3(area=87474), r4(area=41200)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tCu": {
+      "_info": "6 regions: r0(area=211140), r1(area=114240), r2(area=26200), r3(area=191528), r4(area=30272), r5(area=74412)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tCuu": {
+      "_info": "7 regions: r0(area=199044), r1(area=114240), r2(area=26200), r3(area=191528), r4(area=30272), r5(area=74412), r6(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tD": {
+      "_info": "3 regions: r0(area=362880), r1(area=68580), r2(area=101728)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tDa": {
+      "_info": "3 regions: r0(area=362880), r1(area=25536), r2(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tDaa": {
+      "_info": "2 regions: r0(area=362880), r1(area=199750)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tDai": {
+      "_info": "3 regions: r0(area=352128), r1(area=163325), r2(area=131875)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tDau": {
+      "_info": "3 regions: r0(area=352128), r1(area=82058), r2(area=188000)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tDd": {
+      "_info": "5 regions: r0(area=17554), r1(area=362880), r2(area=55370), r3(area=68580), r4(area=101728)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDda": {
+      "_info": "5 regions: r0(area=17554), r1(area=362880), r2(area=55370), r3(area=25536), r4(area=71531)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDda.sub": {
+      "_info": "3 regions: r0(area=7476), r1(area=167676), r2(area=30102)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5
+      }
+    },
+    "tDdaa": {
+      "_info": "4 regions: r0(area=17554), r1(area=362880), r2(area=55370), r3(area=199750)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDdai": {
+      "_info": "5 regions: r0(area=17554), r1(area=350784), r2(area=163325), r3(area=55370), r4(area=131875)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDdau": {
+      "_info": "5 regions: r0(area=17554), r1(area=350784), r2(area=55370), r3(area=82058), r4(area=188000)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDde": {
+      "_info": "4 regions: r0(area=17554), r1(area=350784), r2(area=57575), r3(area=131875)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDdee": {
+      "_info": "5 regions: r0(area=17554), r1(area=350784), r2(area=55370), r3(area=131875), r4(area=44496)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDdh": {
+      "_info": "6 regions: r0(area=17554), r1(area=362880), r2(area=15480), r3(area=68580), r4(area=101728), r5(area=57330)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdh.presub": {
+      "_info": "6 regions: r0(area=17554), r1(area=362880), r2(area=11398), r3(area=55370), r4(area=68580), r5(area=101728)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdha": {
+      "_info": "6 regions: r0(area=17554), r1(area=362880), r2(area=15480), r3(area=55370), r4(area=25536), r5(area=71531)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdha.presub": {
+      "_info": "6 regions: r0(area=17554), r1(area=362880), r2(area=11398), r3(area=55370), r4(area=25536), r5(area=71531)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdha.sub": {
+      "_info": "4 regions: r0(area=7476), r1(area=167676), r2(area=10224), r3(area=30102)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tDdhaa": {
+      "_info": "5 regions: r0(area=17554), r1(area=362880), r2(area=15480), r3(area=55370), r4(area=199750)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDdhaa.presub": {
+      "_info": "5 regions: r0(area=17554), r1(area=362880), r2(area=11398), r3(area=55370), r4(area=199750)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDdhai": {
+      "_info": "6 regions: r0(area=17554), r1(area=350784), r2(area=163325), r3(area=15480), r4(area=131875), r5(area=57330)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdhau": {
+      "_info": "6 regions: r0(area=17554), r1(area=350784), r2(area=15480), r3(area=82058), r4(area=188000), r5(area=57330)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdhau.presub": {
+      "_info": "6 regions: r0(area=17554), r1(area=350784), r2(area=11398), r3(area=55370), r4(area=82058), r5(area=188000)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdhe": {
+      "_info": "5 regions: r0(area=17554), r1(area=350784), r2(area=15480), r3(area=131875), r4(area=57330)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDdhe.presub": {
+      "_info": "5 regions: r0(area=17554), r1(area=350784), r2(area=11398), r3(area=55370), r4(area=131875)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDdhee": {
+      "_info": "6 regions: r0(area=17554), r1(area=350784), r2(area=15480), r3(area=131875), r4(area=44496), r5(area=57330)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdhee.presub": {
+      "_info": "6 regions: r0(area=17554), r1(area=350784), r2(area=11398), r3(area=55370), r4(area=131875), r5(area=44496)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdhi": {
+      "_info": "5 regions: r0(area=17554), r1(area=356160), r2(area=15480), r3(area=55370), r4(area=113625)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDdhi.presub": {
+      "_info": "5 regions: r0(area=17554), r1(area=356160), r2(area=11398), r3(area=55370), r4(area=113625)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDdhii": {
+      "_info": "6 regions: r0(area=17554), r1(area=356160), r2(area=15480), r3(area=57330), r4(area=112875), r5(area=40986)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdhii.presub": {
+      "_info": "6 regions: r0(area=17554), r1(area=356160), r2(area=11398), r3(area=55370), r4(area=112875), r5(area=40986)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdho": {
+      "_info": "6 regions: r0(area=17554), r1(area=362880), r2(area=15480), r3(area=73745), r4(area=87474), r5(area=57330)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdho.presub": {
+      "_info": "6 regions: r0(area=17554), r1(area=362880), r2(area=11398), r3(area=55370), r4(area=73745), r5(area=87474)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdhoo": {
+      "_info": "7 regions: r0(area=17554), r1(area=362880), r2(area=15480), r3(area=75087), r4(area=86996), r5(area=42848), r6(area=57330)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tDdhoo.presub": {
+      "_info": "7 regions: r0(area=17554), r1(area=362880), r2(area=11398), r3(area=55370), r4(area=75087), r5(area=86996), r6(area=41406)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tDdhu": {
+      "_info": "7 regions: r0(area=17554), r1(area=358560), r2(area=15480), r3(area=25536), r4(area=220860), r5(area=71531), r6(area=57330)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tDdhu.presub": {
+      "_info": "7 regions: r0(area=17554), r1(area=358560), r2(area=11398), r3(area=55370), r4(area=25536), r5(area=215460), r6(area=71531)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 3,
+        "6": 5
+      }
+    },
+    "tDdhuu": {
+      "_info": "8 regions: r0(area=17554), r1(area=358560), r2(area=15480), r3(area=25536), r4(area=208278), r5(area=71531), r6(area=143761), r7(area=57330)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tDdhuu.presub": {
+      "_info": "8 regions: r0(area=17554), r1(area=358560), r2(area=11398), r3(area=55370), r4(area=25536), r5(area=208278), r6(area=71531), r7(area=143761)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 3,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tDdi": {
+      "_info": "4 regions: r0(area=17554), r1(area=356160), r2(area=55370), r3(area=113625)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDdii": {
+      "_info": "5 regions: r0(area=17554), r1(area=356160), r2(area=55370), r3(area=112875), r4(area=40986)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDdo": {
+      "_info": "5 regions: r0(area=17554), r1(area=362880), r2(area=55370), r3(area=73745), r4(area=87474)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDdoo": {
+      "_info": "6 regions: r0(area=17554), r1(area=362880), r2(area=55370), r3(area=75087), r4(area=86996), r5(area=42848)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDdu": {
+      "_info": "6 regions: r0(area=17554), r1(area=358560), r2(area=55370), r3(area=25536), r4(area=220860), r5(area=71531)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tDduu": {
+      "_info": "7 regions: r0(area=17554), r1(area=358560), r2(area=58555), r3(area=25536), r4(area=208278), r5(area=71531), r6(area=143761)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tDe": {
+      "_info": "2 regions: r0(area=352128), r1(area=131875)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tDee": {
+      "_info": "3 regions: r0(area=352128), r1(area=131875), r2(area=44496)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tDh": {
+      "_info": "4 regions: r0(area=362880), r1(area=15480), r2(area=68580), r3(area=101728)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDh.presub": {
+      "_info": "4 regions: r0(area=362880), r1(area=11398), r2(area=68580), r3(area=101728)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDha": {
+      "_info": "4 regions: r0(area=362880), r1(area=15480), r2(area=25536), r3(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDha.presub": {
+      "_info": "4 regions: r0(area=362880), r1(area=11398), r2(area=25536), r3(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDha.sub": {
+      "_info": "2 regions: r0(area=162692), r1(area=10224)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tDhaa": {
+      "_info": "3 regions: r0(area=362880), r1(area=15480), r2(area=199750)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tDhaa.presub": {
+      "_info": "3 regions: r0(area=362880), r1(area=11398), r2(area=199750)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tDhai": {
+      "_info": "4 regions: r0(area=352128), r1(area=163325), r2(area=15480), r3(area=131875)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tDhau": {
+      "_info": "4 regions: r0(area=352128), r1(area=15480), r2(area=82058), r3(area=188000)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDhau.presub": {
+      "_info": "4 regions: r0(area=352128), r1(area=11398), r2(area=82058), r3(area=188000)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDhe": {
+      "_info": "3 regions: r0(area=352128), r1(area=15480), r2(area=131875)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tDhe.presub": {
+      "_info": "3 regions: r0(area=352128), r1(area=11398), r2(area=131875)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tDhee": {
+      "_info": "4 regions: r0(area=352128), r1(area=15480), r2(area=131875), r3(area=44496)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDhee.presub": {
+      "_info": "4 regions: r0(area=352128), r1(area=11398), r2(area=131875), r3(area=44496)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDhi": {
+      "_info": "3 regions: r0(area=362880), r1(area=15480), r2(area=92988)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tDhi.presub": {
+      "_info": "3 regions: r0(area=362880), r1(area=11398), r2(area=92988)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tDhii": {
+      "_info": "4 regions: r0(area=362880), r1(area=15480), r2(area=96012), r3(area=39123)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDhii.presub": {
+      "_info": "4 regions: r0(area=362880), r1(area=11398), r2(area=96012), r3(area=39123)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDho": {
+      "_info": "4 regions: r0(area=362880), r1(area=15480), r2(area=73745), r3(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDho.presub": {
+      "_info": "4 regions: r0(area=362880), r1(area=11398), r2(area=73745), r3(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDhoo": {
+      "_info": "5 regions: r0(area=362880), r1(area=15480), r2(area=75087), r3(area=86996), r4(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDhoo.presub": {
+      "_info": "5 regions: r0(area=362880), r1(area=11398), r2(area=75087), r3(area=86996), r4(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDhu": {
+      "_info": "5 regions: r0(area=362880), r1(area=15480), r2(area=25536), r3(area=226260), r4(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tDhu.presub": {
+      "_info": "5 regions: r0(area=362880), r1(area=11398), r2(area=25536), r3(area=220860), r4(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tDhuu": {
+      "_info": "6 regions: r0(area=362880), r1(area=15480), r2(area=25536), r3(area=213408), r4(area=71531), r5(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDhuu.presub": {
+      "_info": "6 regions: r0(area=362880), r1(area=11398), r2(area=25536), r3(area=208278), r4(area=71531), r5(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDi": {
+      "_info": "2 regions: r0(area=362880), r1(area=92988)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tDii": {
+      "_info": "3 regions: r0(area=362880), r1(area=96012), r2(area=39123)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tDo": {
+      "_info": "3 regions: r0(area=362880), r1(area=73745), r2(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tDoo": {
+      "_info": "4 regions: r0(area=362880), r1(area=75087), r2(area=86996), r3(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDu": {
+      "_info": "4 regions: r0(area=362880), r1(area=25536), r2(area=231660), r3(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tDuu": {
+      "_info": "5 regions: r0(area=362880), r1(area=25536), r2(area=213408), r3(area=71531), r4(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDz": {
+      "_info": "5 regions: r0(area=187920), r1(area=88294), r2(area=117120), r3(area=127684), r4(area=96222)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDza": {
+      "_info": "4 regions: r0(area=187920), r1(area=88294), r2(area=80000), r3(area=127684)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDzaa": {
+      "_info": "5 regions: r0(area=187920), r1(area=88294), r2(area=78720), r3(area=127684), r4(area=109745)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDzai": {
+      "_info": "6 regions: r0(area=187920), r1(area=158625), r2(area=88294), r3(area=79704), r4(area=131285), r5(area=127684)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDzau": {
+      "_info": "6 regions: r0(area=187920), r1(area=88294), r2(area=79704), r3(area=19720), r4(area=127684), r5(area=137475)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDze": {
+      "_info": "5 regions: r0(area=187920), r1(area=88294), r2(area=79704), r3(area=131285), r4(area=127684)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDzee": {
+      "_info": "6 regions: r0(area=187920), r1(area=88294), r2(area=79704), r3(area=131285), r4(area=42024), r5(area=127684)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDzi": {
+      "_info": "4 regions: r0(area=187920), r1(area=88294), r2(area=139587), r3(area=127684)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tDzii": {
+      "_info": "5 regions: r0(area=187920), r1(area=88294), r2(area=139587), r3(area=41193), r4(area=127684)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDzo": {
+      "_info": "5 regions: r0(area=187920), r1(area=88294), r2(area=144900), r3(area=127684), r4(area=87235)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDzoo": {
+      "_info": "6 regions: r0(area=187920), r1(area=88294), r2(area=144900), r3(area=127684), r4(area=87235), r5(area=40170)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tDzu": {
+      "_info": "5 regions: r0(area=187920), r1(area=88294), r2(area=80000), r3(area=127684), r4(area=82500)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tDzuu": {
+      "_info": "6 regions: r0(area=187920), r1(area=88294), r2(area=80000), r3(area=127684), r4(area=81180), r5(area=107395)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tE": {
+      "_info": "3 regions: r0(area=30810), r1(area=369005), r2(area=85824)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3
+      }
+    },
+    "tEe": {
+      "_info": "4 regions: r0(area=30810), r1(area=369005), r2(area=85824), r3(area=43555)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tEight": {
+      "_info": "2 regions: r0(area=234734), r1(area=27336)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tEight.sups": {
+      "_info": "2 regions: r0(area=144014), r1(area=18349)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tFive": {
+      "_info": "3 regions: r0(area=283023), r1(area=67065), r2(area=86449)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3
+      }
+    },
+    "tFive.sups": {
+      "_info": "3 regions: r0(area=175070), r1(area=42009), r2(area=51192)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3
+      }
+    },
+    "tFour": {
+      "_info": "3 regions: r0(area=16536), r1(area=172044), r2(area=57912)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3
+      }
+    },
+    "tFour.sups": {
+      "_info": "3 regions: r0(area=10492), r1(area=101640), r2(area=40768)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3
+      }
+    },
+    "tG": {
+      "_info": "3 regions: r0(area=273780), r1(area=67151), r2(area=116946)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tGa": {
+      "_info": "3 regions: r0(area=273780), r1(area=26080), r2(area=72996)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tGaa": {
+      "_info": "2 regions: r0(area=273780), r1(area=188470)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tGai": {
+      "_info": "3 regions: r0(area=271752), r1(area=149225), r2(area=119215)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tGau": {
+      "_info": "3 regions: r0(area=273780), r1(area=79834), r2(area=185650)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tGe": {
+      "_info": "2 regions: r0(area=271752), r1(area=119215)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tGee": {
+      "_info": "3 regions: r0(area=271752), r1(area=119215), r2(area=47792)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tGh": {
+      "_info": "7 regions: r0(area=30810), r1(area=223020), r2(area=15480), r3(area=85526), r4(area=207900), r5(area=59580), r6(area=92378)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tGh.presub": {
+      "_info": "7 regions: r0(area=30810), r1(area=214380), r2(area=11398), r3(area=85526), r4(area=198720), r5(area=59580), r6(area=92872)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tGha": {
+      "_info": "7 regions: r0(area=30810), r1(area=223020), r2(area=15480), r3(area=85526), r4(area=213300), r5(area=26730), r6(area=72996)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tGha.presub": {
+      "_info": "7 regions: r0(area=30810), r1(area=214380), r2(area=11398), r3(area=85526), r4(area=198720), r5(area=27216), r6(area=72759)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tGha.sub": {
+      "_info": "5 regions: r0(area=12078), r1(area=93628), r2(area=10224), r3(area=39788), r4(area=86152)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3
+      }
+    },
+    "tGhaa": {
+      "_info": "8 regions: r0(area=30810), r1(area=213300), r2(area=15480), r3(area=85526), r4(area=26730), r5(area=72996), r6(area=212520), r7(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 3,
+        "7": 5
+      }
+    },
+    "tGhaa.presub": {
+      "_info": "8 regions: r0(area=30810), r1(area=199364), r2(area=11398), r3(area=85526), r4(area=198720), r5(area=27216), r6(area=72759), r7(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tGhai": {
+      "_info": "7 regions: r0(area=30810), r1(area=223020), r2(area=153925), r3(area=15480), r4(area=85526), r5(area=104445), r6(area=213300)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3
+      }
+    },
+    "tGhau": {
+      "_info": "9 regions: r0(area=30810), r1(area=219716), r2(area=15480), r3(area=85526), r4(area=207900), r5(area=26730), r6(area=72996), r7(area=52725), r8(area=147815)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5,
+        "8": 5
+      }
+    },
+    "tGhau.presub": {
+      "_info": "9 regions: r0(area=30810), r1(area=204455), r2(area=11398), r3(area=85526), r4(area=198720), r5(area=27216), r6(area=72759), r7(area=52155), r8(area=147815)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5,
+        "8": 5
+      }
+    },
+    "tGhe": {
+      "_info": "6 regions: r0(area=30810), r1(area=223020), r2(area=15480), r3(area=85526), r4(area=104445), r5(area=207900)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 3
+      }
+    },
+    "tGhe.presub": {
+      "_info": "6 regions: r0(area=30810), r1(area=214380), r2(area=11398), r3(area=85526), r4(area=104445), r5(area=198720)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 3
+      }
+    },
+    "tGhee": {
+      "_info": "7 regions: r0(area=30810), r1(area=223020), r2(area=15480), r3(area=85526), r4(area=104445), r5(area=207900), r6(area=46968)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 3,
+        "6": 5
+      }
+    },
+    "tGhee.presub": {
+      "_info": "7 regions: r0(area=30810), r1(area=214380), r2(area=11398), r3(area=85526), r4(area=104445), r5(area=198720), r6(area=46350)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 3,
+        "6": 5
+      }
+    },
+    "tGhi": {
+      "_info": "6 regions: r0(area=30810), r1(area=223020), r2(area=15480), r3(area=85526), r4(area=207900), r5(area=115125)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tGhi.presub": {
+      "_info": "6 regions: r0(area=30810), r1(area=214380), r2(area=11398), r3(area=85526), r4(area=198720), r5(area=115125)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tGhii": {
+      "_info": "7 regions: r0(area=30810), r1(area=223020), r2(area=15480), r3(area=85526), r4(area=207900), r5(area=114375), r6(area=44712)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tGhii.presub": {
+      "_info": "7 regions: r0(area=30810), r1(area=214380), r2(area=11398), r3(area=85526), r4(area=198720), r5(area=114375), r6(area=40986)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tGho": {
+      "_info": "7 regions: r0(area=30810), r1(area=223020), r2(area=15480), r3(area=85526), r4(area=104445), r5(area=207900), r6(area=212760)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 3,
+        "6": 3
+      }
+    },
+    "tGho.presub": {
+      "_info": "7 regions: r0(area=30810), r1(area=214380), r2(area=11398), r3(area=85526), r4(area=104445), r5(area=198720), r6(area=213840)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 3,
+        "6": 3
+      }
+    },
+    "tGhoo": {
+      "_info": "7 regions: r0(area=30810), r1(area=207900), r2(area=15480), r3(area=85526), r4(area=104445), r5(area=207460), r6(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 3,
+        "6": 5
+      }
+    },
+    "tGhoo.presub": {
+      "_info": "7 regions: r0(area=30810), r1(area=199364), r2(area=11398), r3(area=85526), r4(area=104445), r5(area=198720), r6(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tGhu": {
+      "_info": "8 regions: r0(area=30810), r1(area=223020), r2(area=15480), r3(area=85526), r4(area=207900), r5(area=26730), r6(area=72996), r7(area=212760)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 5,
+        "7": 3
+      }
+    },
+    "tGhu.presub": {
+      "_info": "8 regions: r0(area=30810), r1(area=214380), r2(area=11398), r3(area=85526), r4(area=198720), r5(area=27216), r6(area=72759), r7(area=213840)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 5,
+        "7": 3
+      }
+    },
+    "tGhuu": {
+      "_info": "9 regions: r0(area=30810), r1(area=223020), r2(area=15480), r3(area=85526), r4(area=207900), r5(area=26730), r6(area=72996), r7(area=198237), r8(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      }
+    },
+    "tGhuu.presub": {
+      "_info": "9 regions: r0(area=30810), r1(area=213840), r2(area=11398), r3(area=85526), r4(area=198720), r5(area=27216), r6(area=72759), r7(area=199364), r8(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 5,
+        "7": 3,
+        "8": 5
+      }
+    },
+    "tGi": {
+      "_info": "2 regions: r0(area=273780), r1(area=94340)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tGii": {
+      "_info": "3 regions: r0(area=273780), r1(area=94340), r2(area=41607)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tGo": {
+      "_info": "3 regions: r0(area=273780), r1(area=83121), r2(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tGoo": {
+      "_info": "4 regions: r0(area=273780), r1(area=83121), r2(area=86996), r3(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tGu": {
+      "_info": "4 regions: r0(area=273240), r1(area=26080), r2(area=204120), r3(area=72996)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tGuu": {
+      "_info": "5 regions: r0(area=273240), r1(area=26080), r2(area=187125), r3(area=72996), r4(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tH": {
+      "_info": "6 regions: r0(area=30810), r1(area=188784), r2(area=85526), r3(area=59580), r4(area=92872), r5(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tHa": {
+      "_info": "6 regions: r0(area=30810), r1(area=188784), r2(area=85526), r3(area=27216), r4(area=72759), r5(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tHa.sub": {
+      "_info": "4 regions: r0(area=12078), r1(area=81280), r2(area=39788), r3(area=76287)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tHaa": {
+      "_info": "7 regions: r0(area=30810), r1(area=188784), r2(area=85526), r3(area=27216), r4(area=72759), r5(area=145465), r6(area=41818)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tHai": {
+      "_info": "6 regions: r0(area=30810), r1(area=188784), r2(area=153925), r3(area=85526), r4(area=104445), r5(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tHau": {
+      "_info": "8 regions: r0(area=30810), r1(area=188784), r2(area=85526), r3(area=27216), r4(area=72759), r5(area=143761), r6(area=32912), r7(area=162385)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tHe": {
+      "_info": "5 regions: r0(area=30810), r1(area=188784), r2(area=85526), r3(area=104445), r4(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tHee": {
+      "_info": "6 regions: r0(area=30810), r1(area=188784), r2(area=85526), r3(area=104445), r4(area=46350), r5(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tHi": {
+      "_info": "5 regions: r0(area=30810), r1(area=188784), r2(area=85526), r3(area=115125), r4(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tHii": {
+      "_info": "6 regions: r0(area=30810), r1(area=188784), r2(area=85526), r3(area=114375), r4(area=40986), r5(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tHo": {
+      "_info": "8 regions: r0(area=30810), r1(area=188784), r2(area=85526), r3(area=27216), r4(area=72759), r5(area=143761), r6(area=65919), r7(area=87474)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tHo.ss01": {
+      "_info": "6 regions: r0(area=30810), r1(area=248400), r2(area=85526), r3(area=104445), r4(area=188784), r5(area=141431)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tHoo": {
+      "_info": "9 regions: r0(area=30810), r1(area=188784), r2(area=85526), r3(area=27216), r4(area=72759), r5(area=143761), r6(area=65919), r7(area=86996), r8(area=42848)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5,
+        "8": 5
+      }
+    },
+    "tHoo.ss01": {
+      "_info": "7 regions: r0(area=30810), r1(area=234441), r2(area=85526), r3(area=104445), r4(area=188784), r5(area=141431), r6(area=141431)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tHu": {
+      "_info": "7 regions: r0(area=30810), r1(area=248400), r2(area=85526), r3(area=27216), r4(area=188784), r5(area=72759), r6(area=141431)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tHuu": {
+      "_info": "8 regions: r0(area=30810), r1(area=234441), r2(area=85526), r3(area=27216), r4(area=188784), r5(area=72759), r6(area=141431), r7(area=141431)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tI": {
+      "_info": "2 regions: r0(area=336364), r1(area=69984)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tIi": {
+      "_info": "6 regions: r0(area=169807), r1(area=288360), r2(area=202895), r3(area=26026), r4(area=74576), r5(area=41820)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tJ": {
+      "_info": "4 regions: r0(area=189000), r1(area=95368), r2(area=162775), r3(area=88638)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tJa": {
+      "_info": "3 regions: r0(area=189000), r1(area=89866), r2(area=83500)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tJa.sub": {
+      "_info": "3 regions: r0(area=88288), r1(area=40228), r2(area=38356)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tJaa": {
+      "_info": "4 regions: r0(area=189000), r1(area=89866), r2(area=70384), r3(area=118205)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tJai": {
+      "_info": "5 regions: r0(area=189000), r1(area=158625), r2(area=95368), r3(area=79704), r4(area=125235)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tJau": {
+      "_info": "5 regions: r0(area=189000), r1(area=95368), r2(area=79704), r3(area=19604), r4(area=137475)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tJe": {
+      "_info": "4 regions: r0(area=189000), r1(area=92748), r2(area=79704), r3(area=125235)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tJee": {
+      "_info": "5 regions: r0(area=189000), r1(area=92748), r2(area=82164), r3(area=125235), r4(area=46556)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tJh": {
+      "_info": "7 regions: r0(area=166530), r1(area=287820), r2(area=66780), r3(area=15480), r4(area=243000), r5(area=99858), r6(area=228420)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3
+      }
+    },
+    "tJh.presub": {
+      "_info": "7 regions: r0(area=166530), r1(area=287820), r2(area=66780), r3(area=11398), r4(area=243000), r5(area=99858), r6(area=223020)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3
+      }
+    },
+    "tJha": {
+      "_info": "7 regions: r0(area=166530), r1(area=287820), r2(area=25536), r3(area=15480), r4(area=243000), r5(area=71531), r6(area=228420)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3
+      }
+    },
+    "tJha.presub": {
+      "_info": "7 regions: r0(area=166530), r1(area=287820), r2(area=25536), r3(area=11398), r4(area=243000), r5(area=71531), r6(area=233820)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3
+      }
+    },
+    "tJha.sub": {
+      "_info": "5 regions: r0(area=64881), r1(area=127804), r2(area=10224), r3(area=94340), r4(area=92560)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3
+      }
+    },
+    "tJhaa": {
+      "_info": "8 regions: r0(area=166530), r1(area=287820), r2(area=25536), r3(area=15480), r4(area=243000), r5(area=71531), r6(area=213360), r7(area=143761)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 5
+      }
+    },
+    "tJhaa.presub": {
+      "_info": "8 regions: r0(area=166530), r1(area=287820), r2(area=25536), r3(area=11398), r4(area=243000), r5(area=71531), r6(area=218440), r7(area=143761)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 5
+      }
+    },
+    "tJhai": {
+      "_info": "7 regions: r0(area=166530), r1(area=281424), r2(area=177425), r3(area=15480), r4(area=123435), r5(area=237600), r6(area=228420)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tJhau": {
+      "_info": "9 regions: r0(area=166530), r1(area=287820), r2(area=25536), r3(area=15480), r4(area=243000), r5(area=71531), r6(area=218691), r7(area=50730), r8(area=147815)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 5,
+        "8": 5
+      }
+    },
+    "tJhau.presub": {
+      "_info": "9 regions: r0(area=166530), r1(area=287820), r2(area=25536), r3(area=11398), r4(area=243000), r5(area=71531), r6(area=213521), r7(area=50730), r8(area=147815)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 5,
+        "8": 5
+      }
+    },
+    "tJhe": {
+      "_info": "6 regions: r0(area=166530), r1(area=281424), r2(area=15480), r3(area=123435), r4(area=237600), r5(area=228420)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tJhe.presub": {
+      "_info": "6 regions: r0(area=166530), r1(area=281424), r2(area=123435), r3(area=11398), r4(area=243000), r5(area=223020)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tJhee": {
+      "_info": "7 regions: r0(area=166530), r1(area=281424), r2(area=15480), r3(area=123435), r4(area=237600), r5(area=46144), r6(area=228420)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tJhee.presub": {
+      "_info": "7 regions: r0(area=166530), r1(area=281424), r2(area=123435), r3(area=11398), r4(area=243000), r5(area=46144), r6(area=223020)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tJhi": {
+      "_info": "6 regions: r0(area=166530), r1(area=287820), r2(area=15480), r3(area=96012), r4(area=243000), r5(area=228420)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 3
+      }
+    },
+    "tJhi.presub": {
+      "_info": "6 regions: r0(area=166530), r1(area=287820), r2(area=96012), r3(area=11398), r4(area=243000), r5(area=233820)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 3
+      }
+    },
+    "tJhii": {
+      "_info": "7 regions: r0(area=166530), r1(area=287820), r2(area=15480), r3(area=96012), r4(area=237600), r5(area=39123), r6(area=223020)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3
+      }
+    },
+    "tJhii.presub": {
+      "_info": "7 regions: r0(area=166530), r1(area=287820), r2(area=96012), r3(area=11398), r4(area=243000), r5(area=39123), r6(area=233820)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3
+      }
+    },
+    "tJho": {
+      "_info": "7 regions: r0(area=166530), r1(area=281424), r2(area=15480), r3(area=123435), r4(area=243000), r5(area=227880), r6(area=224100)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tJho.presub": {
+      "_info": "7 regions: r0(area=166530), r1(area=281424), r2(area=123435), r3(area=11398), r4(area=243000), r5(area=223020), r6(area=218700)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tJhoo": {
+      "_info": "7 regions: r0(area=166530), r1(area=281424), r2(area=15480), r3(area=123435), r4(area=243000), r5(area=216486), r6(area=143761)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 3,
+        "6": 5
+      }
+    },
+    "tJhoo.presub": {
+      "_info": "7 regions: r0(area=166530), r1(area=281424), r2(area=123435), r3(area=11398), r4(area=243000), r5(area=206226), r6(area=143761)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 5,
+        "5": 3,
+        "6": 5
+      }
+    },
+    "tJhu": {
+      "_info": "8 regions: r0(area=166530), r1(area=287820), r2(area=25536), r3(area=15480), r4(area=237600), r5(area=71531), r6(area=227880), r7(area=224100)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 3
+      }
+    },
+    "tJhu.presub": {
+      "_info": "8 regions: r0(area=166530), r1(area=287820), r2(area=25536), r3(area=11398), r4(area=243000), r5(area=71531), r6(area=223020), r7(area=218700)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 3
+      }
+    },
+    "tJhuu": {
+      "_info": "9 regions: r0(area=166530), r1(area=287820), r2(area=25536), r3(area=15480), r4(area=237600), r5(area=71531), r6(area=227880), r7(area=211356), r8(area=143761)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 3,
+        "8": 5
+      }
+    },
+    "tJhuu.presub": {
+      "_info": "9 regions: r0(area=166530), r1(area=287820), r2(area=25536), r3(area=11398), r4(area=243000), r5(area=71531), r6(area=223020), r7(area=206226), r8(area=143761)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 3,
+        "8": 5
+      }
+    },
+    "tJi": {
+      "_info": "3 regions: r0(area=189000), r1(area=89866), r2(area=142715)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tJii": {
+      "_info": "4 regions: r0(area=189000), r1(area=89866), r2(area=141542), r3(area=40572)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tJo": {
+      "_info": "4 regions: r0(area=189000), r1(area=95368), r2(area=147150), r3(area=90103)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tJoo": {
+      "_info": "5 regions: r0(area=189000), r1(area=95368), r2(area=147150), r3(area=90103), r4(area=42230)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tJu": {
+      "_info": "4 regions: r0(area=189000), r1(area=92486), r2(area=79500), r3(area=83500)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tJuu": {
+      "_info": "5 regions: r0(area=189000), r1(area=93010), r2(area=78500), r3(area=81180), r4(area=107395)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tK": {
+      "_info": "3 regions: r0(area=222480), r1(area=57784), r2(area=93331)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tKRa.sub.ss03": {
+      "_info": "4 regions: r0(area=279654), r1(area=11123), r2(area=51067), r3(area=11270)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tKSs": {
+      "_info": "6 regions: r0(area=222480), r1(area=44712), r2(area=42444), r3(area=24549), r4(area=57780), r5(area=87703)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tKSsa": {
+      "_info": "6 regions: r0(area=222480), r1(area=44712), r2(area=42444), r3(area=24549), r4(area=25536), r5(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tKSsa.sub": {
+      "_info": "4 regions: r0(area=101104), r1(area=22264), r2(area=23111), r3(area=15128)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tKSsaa": {
+      "_info": "5 regions: r0(area=203940), r1(area=44712), r2(area=42444), r3(area=24549), r4(area=173900)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tKSsai": {
+      "_info": "6 regions: r0(area=213004), r1(area=153925), r2(area=44712), r3(area=42444), r4(area=24549), r5(area=114995)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tKSsau": {
+      "_info": "6 regions: r0(area=213004), r1(area=44712), r2(area=42444), r3(area=24549), r4(area=74048), r5(area=178600)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tKSse": {
+      "_info": "5 regions: r0(area=213004), r1(area=44712), r2(area=42444), r3(area=24549), r4(area=114995)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tKSsee": {
+      "_info": "6 regions: r0(area=213004), r1(area=44712), r2(area=42444), r3(area=24549), r4(area=114995), r5(area=46144)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tKSsi": {
+      "_info": "5 regions: r0(area=222480), r1(area=44712), r2(area=42444), r3(area=24549), r4(area=113625)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tKSsii": {
+      "_info": "6 regions: r0(area=222480), r1(area=44712), r2(area=42444), r3(area=24549), r4(area=112875), r5(area=40986)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tKSso": {
+      "_info": "6 regions: r0(area=222480), r1(area=44712), r2(area=42444), r3(area=24549), r4(area=72240), r5(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tKSsoo": {
+      "_info": "7 regions: r0(area=222480), r1(area=44712), r2(area=42444), r3(area=24549), r4(area=72240), r5(area=86996), r6(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tKSsu": {
+      "_info": "6 regions: r0(area=470340), r1(area=44712), r2(area=42444), r3(area=24549), r4(area=25536), r5(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tKSsuu": {
+      "_info": "7 regions: r0(area=468720), r1(area=44712), r2(area=42444), r3(area=24549), r4(area=25536), r5(area=71531), r6(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tKa": {
+      "_info": "3 regions: r0(area=222480), r1(area=25857), r2(area=71224)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tKa.post": {
+      "_info": "2 regions: r0(area=353192), r1(area=18612)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tKa.post2": {
+      "_info": "2 regions: r0(area=336497), r1(area=18612)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tKa.pssp": {
+      "_info": "2 regions: r0(area=353192), r1(area=18612)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tKa.pssp2": {
+      "_info": "2 regions: r0(area=336497), r1(area=18612)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tKa.sub.ss02": {
+      "_info": "3 regions: r0(area=68310), r1(area=12597), r2(area=12750)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tKaa": {
+      "_info": "2 regions: r0(area=222480), r1(area=171550)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tKai": {
+      "_info": "3 regions: r0(area=222480), r1(area=153925), r2(area=115540)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tKau": {
+      "_info": "3 regions: r0(area=222480), r1(area=70720), r2(area=178600)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tKe": {
+      "_info": "2 regions: r0(area=222480), r1(area=115540)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tKee": {
+      "_info": "3 regions: r0(area=222480), r1(area=115540), r2(area=46350)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tKh": {
+      "_info": "3 regions: r0(area=482701), r1(area=15480), r2(area=99858)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tKh.presub": {
+      "_info": "3 regions: r0(area=482701), r1(area=11398), r2(area=99858)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tKha": {
+      "_info": "2 regions: r0(area=371520), r1(area=15480)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tKha.presub": {
+      "_info": "2 regions: r0(area=371520), r1(area=11398)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tKha.sub": {
+      "_info": "2 regions: r0(area=168618), r1(area=10224)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tKhaa": {
+      "_info": "3 regions: r0(area=369900), r1(area=15480), r2(area=140266)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tKhaa.presub": {
+      "_info": "3 regions: r0(area=369900), r1(area=11398), r2(area=140266)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tKhai": {
+      "_info": "4 regions: r0(area=371520), r1(area=170375), r2(area=15480), r3(area=138205)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tKhau": {
+      "_info": "4 regions: r0(area=371520), r1(area=15480), r2(area=51300), r3(area=147815)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tKhau.presub": {
+      "_info": "4 regions: r0(area=371520), r1(area=11398), r2(area=52155), r3(area=147815)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tKhe": {
+      "_info": "3 regions: r0(area=371520), r1(area=15480), r2(area=138205)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tKhe.presub": {
+      "_info": "3 regions: r0(area=371520), r1(area=11398), r2(area=138205)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tKhee": {
+      "_info": "4 regions: r0(area=371520), r1(area=15480), r2(area=138205), r3(area=41612)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tKhee.presub": {
+      "_info": "4 regions: r0(area=371520), r1(area=11398), r2(area=138205), r3(area=41612)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tKhi": {
+      "_info": "2 regions: r0(area=552558), r1(area=15480)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tKhi.presub": {
+      "_info": "2 regions: r0(area=552558), r1(area=11398)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tKhii": {
+      "_info": "3 regions: r0(area=552558), r1(area=15480), r2(area=39330)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tKhii.presub": {
+      "_info": "3 regions: r0(area=552558), r1(area=11398), r2(area=40572)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tKho": {
+      "_info": "3 regions: r0(area=511872), r1(area=15480), r2(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tKho.presub": {
+      "_info": "3 regions: r0(area=511872), r1(area=11398), r2(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tKhoo": {
+      "_info": "4 regions: r0(area=511872), r1(area=15480), r2(area=87474), r3(area=40376)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tKhoo.presub": {
+      "_info": "4 regions: r0(area=511872), r1(area=11398), r2(area=87474), r3(area=41200)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tKhu": {
+      "_info": "3 regions: r0(area=371520), r1(area=15480), r2(area=210600)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tKhu.presub": {
+      "_info": "3 regions: r0(area=371520), r1(area=11398), r2(area=211140)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tKhuu": {
+      "_info": "4 regions: r0(area=371520), r1(area=15480), r2(area=194661), r3(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tKhuu.presub": {
+      "_info": "4 regions: r0(area=371520), r1(area=11398), r2(area=197492), r3(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tKi": {
+      "_info": "2 regions: r0(area=222480), r1(area=114375)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tKii": {
+      "_info": "3 regions: r0(area=222480), r1(area=113625), r2(area=42021)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tKo": {
+      "_info": "3 regions: r0(area=222480), r1(area=74046), r2(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tKoo": {
+      "_info": "4 regions: r0(area=222480), r1(area=75087), r2(area=86996), r3(area=40170)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tKu": {
+      "_info": "3 regions: r0(area=470340), r1(area=26080), r2(area=71820)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tKuu": {
+      "_info": "4 regions: r0(area=468720), r1(area=27054), r2(area=79218), r3(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tL": {
+      "_info": "2 regions: r0(area=490148), r1(area=99858)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tLa.sub": {
+      "_info": "2 regions: r0(area=93600), r1(area=87048)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tLaa": {
+      "_info": "2 regions: r0(area=369900), r1(area=143820)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tLai": {
+      "_info": "3 regions: r0(area=369900), r1(area=170375), r2(area=140315)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tLau": {
+      "_info": "3 regions: r0(area=369900), r1(area=51086), r2(area=148285)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tLe": {
+      "_info": "2 regions: r0(area=369900), r1(area=140315)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tLee": {
+      "_info": "3 regions: r0(area=369900), r1(area=140315), r2(area=46144)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tLii": {
+      "_info": "2 regions: r0(area=543312), r1(area=41193)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tLl": {
+      "_info": "3 regions: r0(area=235440), r1(area=199837), r2(area=101728)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tLla": {
+      "_info": "4 regions: r0(area=235440), r1(area=108418), r2(area=27216), r3(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tLlaa": {
+      "_info": "3 regions: r0(area=235440), r1(area=99358), r2(area=135125)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tLlai": {
+      "_info": "4 regions: r0(area=235440), r1(area=171550), r2(area=99358), r3(area=142425)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tLlau": {
+      "_info": "4 regions: r0(area=235440), r1(area=99358), r2(area=53222), r3(area=149460)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tLle": {
+      "_info": "3 regions: r0(area=235440), r1(area=99358), r2(area=142425)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tLlee": {
+      "_info": "4 regions: r0(area=235440), r1(area=99358), r2(area=142425), r3(area=43260)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tLli": {
+      "_info": "2 regions: r0(area=311400), r1(area=231080)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tLlii": {
+      "_info": "3 regions: r0(area=310881), r1(area=231080), r2(area=41607)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tLll": {
+      "_info": "4 regions: r0(area=208980), r1(area=198180), r2(area=63180), r3(area=96118)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tLlla": {
+      "_info": "2 regions: r0(area=208980), r1(area=198180)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tLlla.sub": {
+      "_info": "2 regions: r0(area=96390), r1(area=90678)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tLllaa": {
+      "_info": "3 regions: r0(area=208980), r1(area=198180), r2(area=166145)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tLllai": {
+      "_info": "4 regions: r0(area=208980), r1(area=166380), r2(area=198180), r3(area=100647)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tLllau": {
+      "_info": "4 regions: r0(area=208980), r1(area=198180), r2(area=62656), r3(area=163560)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tLlle": {
+      "_info": "3 regions: r0(area=208980), r1(area=198180), r2(area=100647)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tLllee": {
+      "_info": "4 regions: r0(area=208980), r1(area=198180), r2(area=100647), r3(area=46144)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tLlli": {
+      "_info": "3 regions: r0(area=208980), r1(area=198180), r2(area=114000)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tLllii": {
+      "_info": "4 regions: r0(area=208980), r1(area=198180), r2(area=113250), r3(area=40986)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tLllo": {
+      "_info": "4 regions: r0(area=208980), r1(area=198180), r2(area=73745), r3(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tLlloo": {
+      "_info": "5 regions: r0(area=208980), r1(area=198180), r2(area=73745), r3(area=87474), r4(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tLllu": {
+      "_info": "3 regions: r0(area=224100), r1(area=208980), r2(area=198180)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tLlluu": {
+      "_info": "4 regions: r0(area=211356), r1(area=208980), r2(area=198180), r3(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tLlo": {
+      "_info": "3 regions: r0(area=235440), r1(area=169074), r2(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tLloo": {
+      "_info": "4 regions: r0(area=235440), r1(area=169074), r2(area=87474), r3(area=41200)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tLlu": {
+      "_info": "5 regions: r0(area=235440), r1(area=108418), r2(area=27216), r3(area=228960), r4(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tLluu": {
+      "_info": "6 regions: r0(area=235440), r1(area=108418), r2(area=27216), r3(area=213868), r4(area=71531), r5(area=143062)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tLo": {
+      "_info": "2 regions: r0(area=509640), r1(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tLoo": {
+      "_info": "3 regions: r0(area=509640), r1(area=87474), r2(area=40376)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tLu": {
+      "_info": "2 regions: r0(area=369900), r1(area=224100)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tLuu": {
+      "_info": "3 regions: r0(area=369900), r1(area=209296), r2(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tM": {
+      "_info": "5 regions: r0(area=30810), r1(area=358133), r2(area=85526), r3(area=233820), r4(area=99858)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tMa": {
+      "_info": "6 regions: r0(area=30810), r1(area=233820), r2(area=85526), r3(area=212550), r4(area=30624), r5(area=74412)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tMa.sub.ss02": {
+      "_info": "2 regions: r0(area=182125), r1(area=22487)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tMaa": {
+      "_info": "7 regions: r0(area=30810), r1(area=220397), r2(area=85526), r3(area=212550), r4(area=30624), r5(area=74412), r6(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tMai": {
+      "_info": "6 regions: r0(area=30810), r1(area=233820), r2(area=85526), r3(area=163325), r4(area=191360), r5(area=131875)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tMau": {
+      "_info": "8 regions: r0(area=30810), r1(area=212796), r2(area=85526), r3(area=212550), r4(area=30624), r5(area=74412), r6(area=60698), r7(area=160975)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tMe": {
+      "_info": "5 regions: r0(area=30810), r1(area=233820), r2(area=85526), r3(area=191360), r4(area=131875)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tMee": {
+      "_info": "6 regions: r0(area=30810), r1(area=233820), r2(area=85526), r3(area=191360), r4(area=131875), r5(area=46350)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tMi": {
+      "_info": "4 regions: r0(area=30810), r1(area=445662), r2(area=85526), r3(area=221400)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tMii": {
+      "_info": "5 regions: r0(area=30810), r1(area=445662), r2(area=85526), r3(area=221400), r4(area=38916)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tMo": {
+      "_info": "6 regions: r0(area=30810), r1(area=222480), r2(area=85526), r3(area=191360), r4(area=131875), r5(area=218700)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 3
+      }
+    },
+    "tMoo": {
+      "_info": "6 regions: r0(area=30810), r1(area=210312), r2(area=85526), r3(area=191360), r4(area=131875), r5(area=142596)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tMu": {
+      "_info": "7 regions: r0(area=30810), r1(area=233280), r2(area=85526), r3(area=212550), r4(area=30624), r5(area=74412), r6(area=229500)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 3
+      }
+    },
+    "tMuu": {
+      "_info": "8 regions: r0(area=30810), r1(area=233280), r2(area=85526), r3(area=212550), r4(area=30624), r5(area=74412), r6(area=214376), r7(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 3,
+        "7": 5
+      }
+    },
+    "tN": {
+      "_info": "2 regions: r0(area=414344), r1(area=108252)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tNa": {
+      "_info": "3 regions: r0(area=336428), r1(area=29232), r2(area=72452)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tNaa": {
+      "_info": "2 regions: r0(area=312354), r1(area=208302)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tNai": {
+      "_info": "3 regions: r0(area=319516), r1(area=153925), r2(area=127655)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tNakaaraPollu": {
+      "_info": "3 regions: r0(area=118144), r1(area=74880), r2(area=75660)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tNau": {
+      "_info": "3 regions: r0(area=319516), r1(area=80990), r2(area=187765)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tNe": {
+      "_info": "2 regions: r0(area=319516), r1(area=127655)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tNee": {
+      "_info": "3 regions: r0(area=319516), r1(area=127655), r2(area=46350)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tNg": {
+      "_info": "6 regions: r0(area=189000), r1(area=89866), r2(area=14362), r3(area=11963), r4(area=61554), r5(area=92378)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNga": {
+      "_info": "4 regions: r0(area=189000), r1(area=89866), r2(area=13760), r3(area=14744)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tNga.sub": {
+      "_info": "4 regions: r0(area=88288), r1(area=40228), r2(area=8136), r3(area=7680)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tNgaa": {
+      "_info": "5 regions: r0(area=189000), r1(area=89866), r2(area=14362), r3(area=11963), r4(area=142175)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNgai": {
+      "_info": "6 regions: r0(area=189000), r1(area=156275), r2(area=92486), r3(area=14362), r4(area=11963), r5(area=125545)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNgau": {
+      "_info": "6 regions: r0(area=189000), r1(area=89866), r2(area=14362), r3(area=11963), r4(area=48950), r5(area=144290)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNge": {
+      "_info": "5 regions: r0(area=189000), r1(area=95106), r2(area=14362), r3(area=11963), r4(area=125545)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNgee": {
+      "_info": "6 regions: r0(area=189000), r1(area=95106), r2(area=14362), r3(area=11963), r4(area=125545), r5(area=41612)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNgi": {
+      "_info": "5 regions: r0(area=189000), r1(area=89866), r2(area=14362), r3(area=11963), r4(area=115125)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNgii": {
+      "_info": "6 regions: r0(area=189000), r1(area=89866), r2(area=14061), r3(area=11963), r4(area=114375), r5(area=44505)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNgo": {
+      "_info": "6 regions: r0(area=189000), r1(area=89866), r2(area=13760), r3(area=13848), r4(area=78080), r5(area=91298)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNgoo": {
+      "_info": "7 regions: r0(area=189000), r1(area=89866), r2(area=13760), r3(area=13848), r4(area=70760), r5(area=87474), r6(area=40170)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tNgu": {
+      "_info": "4 regions: r0(area=447660), r1(area=189000), r2(area=91945), r3(area=14136)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tNguu": {
+      "_info": "5 regions: r0(area=422790), r1(area=189000), r2(area=91945), r3(area=14136), r4(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNii": {
+      "_info": "2 regions: r0(area=499274), r1(area=38916)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tNine": {
+      "_info": "2 regions: r0(area=186304), r1(area=109416)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tNine.sups": {
+      "_info": "2 regions: r0(area=104516), r1(area=63425)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tNn": {
+      "_info": "5 regions: r0(area=219240), r1(area=87848), r2(area=109068), r3(area=66780), r4(area=99858)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNna": {
+      "_info": "3 regions: r0(area=219240), r1(area=87848), r2(area=109068)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tNna.sub": {
+      "_info": "3 regions: r0(area=100392), r1(area=43039), r2(area=48174)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tNnaa": {
+      "_info": "4 regions: r0(area=200158), r1(area=87848), r2(area=109068), r3(area=172187)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tNnai": {
+      "_info": "5 regions: r0(area=209496), r1(area=186825), r2(area=87848), r3(area=109068), r4(area=155085)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNnau": {
+      "_info": "5 regions: r0(area=211120), r1(area=87848), r2(area=109068), r3(area=72090), r4(area=176015)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNne": {
+      "_info": "4 regions: r0(area=209496), r1(area=87848), r2(area=109068), r3(area=155085)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tNnee": {
+      "_info": "5 regions: r0(area=209496), r1(area=87848), r2(area=109068), r3(area=155085), r4(area=44496)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNni": {
+      "_info": "4 regions: r0(area=219240), r1(area=87848), r2(area=109068), r3(area=113625)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tNnii": {
+      "_info": "5 regions: r0(area=219240), r1(area=87848), r2(area=109068), r3(area=113254), r4(area=40986)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNno": {
+      "_info": "5 regions: r0(area=219240), r1(area=87848), r2(area=109068), r3(area=73745), r4(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNnoo": {
+      "_info": "6 regions: r0(area=219240), r1(area=87848), r2(area=109068), r3(area=73745), r4(area=86996), r5(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNnu": {
+      "_info": "4 regions: r0(area=220860), r1(area=87848), r2(area=109068), r3(area=219240)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 3
+      }
+    },
+    "tNnuu": {
+      "_info": "5 regions: r0(area=219240), r1(area=87848), r2(area=109068), r3(area=208278), r4(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tNo": {
+      "_info": "2 regions: r0(area=454812), r1(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tNoo": {
+      "_info": "3 regions: r0(area=454812), r1(area=86996), r2(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tNu": {
+      "_info": "4 regions: r0(area=333508), r1(area=29232), r2(area=72145), r3(area=218160)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tNukta": {
+      "_info": "2 regions: r0(area=13923), r1(area=42228)",
+      "regions": {
+        "0": 5,
+        "1": 0
+      }
+    },
+    "tNuu": {
+      "_info": "5 regions: r0(area=333508), r1(area=29232), r2(area=72145), r3(area=205713), r4(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tNy": {
+      "_info": "6 regions: r0(area=336364), r1(area=67392), r2(area=13330), r3(area=11973), r4(area=59580), r5(area=90992)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNya": {
+      "_info": "4 regions: r0(area=336364), r1(area=67392), r2(area=13330), r3(area=14440)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tNya.sub": {
+      "_info": "4 regions: r0(area=151698), r1(area=34350), r2(area=7452), r3(area=7680)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tNyaa": {
+      "_info": "5 regions: r0(area=336364), r1(area=67392), r2(area=13330), r3(area=13300), r4(area=139825)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNyai": {
+      "_info": "6 regions: r0(area=336364), r1(area=153925), r2(area=67392), r3(area=13330), r4(area=13680), r5(area=125545)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNyau": {
+      "_info": "6 regions: r0(area=336364), r1(area=67392), r2(area=13330), r3(area=11982), r4(area=49410), r5(area=141940)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNye": {
+      "_info": "5 regions: r0(area=336364), r1(area=67392), r2(area=13330), r3(area=13680), r4(area=125545)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNyee": {
+      "_info": "6 regions: r0(area=336364), r1(area=67392), r2(area=13330), r3(area=13680), r4(area=125545), r5(area=47586)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNyi": {
+      "_info": "5 regions: r0(area=336364), r1(area=67392), r2(area=13330), r3(area=13490), r4(area=115125)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tNyii": {
+      "_info": "6 regions: r0(area=336364), r1(area=67392), r2(area=13330), r3(area=13490), r4(area=114375), r5(area=44091)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNyo": {
+      "_info": "6 regions: r0(area=336364), r1(area=67392), r2(area=13330), r3(area=13555), r4(area=71983), r5(area=86040)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tNyoo": {
+      "_info": "7 regions: r0(area=336364), r1(area=67392), r2(area=13330), r3(area=13555), r4(area=71983), r5(area=86040), r6(area=39798)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tNyu": {
+      "_info": "4 regions: r0(area=402300), r1(area=336364), r2(area=67392), r3(area=14440)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tNyuu": {
+      "_info": "5 regions: r0(area=372138), r1(area=336364), r2(area=67392), r3(area=14440), r4(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tO": {
+      "_info": "2 regions: r0(area=189000), r1(area=107074)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tOo": {
+      "_info": "3 regions: r0(area=189000), r1(area=107074), r2(area=23643)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tP": {
+      "_info": "5 regions: r0(area=30810), r1(area=198720), r2(area=85526), r3(area=59580), r4(area=92872)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tPa": {
+      "_info": "5 regions: r0(area=30810), r1(area=198720), r2(area=85526), r3(area=27216), r4(area=72759)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tPa.post": {
+      "_info": "3 regions: r0(area=14520), r1(area=369161), r2(area=52864)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3
+      }
+    },
+    "tPa.post2": {
+      "_info": "3 regions: r0(area=14520), r1(area=343753), r2(area=52864)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3
+      }
+    },
+    "tPa.pssp": {
+      "_info": "3 regions: r0(area=14520), r1(area=369161), r2(area=52864)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3
+      }
+    },
+    "tPa.pssp2": {
+      "_info": "3 regions: r0(area=14520), r1(area=343753), r2(area=52640)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3
+      }
+    },
+    "tPaa": {
+      "_info": "4 regions: r0(area=30810), r1(area=367384), r2(area=85526), r3(area=229149)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tPai": {
+      "_info": "5 regions: r0(area=30810), r1(area=198720), r2(area=153925), r3(area=85526), r4(area=104445)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tPau": {
+      "_info": "5 regions: r0(area=30225), r1(area=367384), r2(area=84665), r3(area=72930), r4(area=216905)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tPe": {
+      "_info": "4 regions: r0(area=30810), r1(area=198720), r2(area=85526), r3(area=104445)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tPee": {
+      "_info": "5 regions: r0(area=30810), r1(area=198720), r2(area=85526), r3(area=104445), r4(area=46350)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tPh": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=15480), r3(area=85526), r4(area=59580), r5(area=92872)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPh.presub": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=11398), r3(area=85526), r4(area=59580), r5(area=92872)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPha": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=15480), r3(area=85526), r4(area=27216), r5(area=72759)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPha.post": {
+      "_info": "4 regions: r0(area=14520), r1(area=369161), r2(area=10224), r3(area=52864)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tPha.post2": {
+      "_info": "4 regions: r0(area=14520), r1(area=343753), r2(area=10224), r3(area=52864)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tPha.presub": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=11398), r3(area=85526), r4(area=27216), r5(area=72759)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPha.pssp": {
+      "_info": "4 regions: r0(area=14520), r1(area=369161), r2(area=10224), r3(area=52864)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tPha.pssp2": {
+      "_info": "4 regions: r0(area=14520), r1(area=343753), r2(area=10224), r3(area=52640)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tPhaa": {
+      "_info": "5 regions: r0(area=30810), r1(area=367384), r2(area=15480), r3(area=85526), r4(area=229149)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tPhaa.presub": {
+      "_info": "5 regions: r0(area=30810), r1(area=367384), r2(area=11398), r3(area=85526), r4(area=229149)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tPhai": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=153925), r3(area=15480), r4(area=85526), r5(area=104445)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tPhau": {
+      "_info": "6 regions: r0(area=30225), r1(area=367384), r2(area=15480), r3(area=84665), r4(area=72930), r5(area=216905)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPhau.presub": {
+      "_info": "6 regions: r0(area=30225), r1(area=367384), r2(area=11398), r3(area=84665), r4(area=72930), r5(area=216905)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPhe": {
+      "_info": "5 regions: r0(area=30810), r1(area=198720), r2(area=15480), r3(area=85526), r4(area=104445)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tPhe.presub": {
+      "_info": "5 regions: r0(area=30810), r1(area=198720), r2(area=11398), r3(area=85526), r4(area=104445)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tPhee": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=15480), r3(area=85526), r4(area=104445), r5(area=46350)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPhee.presub": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=11398), r3(area=85526), r4(area=104445), r5(area=46350)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPhi": {
+      "_info": "5 regions: r0(area=30810), r1(area=198720), r2(area=15480), r3(area=85526), r4(area=115125)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tPhi.presub": {
+      "_info": "5 regions: r0(area=30810), r1(area=198720), r2(area=11398), r3(area=85526), r4(area=115125)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tPhii": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=15480), r3(area=85526), r4(area=114375), r5(area=40986)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPhii.presub": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=11398), r3(area=85526), r4(area=114375), r5(area=40986)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPho": {
+      "_info": "6 regions: r0(area=30225), r1(area=367384), r2(area=15480), r3(area=84665), r4(area=80864), r5(area=133126)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPho.presub": {
+      "_info": "6 regions: r0(area=30810), r1(area=367384), r2(area=11398), r3(area=85526), r4(area=80864), r5(area=133126)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPhoo": {
+      "_info": "7 regions: r0(area=30225), r1(area=367384), r2(area=15480), r3(area=84665), r4(area=80864), r5(area=133126), r6(area=42848)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tPhoo.presub": {
+      "_info": "7 regions: r0(area=30810), r1(area=367384), r2(area=11398), r3(area=85526), r4(area=80864), r5(area=133126), r6(area=42848)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tPhu": {
+      "_info": "7 regions: r0(area=30810), r1(area=407121), r2(area=15136), r3(area=85526), r4(area=27216), r5(area=198720), r6(area=72759)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tPhu.post": {
+      "_info": "5 regions: r0(area=14520), r1(area=369161), r2(area=10224), r3(area=52864), r4(area=193860)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tPhu.post2": {
+      "_info": "5 regions: r0(area=14520), r1(area=343753), r2(area=10224), r3(area=55104), r4(area=195480)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tPhu.presub": {
+      "_info": "7 regions: r0(area=30810), r1(area=409656), r2(area=15136), r3(area=85526), r4(area=27216), r5(area=198720), r6(area=72759)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tPhu.pssp": {
+      "_info": "5 regions: r0(area=14520), r1(area=369161), r2(area=10224), r3(area=52864), r4(area=193860)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tPhu.pssp2": {
+      "_info": "5 regions: r0(area=14520), r1(area=343753), r2(area=10224), r3(area=55104), r4(area=195480)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tPhuu": {
+      "_info": "8 regions: r0(area=30810), r1(area=375180), r2(area=15136), r3(area=85526), r4(area=27216), r5(area=198720), r6(area=72759), r7(area=140530)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tPhuu.post": {
+      "_info": "6 regions: r0(area=14520), r1(area=369161), r2(area=10224), r3(area=52640), r4(area=183855), r5(area=142596)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPhuu.post2": {
+      "_info": "6 regions: r0(area=14520), r1(area=343753), r2(area=10224), r3(area=52640), r4(area=187460), r5(area=142596)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPhuu.presub": {
+      "_info": "8 regions: r0(area=30810), r1(area=377715), r2(area=15136), r3(area=85526), r4(area=27216), r5(area=198720), r6(area=72759), r7(area=140530)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tPhuu.pssp": {
+      "_info": "6 regions: r0(area=14520), r1(area=369161), r2(area=10224), r3(area=52640), r4(area=183855), r5(area=142596)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPhuu.pssp2": {
+      "_info": "6 regions: r0(area=14520), r1(area=343753), r2(area=10224), r3(area=52640), r4(area=187460), r5(area=142596)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPi": {
+      "_info": "4 regions: r0(area=30810), r1(area=198720), r2(area=85526), r3(area=115125)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tPii": {
+      "_info": "5 regions: r0(area=30810), r1(area=198720), r2(area=85526), r3(area=114375), r4(area=40986)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tPo": {
+      "_info": "5 regions: r0(area=30225), r1(area=367384), r2(area=84665), r3(area=80864), r4(area=133126)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tPoo": {
+      "_info": "6 regions: r0(area=30225), r1(area=367384), r2(area=84665), r3(area=80864), r4(area=133126), r5(area=42848)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPu": {
+      "_info": "6 regions: r0(area=30810), r1(area=411939), r2(area=85526), r3(area=27216), r4(area=198720), r5(area=72759)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tPu.post": {
+      "_info": "4 regions: r0(area=14520), r1(area=369161), r2(area=52864), r3(area=193860)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tPu.post2": {
+      "_info": "4 regions: r0(area=14520), r1(area=343753), r2(area=55104), r3(area=195480)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tPu.pssp": {
+      "_info": "4 regions: r0(area=14520), r1(area=369161), r2(area=52864), r3(area=193860)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tPu.pssp2": {
+      "_info": "4 regions: r0(area=14520), r1(area=343753), r2(area=50176), r3(area=195480)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tPuu": {
+      "_info": "7 regions: r0(area=30810), r1(area=379620), r2(area=85526), r3(area=27216), r4(area=198720), r5(area=72759), r6(area=140530)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tPuu.post": {
+      "_info": "5 regions: r0(area=14520), r1(area=369161), r2(area=52640), r3(area=183855), r4(area=142596)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tPuu.post2": {
+      "_info": "5 regions: r0(area=14520), r1(area=343753), r2(area=52192), r3(area=187460), r4(area=142596)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tPuu.pssp": {
+      "_info": "5 regions: r0(area=14520), r1(area=369161), r2(area=52640), r3(area=183855), r4(area=142596)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tPuu.pssp2": {
+      "_info": "5 regions: r0(area=14520), r1(area=343753), r2(area=50624), r3(area=187460), r4(area=142596)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tR": {
+      "_info": "4 regions: r0(area=166530), r1(area=288360), r2(area=66780), r3(area=99858)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tRa": {
+      "_info": "4 regions: r0(area=166530), r1(area=288360), r2(area=25536), r3(area=71531)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tRaa": {
+      "_info": "3 regions: r0(area=166530), r1(area=288360), r2(area=188000)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5
+      }
+    },
+    "tRai": {
+      "_info": "4 regions: r0(area=166530), r1(area=281952), r2(area=153925), r3(area=123435)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tRau": {
+      "_info": "4 regions: r0(area=166530), r1(area=281952), r2(area=79388), r3(area=185650)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tRe": {
+      "_info": "3 regions: r0(area=166530), r1(area=281952), r2(area=123435)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5
+      }
+    },
+    "tRee": {
+      "_info": "4 regions: r0(area=166530), r1(area=281952), r2(area=123435), r3(area=46144)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tReph": {
+      "_info": "2 regions: r0(area=172672), r1(area=112748)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tRi": {
+      "_info": "3 regions: r0(area=166530), r1(area=288360), r2(area=96012)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5
+      }
+    },
+    "tRii": {
+      "_info": "4 regions: r0(area=166530), r1(area=288360), r2(area=96012), r3(area=39123)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tRo": {
+      "_info": "4 regions: r0(area=166530), r1(area=288360), r2(area=73745), r3(area=87474)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tRoo": {
+      "_info": "5 regions: r0(area=166530), r1(area=288360), r2(area=75087), r3(area=86996), r4(area=42848)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tRr": {
+      "_info": "5 regions: r0(area=224100), r1(area=19071), r2(area=212760), r3(area=66780), r4(area=99858)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tRra": {
+      "_info": "3 regions: r0(area=224100), r1(area=19071), r2(area=212760)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tRra.sub": {
+      "_info": "3 regions: r0(area=103173), r1(area=10989), r2(area=96120)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tRraa": {
+      "_info": "4 regions: r0(area=224100), r1(area=19071), r2(area=194242), r3(area=166850)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tRrai": {
+      "_info": "5 regions: r0(area=224100), r1(area=177425), r2(area=19071), r3(area=202516), r4(area=161415)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tRrau": {
+      "_info": "5 regions: r0(area=224100), r1(area=19071), r2(area=202516), r3(area=67818), r4(area=170375)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tRre": {
+      "_info": "4 regions: r0(area=224100), r1(area=19071), r2(area=202516), r3(area=161415)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tRree": {
+      "_info": "5 regions: r0(area=224100), r1(area=19071), r2(area=202516), r3(area=161415), r4(area=46144)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tRri": {
+      "_info": "4 regions: r0(area=224100), r1(area=19071), r2(area=207638), r3(area=114000)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tRrii": {
+      "_info": "5 regions: r0(area=224100), r1(area=19071), r2(area=207638), r3(area=113625), r4(area=40986)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tRro": {
+      "_info": "5 regions: r0(area=224100), r1(area=19071), r2(area=212760), r3(area=73745), r4(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tRroo": {
+      "_info": "6 regions: r0(area=224100), r1(area=19071), r2(area=212760), r3(area=75087), r4(area=86996), r5(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tRrr": {
+      "_info": "4 regions: r0(area=362880), r1(area=24436), r2(area=68580), r3(area=101728)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tRrra": {
+      "_info": "2 regions: r0(area=362880), r1(area=24436)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tRrra.sub": {
+      "_info": "2 regions: r0(area=162692), r1(area=14315)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tRrraa": {
+      "_info": "3 regions: r0(area=362880), r1(area=24436), r2(area=199750)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tRrrai": {
+      "_info": "4 regions: r0(area=352128), r1(area=163325), r2(area=24436), r3(area=131875)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tRrrau": {
+      "_info": "4 regions: r0(area=352128), r1(area=24436), r2(area=82058), r3(area=188000)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tRrre": {
+      "_info": "3 regions: r0(area=352128), r1(area=24436), r2(area=131875)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tRrree": {
+      "_info": "4 regions: r0(area=352128), r1(area=24436), r2(area=131875), r3(area=44496)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tRrri": {
+      "_info": "3 regions: r0(area=362880), r1(area=24436), r2(area=92988)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tRrrii": {
+      "_info": "4 regions: r0(area=362880), r1(area=24436), r2(area=96012), r3(area=39123)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tRrro": {
+      "_info": "4 regions: r0(area=362880), r1(area=24436), r2(area=73745), r3(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tRrroo": {
+      "_info": "5 regions: r0(area=362880), r1(area=24436), r2(area=75087), r3(area=86996), r4(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tRrru": {
+      "_info": "3 regions: r0(area=362880), r1(area=24436), r2(area=220860)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3
+      }
+    },
+    "tRrruu": {
+      "_info": "4 regions: r0(area=362880), r1(area=24436), r2(area=208278), r3(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tRru": {
+      "_info": "4 regions: r0(area=225720), r1(area=224100), r2(area=19071), r3(area=212760)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tRruu": {
+      "_info": "5 regions: r0(area=224100), r1(area=19071), r2(area=212760), r3(area=207915), r4(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tRu": {
+      "_info": "5 regions: r0(area=166530), r1(area=288360), r2(area=25536), r3(area=225180), r4(area=71531)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tRuu": {
+      "_info": "6 regions: r0(area=166530), r1(area=287820), r2(area=25536), r3(area=213921), r4(area=71531), r5(area=143761)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tS": {
+      "_info": "3 regions: r0(area=329949), r1(area=59580), r2(area=92872)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tSa": {
+      "_info": "3 regions: r0(area=329949), r1(area=27216), r2(area=72759)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tSaa": {
+      "_info": "2 regions: r0(area=516600), r1(area=223074)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSai": {
+      "_info": "3 regions: r0(area=329949), r1(area=153925), r2(area=104445)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tSau": {
+      "_info": "3 regions: r0(area=516600), r1(area=70380), r2(area=213380)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tSe": {
+      "_info": "2 regions: r0(area=329949), r1(area=104445)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSee": {
+      "_info": "3 regions: r0(area=329949), r1(area=104445), r2(area=43672)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tSh": {
+      "_info": "2 regions: r0(area=319858), r1(area=97988)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSha": {
+      "_info": "3 regions: r0(area=236530), r1(area=27864), r2(area=74412)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tShaa": {
+      "_info": "2 regions: r0(area=228284), r1(area=182125)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tShai": {
+      "_info": "3 regions: r0(area=228718), r1(area=133010), r2(area=104656)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tShau": {
+      "_info": "3 regions: r0(area=228718), r1(area=66928), r2(area=170375)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tShe": {
+      "_info": "2 regions: r0(area=228718), r1(area=104656)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tShee": {
+      "_info": "3 regions: r0(area=228718), r1(area=104656), r2(area=46144)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tShii": {
+      "_info": "2 regions: r0(area=375230), r1(area=42021)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSho": {
+      "_info": "2 regions: r0(area=325066), r1(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tShoo": {
+      "_info": "3 regions: r0(area=325066), r1(area=87474), r2(area=40170)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tShu": {
+      "_info": "4 regions: r0(area=236530), r1(area=27864), r2(area=224640), r3(area=74412)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tShuu": {
+      "_info": "5 regions: r0(area=236530), r1(area=27864), r2(area=211869), r3(area=74412), r4(area=142596)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tSi": {
+      "_info": "2 regions: r0(area=329949), r1(area=115125)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSignAi": {
+      "_info": "2 regions: r0(area=153925), r1(area=123435)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSignAu": {
+      "_info": "2 regions: r0(area=185650), r1(area=79388)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tSignEe": {
+      "_info": "2 regions: r0(area=123435), r1(area=47174)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSignIi": {
+      "_info": "2 regions: r0(area=114375), r1(area=44091)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSignO": {
+      "_info": "2 regions: r0(area=87474), r1(area=73444)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tSignOo": {
+      "_info": "3 regions: r0(area=86996), r1(area=75396), r2(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tSignUu": {
+      "_info": "2 regions: r0(area=191646), r1(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSignVocalicL": {
+      "_info": "2 regions: r0(area=204376), r1(area=35259)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSignVocalicLl": {
+      "_info": "3 regions: r0(area=204376), r1(area=34776), r2(area=66198)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tSignVocalicRr": {
+      "_info": "2 regions: r0(area=404982), r1(area=137710)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSignVocalicRr.pvsp": {
+      "_info": "2 regions: r0(area=404982), r1(area=137710)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSii": {
+      "_info": "3 regions: r0(area=329949), r1(area=114375), r2(area=45126)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tSix": {
+      "_info": "2 regions: r0(area=204512), r1(area=63744)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSix.sups": {
+      "_info": "2 regions: r0(area=117702), r1(area=37442)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tSo": {
+      "_info": "3 regions: r0(area=516600), r1(area=80864), r2(area=133126)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tSoo": {
+      "_info": "4 regions: r0(area=516600), r1(area=80864), r2(area=133126), r3(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tSs": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=85526), r3(area=34953), r4(area=59580), r5(area=92872)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tSsa": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=85526), r3(area=27216), r4(area=34953), r5(area=72759)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tSsa.sub": {
+      "_info": "4 regions: r0(area=12078), r1(area=90424), r2(area=39788), r3(area=16492)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tSsaa": {
+      "_info": "5 regions: r0(area=30810), r1(area=367383), r2(area=85526), r3(area=35144), r4(area=229149)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tSsai": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=153925), r3(area=85526), r4(area=104445), r5(area=34953)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 3
+      }
+    },
+    "tSsau": {
+      "_info": "6 regions: r0(area=30225), r1(area=367383), r2(area=84665), r3(area=72930), r4(area=35144), r5(area=216905)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tSse": {
+      "_info": "5 regions: r0(area=30810), r1(area=198720), r2(area=85526), r3(area=104445), r4(area=34953)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3
+      }
+    },
+    "tSsee": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=85526), r3(area=104445), r4(area=34953), r5(area=46350)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tSsi": {
+      "_info": "5 regions: r0(area=30810), r1(area=198720), r2(area=85526), r3(area=34953), r4(area=115125)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tSsii": {
+      "_info": "6 regions: r0(area=30810), r1(area=198720), r2(area=85526), r3(area=34953), r4(area=114375), r5(area=40986)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tSso": {
+      "_info": "6 regions: r0(area=30225), r1(area=367383), r2(area=84665), r3(area=80864), r4(area=35144), r5(area=133126)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tSsoo": {
+      "_info": "7 regions: r0(area=30225), r1(area=367383), r2(area=84665), r3(area=80864), r4(area=35144), r5(area=133126), r6(area=42848)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tSsu": {
+      "_info": "7 regions: r0(area=30810), r1(area=216540), r2(area=85526), r3(area=20253), r4(area=27216), r5(area=194940), r6(area=72759)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 3,
+        "6": 5
+      }
+    },
+    "tSsuu": {
+      "_info": "8 regions: r0(area=30810), r1(area=204174), r2(area=85526), r3(area=20253), r4(area=27216), r5(area=194940), r6(area=72759), r7(area=143761)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tSu": {
+      "_info": "4 regions: r0(area=329400), r1(area=27222), r2(area=72759), r3(area=217620)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tSuu": {
+      "_info": "5 regions: r0(area=329400), r1(area=27216), r2(area=72759), r3(area=207252), r4(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tT": {
+      "_info": "3 regions: r0(area=298596), r1(area=106624), r2(area=103598)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tTRa.sub": {
+      "_info": "2 regions: r0(area=279654), r1(area=98331)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tTa": {
+      "_info": "4 regions: r0(area=298596), r1(area=28188), r2(area=33232), r3(area=74576)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTaa": {
+      "_info": "3 regions: r0(area=298596), r1(area=213850), r2(area=25488)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tTai": {
+      "_info": "4 regions: r0(area=298596), r1(area=171080), r2(area=25488), r3(area=137522)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTai.sub.ss04": {
+      "_info": "2 regions: r0(area=149225), r1(area=110215)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tTau": {
+      "_info": "4 regions: r0(area=298596), r1(area=24192), r2(area=69866), r3(area=169200)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTe": {
+      "_info": "3 regions: r0(area=298596), r1(area=25488), r2(area=137522)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tTee": {
+      "_info": "4 regions: r0(area=298596), r1(area=25488), r2(area=137522), r3(area=43260)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTh": {
+      "_info": "5 regions: r0(area=362880), r1(area=15480), r2(area=14883), r3(area=68580), r4(area=101728)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTh.presub": {
+      "_info": "5 regions: r0(area=362880), r1(area=11398), r2(area=14883), r3(area=68580), r4(area=101728)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTha": {
+      "_info": "5 regions: r0(area=362880), r1(area=15480), r2(area=14883), r3(area=25536), r4(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTha.presub": {
+      "_info": "5 regions: r0(area=362880), r1(area=11398), r2(area=14883), r3(area=25536), r4(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTha.sub": {
+      "_info": "3 regions: r0(area=162692), r1(area=10224), r2(area=7056)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tThaa": {
+      "_info": "4 regions: r0(area=362880), r1(area=15480), r2(area=14883), r3(area=199750)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tThaa.presub": {
+      "_info": "4 regions: r0(area=362880), r1(area=11398), r2(area=14883), r3(area=199750)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tThai": {
+      "_info": "5 regions: r0(area=352128), r1(area=163325), r2(area=15480), r3(area=14883), r4(area=131875)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tThau": {
+      "_info": "5 regions: r0(area=352128), r1(area=15480), r2(area=14883), r3(area=82058), r4(area=188000)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tThau.presub": {
+      "_info": "5 regions: r0(area=352128), r1(area=11398), r2(area=14883), r3(area=82058), r4(area=188000)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tThe": {
+      "_info": "4 regions: r0(area=352128), r1(area=15480), r2(area=14883), r3(area=131875)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tThe.presub": {
+      "_info": "4 regions: r0(area=352128), r1(area=11398), r2(area=14883), r3(area=131875)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tThee": {
+      "_info": "5 regions: r0(area=352128), r1(area=15480), r2(area=14883), r3(area=131875), r4(area=44496)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tThee.presub": {
+      "_info": "5 regions: r0(area=352128), r1(area=11398), r2(area=14883), r3(area=131875), r4(area=44496)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tThi": {
+      "_info": "4 regions: r0(area=362880), r1(area=15480), r2(area=14883), r3(area=92988)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tThi.presub": {
+      "_info": "4 regions: r0(area=362880), r1(area=11398), r2(area=14883), r3(area=92988)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tThii": {
+      "_info": "5 regions: r0(area=362880), r1(area=15480), r2(area=14883), r3(area=96012), r4(area=39123)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tThii.presub": {
+      "_info": "5 regions: r0(area=362880), r1(area=11398), r2(area=14883), r3(area=96012), r4(area=39123)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTho": {
+      "_info": "5 regions: r0(area=362880), r1(area=15480), r2(area=14883), r3(area=73745), r4(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTho.presub": {
+      "_info": "5 regions: r0(area=362880), r1(area=11398), r2(area=14883), r3(area=73745), r4(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tThoo": {
+      "_info": "6 regions: r0(area=362880), r1(area=15480), r2(area=14883), r3(area=75087), r4(area=86996), r5(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tThoo.presub": {
+      "_info": "6 regions: r0(area=362880), r1(area=11398), r2(area=14883), r3(area=75087), r4(area=86996), r5(area=42848)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tThreeForOddPowersOfFour": {
+      "_info": "3 regions: r0(area=179280), r1(area=174960), r2(area=72240)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3
+      }
+    },
+    "tThu": {
+      "_info": "6 regions: r0(area=362880), r1(area=15480), r2(area=14883), r3(area=25536), r4(area=226260), r5(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tThu.presub": {
+      "_info": "6 regions: r0(area=362880), r1(area=11398), r2(area=14883), r3(area=25536), r4(area=220860), r5(area=71531)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tThuu": {
+      "_info": "7 regions: r0(area=362880), r1(area=15480), r2(area=14883), r3(area=25536), r4(area=213408), r5(area=71531), r6(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tThuu.presub": {
+      "_info": "7 regions: r0(area=362880), r1(area=11398), r2(area=14883), r3(area=25536), r4(area=208278), r5(area=71531), r6(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tTi": {
+      "_info": "2 regions: r0(area=298596), r1(area=206230)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tTii": {
+      "_info": "3 regions: r0(area=298596), r1(area=205727), r2(area=40572)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tTo": {
+      "_info": "3 regions: r0(area=298596), r1(area=129837), r2(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tToo": {
+      "_info": "4 regions: r0(area=298596), r1(area=129837), r2(area=87474), r3(area=41200)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTs": {
+      "_info": "5 regions: r0(area=361518), r1(area=114240), r2(area=26200), r3(area=105468), r4(area=137004)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTsa": {
+      "_info": "6 regions: r0(area=192066), r1(area=114240), r2(area=26200), r3(area=30272), r4(area=74412), r5(area=137004)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tTsaa": {
+      "_info": "5 regions: r0(area=213661), r1(area=113202), r2(area=26200), r3(area=188496), r4(area=137004)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tTsai": {
+      "_info": "6 regions: r0(area=187782), r1(area=177425), r2(area=114240), r3(area=26200), r4(area=144535), r5(area=137004)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tTsau": {
+      "_info": "6 regions: r0(area=187782), r1(area=114240), r2(area=26200), r3(area=76128), r4(area=178600), r5(area=137004)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tTse": {
+      "_info": "5 regions: r0(area=187782), r1(area=114240), r2(area=26200), r3(area=144535), r4(area=137004)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTsee": {
+      "_info": "6 regions: r0(area=187782), r1(area=114240), r2(area=26200), r3(area=144535), r4(area=109044), r5(area=46144)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tTsi": {
+      "_info": "4 regions: r0(area=437724), r1(area=113864), r2(area=26200), r3(area=137004)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tTsii": {
+      "_info": "5 regions: r0(area=437724), r1(area=113864), r2(area=26200), r3(area=40572), r4(area=137004)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTso": {
+      "_info": "5 regions: r0(area=358608), r1(area=114240), r2(area=26200), r3(area=137004), r4(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTsoo": {
+      "_info": "6 regions: r0(area=358608), r1(area=114240), r2(area=26200), r3(area=127218), r4(area=87474), r5(area=41200)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tTsu": {
+      "_info": "7 regions: r0(area=211140), r1(area=114240), r2(area=26200), r3(area=190454), r4(area=30272), r5(area=74412), r6(area=137004)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 3,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tTsuu": {
+      "_info": "8 regions: r0(area=199044), r1(area=114240), r2(area=26200), r3(area=190452), r4(area=30272), r5(area=74412), r6(area=137004), r7(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tTt": {
+      "_info": "4 regions: r0(area=258614), r1(area=208980), r2(area=14288), r3(area=101915)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTtRa.sub.ss03": {
+      "_info": "3 regions: r0(area=279654), r1(area=81326), r2(area=72303)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tTta": {
+      "_info": "3 regions: r0(area=208980), r1(area=191160), r2(area=14288)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5
+      }
+    },
+    "tTta.sub": {
+      "_info": "2 regions: r0(area=96390), r1(area=86864)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tTtaa": {
+      "_info": "4 regions: r0(area=208980), r1(area=180576), r2(area=14288), r3(area=141897)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTtai": {
+      "_info": "4 regions: r0(area=208980), r1(area=163325), r2(area=99592), r3(area=191160)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 3
+      }
+    },
+    "tTtau": {
+      "_info": "5 regions: r0(area=208980), r1(area=181984), r2(area=14288), r3(area=50018), r4(area=146875)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTte": {
+      "_info": "3 regions: r0(area=208980), r1(area=99592), r2(area=191160)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3
+      }
+    },
+    "tTtee": {
+      "_info": "4 regions: r0(area=208980), r1(area=99592), r2(area=191160), r3(area=47586)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tTth": {
+      "_info": "4 regions: r0(area=166530+1 holes), r1(area=288360), r2(area=66780), r3(area=99858)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTtha": {
+      "_info": "4 regions: r0(area=166530+1 holes), r1(area=288360), r2(area=25536), r3(area=71531)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTtha.sub": {
+      "_info": "2 regions: r0(area=64881+1 holes), r1(area=127804)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0
+      }
+    },
+    "tTthaa": {
+      "_info": "3 regions: r0(area=166530+1 holes), r1(area=288360), r2(area=188000)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 5
+      }
+    },
+    "tTthai": {
+      "_info": "4 regions: r0(area=166530+1 holes), r1(area=281952), r2(area=153925), r3(area=123435)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tTthau": {
+      "_info": "4 regions: r0(area=166530+1 holes), r1(area=281952), r2(area=79388), r3(area=185650)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTthe": {
+      "_info": "3 regions: r0(area=166530+1 holes), r1(area=281952), r2(area=123435)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 5
+      }
+    },
+    "tTthee": {
+      "_info": "4 regions: r0(area=166530+1 holes), r1(area=281952), r2(area=123435), r3(area=46144)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTthi": {
+      "_info": "3 regions: r0(area=166530+1 holes), r1(area=288360), r2(area=96012)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 5
+      }
+    },
+    "tTthii": {
+      "_info": "4 regions: r0(area=166530+1 holes), r1(area=288360), r2(area=96012), r3(area=39123)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTtho": {
+      "_info": "4 regions: r0(area=166530+1 holes), r1(area=288360), r2(area=73745), r3(area=87474)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTthoo": {
+      "_info": "5 regions: r0(area=166530+1 holes), r1(area=288360), r2(area=80431), r3(area=86996), r4(area=40170)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTthu": {
+      "_info": "5 regions: r0(area=166530+1 holes), r1(area=288360), r2(area=25536), r3(area=225180), r4(area=71531)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tTthuu": {
+      "_info": "6 regions: r0(area=166530+1 holes), r1(area=287820), r2(area=25536), r3(area=219051), r4(area=71531), r5(area=143761)",
+      "regions": {
+        "0": 5,
+        "0.h0": 2,
+        "1": 0,
+        "2": 5,
+        "3": 3,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tTti": {
+      "_info": "4 regions: r0(area=208980), r1(area=177708), r2(area=14288), r3(area=140140)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTtii": {
+      "_info": "5 regions: r0(area=208980), r1(area=177708), r2(area=14288), r3(area=140140), r4(area=41607)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTto": {
+      "_info": "4 regions: r0(area=279000), r1(area=208980), r2(area=14288), r3(area=87474)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tTtoo": {
+      "_info": "5 regions: r0(area=279000), r1(area=208980), r2(area=14288), r3(area=86996), r4(area=40788)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTtu": {
+      "_info": "4 regions: r0(area=218700), r1(area=208980), r2(area=190620), r3(area=14288)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tTtuu": {
+      "_info": "5 regions: r0(area=208980), r1(area=190620), r2(area=14288), r3(area=206226), r4(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tTu": {
+      "_info": "5 regions: r0(area=298596), r1(area=28188), r2(area=33232), r3(area=217080), r4(area=74576)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tTuu": {
+      "_info": "6 regions: r0(area=298596), r1(area=28188), r2(area=33234), r3(area=196707), r4(area=73628), r5(area=143761)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tTwoForOddPowersOfFour": {
+      "_info": "2 regions: r0(area=202500), r1(area=72240)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tU": {
+      "_info": "4 regions: r0(area=283500), r1(area=118976), r2(area=32852), r3(area=14212)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5
+      }
+    },
+    "tUu": {
+      "_info": "6 regions: r0(area=282420), r1(area=117962), r2(area=216349), r3(area=14430), r4(area=14504), r5(area=38800)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tV": {
+      "_info": "4 regions: r0(area=30810), r1(area=344593), r2(area=85526), r3(area=99858)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tVa": {
+      "_info": "5 regions: r0(area=30810), r1(area=212550), r2(area=85526), r3(area=30624), r4(area=74412)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tVa.post": {
+      "_info": "3 regions: r0(area=14520), r1(area=314490), r2(area=47491)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3
+      }
+    },
+    "tVa.pssp": {
+      "_info": "3 regions: r0(area=14520), r1(area=314490), r2(area=47491)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3
+      }
+    },
+    "tVaa": {
+      "_info": "4 regions: r0(area=30810), r1(area=195021), r2(area=85526), r3(area=187312)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tVai": {
+      "_info": "5 regions: r0(area=30810), r1(area=191360), r2(area=163325), r3(area=85526), r4(area=131875)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tVau": {
+      "_info": "5 regions: r0(area=30810), r1(area=195050), r2(area=85526), r3(area=191360), r4(area=86508)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 3
+      }
+    },
+    "tVe": {
+      "_info": "4 regions: r0(area=30810), r1(area=191360), r2(area=85526), r3(area=131875)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tVee": {
+      "_info": "5 regions: r0(area=30810), r1(area=191360), r2(area=85526), r3(area=131875), r4(area=46350)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tVi": {
+      "_info": "3 regions: r0(area=30810), r1(area=445662), r2(area=85526)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3
+      }
+    },
+    "tVii": {
+      "_info": "4 regions: r0(area=30810), r1(area=445662), r2(area=85526), r3(area=38916)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tVirama": {
+      "_info": "2 regions: r0(area=99858), r1(area=66780)",
+      "regions": {
+        "0": 0,
+        "1": 3
+      }
+    },
+    "tVisarga": {
+      "_info": "4 regions: r0(area=18630), r1(area=18630), r2(area=54978), r3(area=54978)",
+      "regions": {
+        "0": 3,
+        "1": 3,
+        "2": 0,
+        "3": 3
+      }
+    },
+    "tVo": {
+      "_info": "4 regions: r0(area=30810), r1(area=354888), r2(area=85526), r3(area=87474)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5
+      }
+    },
+    "tVocalicL": {
+      "_info": "2 regions: r0(area=488250), r1(area=75075)",
+      "regions": {
+        "0": 0,
+        "1": 5
+      }
+    },
+    "tVocalicLl": {
+      "_info": "3 regions: r0(area=488250), r1(area=72303), r2(area=119380)",
+      "regions": {
+        "0": 0,
+        "1": 5,
+        "2": 5
+      }
+    },
+    "tVocalicR": {
+      "_info": "4 regions: r0(area=201960), r1(area=191160), r2(area=184680), r3(area=197640)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tVocalicRr": {
+      "_info": "5 regions: r0(area=207360), r1(area=190080), r2(area=186840), r3(area=185368), r4(area=136771)",
+      "regions": {
+        "0": 0,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tVoo": {
+      "_info": "5 regions: r0(area=30810), r1(area=354888), r2(area=85526), r3(area=86996), r4(area=40788)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5
+      }
+    },
+    "tVu": {
+      "_info": "6 regions: r0(area=30810), r1(area=411939), r2(area=85526), r3(area=212550), r4(area=30624), r5(area=74412)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 5,
+        "5": 5
+      }
+    },
+    "tVuu": {
+      "_info": "7 regions: r0(area=30810), r1(area=379620), r2(area=85526), r3(area=212550), r4(area=30624), r5(area=74412), r6(area=140530)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tY": {
+      "_info": "5 regions: r0(area=166530), r1(area=297880), r2(area=287820), r3(area=223020), r4(area=108834)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tYa": {
+      "_info": "6 regions: r0(area=166530), r1(area=287820), r2(area=244350), r3(area=29238), r4(area=233820), r5(area=67847)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tYaa": {
+      "_info": "7 regions: r0(area=166530), r1(area=287820), r2(area=244350), r3(area=29238), r4(area=218440), r5(area=67847), r6(area=143761)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5
+      }
+    },
+    "tYai": {
+      "_info": "6 regions: r0(area=166530), r1(area=287820), r2(area=177425), r3(area=234000), r4(area=178928), r5(area=233820)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5,
+        "5": 3
+      }
+    },
+    "tYau": {
+      "_info": "8 regions: r0(area=166530), r1(area=287820), r2(area=238920), r3(area=29238), r4(area=212796), r5(area=67847), r6(area=57138), r7(area=156275)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 5,
+        "7": 5
+      }
+    },
+    "tYe": {
+      "_info": "5 regions: r0(area=166530), r1(area=287820), r2(area=234000), r3(area=178928), r4(area=233820)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3
+      }
+    },
+    "tYee": {
+      "_info": "6 regions: r0(area=166530), r1(area=287820), r2(area=234000), r3(area=178928), r4(area=233820), r5(area=46144)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tYi": {
+      "_info": "4 regions: r0(area=166530), r1(area=287820), r2(area=243000), r3(area=233820)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 3
+      }
+    },
+    "tYii": {
+      "_info": "5 regions: r0(area=166530), r1(area=287820), r2(area=243000), r3(area=219964), r4(area=143761)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 3,
+        "4": 5
+      }
+    },
+    "tYo": {
+      "_info": "6 regions: r0(area=166530), r1(area=287820), r2(area=234000), r3(area=178928), r4(area=233280), r5(area=229500)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 3
+      }
+    },
+    "tYoo": {
+      "_info": "6 regions: r0(area=166530), r1(area=287820), r2(area=234000), r3(area=178928), r4(area=211869), r5(area=142596)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 5
+      }
+    },
+    "tYu": {
+      "_info": "7 regions: r0(area=166530), r1(area=287820), r2(area=244350), r3(area=29238), r4(area=233280), r5(area=67847), r6(area=229500)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3
+      }
+    },
+    "tYuu": {
+      "_info": "8 regions: r0(area=166530), r1(area=287820), r2(area=244350), r3(area=29238), r4(area=233280), r5(area=67847), r6(area=216486), r7(area=143761)",
+      "regions": {
+        "0": 5,
+        "1": 0,
+        "2": 5,
+        "3": 5,
+        "4": 3,
+        "5": 5,
+        "6": 3,
+        "7": 5
+      }
+    },
+    "tZero": {
+      "_info": "2 regions: r0(area=159544), r1(area=277560)",
+      "regions": {
+        "0": 5,
+        "1": 0
+      }
+    },
+    "tZero.sups": {
+      "_info": "2 regions: r0(area=86372), r1(area=165549)",
+      "regions": {
+        "0": 5,
+        "1": 0
+      }
+    },
+    "tZeroForOddPowersOfFour": {
+      "_info": "3 regions: r0(area=95700), r1(area=182779), r2(area=159777)",
+      "regions": {
+        "0": 3,
+        "1": 0,
+        "2": 3
+      }
+    }
+  }
+}

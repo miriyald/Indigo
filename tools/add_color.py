@@ -7,7 +7,10 @@ Three styles available:
   --style manual  : Per-region color from JSON mapping
 
 Usage:
-    python tools/add_color.py [--style region|ats|manual] [input.ttf] [output.ttf]
+    python tools/add_color.py [--style region|ats|manual] [--ufo source.ufo] [input.ttf] [output.ttf]
+
+The --ufo flag extracts layer glyph outlines from the original UFO source,
+preserving contours that overlap removal would merge in the compiled TTF.
 
 Defaults:
     input:  output/indigo/TiroTelugu/TTF/TiroTelugu-Regular.ttf
@@ -18,6 +21,10 @@ import argparse
 import json
 from pathlib import Path
 
+import ufoLib2
+from fontTools.pens.boundsPen import BoundsPen
+from fontTools.pens.cu2quPen import Cu2QuPen
+from fontTools.pens.ttGlyphPen import TTGlyphPen
 from fontTools.ttLib import TTFont
 from fontTools.ttLib.tables._g_l_y_f import Glyph, GlyphCoordinates
 from fontTools.ttLib.tables.ttProgram import Program
@@ -219,6 +226,122 @@ def _clone_glyph(source_glyph):
     return new_glyph
 
 
+def detect_regions_ufo(ufo_font, glyph_name):
+    """Detect regions from UFO source (sees original contours before overlap removal)."""
+    glyphset = ufo_font.layers.defaultLayer
+    glyph = glyphset[glyph_name]
+    contours = list(glyph.contours)
+    if not contours:
+        return []
+
+    info = []
+    for i, contour in enumerate(contours):
+        pen = BoundsPen(glyphset)
+        contour.draw(pen)
+        bounds = pen.bounds
+        if bounds is None:
+            info.append({"idx": i, "bounds": (0, 0, 0, 0), "is_outer": True, "area": 0})
+            continue
+
+        pts = [(pt.x, pt.y) for pt in contour]
+        signed_area = 0
+        for j in range(len(pts)):
+            x1, y1 = pts[j]
+            x2, y2 = pts[(j + 1) % len(pts)]
+            signed_area += (x2 - x1) * (y2 + y1)
+
+        bbox_area = (bounds[2] - bounds[0]) * (bounds[3] - bounds[1])
+        info.append({"idx": i, "bounds": bounds, "is_outer": signed_area > 0, "area": bbox_area})
+
+    outers = [c for c in info if c["is_outer"]]
+    inners = [c for c in info if not c["is_outer"]]
+    outers.sort(key=lambda c: c["area"], reverse=True)
+
+    regions = []
+    assigned = set()
+
+    for outer in outers:
+        ob = outer["bounds"]
+        holes = []
+        for inner in inners:
+            if inner["idx"] in assigned:
+                continue
+            ib = inner["bounds"]
+            if ib[0] >= ob[0] and ib[1] >= ob[1] and ib[2] <= ob[2] and ib[3] <= ob[3]:
+                holes.append(inner["idx"])
+                assigned.add(inner["idx"])
+        regions.append((outer["idx"], holes))
+
+    for inner in inners:
+        if inner["idx"] not in assigned:
+            regions.append((inner["idx"], []))
+
+    return regions
+
+
+def classify_regions_smart_ufo(ufo_font, glyph_name, regions):
+    """Assign colors based on region position/shape (UFO version)."""
+    if not regions:
+        return {}
+
+    glyphset = ufo_font.layers.defaultLayer
+    glyph = glyphset[glyph_name]
+    contours = list(glyph.contours)
+
+    def contour_bounds(ci):
+        pen = BoundsPen(glyphset)
+        contours[ci].draw(pen)
+        return pen.bounds or (0, 0, 0, 0)
+
+    def contour_area(ci):
+        b = contour_bounds(ci)
+        return (b[2] - b[0]) * (b[3] - b[1])
+
+    def contour_centroid_y(ci):
+        b = contour_bounds(ci)
+        return (b[1] + b[3]) / 2
+
+    def contour_aspect(ci):
+        b = contour_bounds(ci)
+        w = b[2] - b[0]
+        h = b[3] - b[1]
+        if w == 0 or h == 0:
+            return 1.0
+        return max(w, h) / min(w, h)
+
+    base_idx = max(range(len(regions)), key=lambda i: contour_area(regions[i][0]))
+    base_cy = contour_centroid_y(regions[base_idx][0])
+
+    mapping = {}
+    for ri, (outer_idx, hole_indices) in enumerate(regions):
+        if ri == base_idx:
+            mapping[str(ri)] = SMART_COLOR_BASE
+        else:
+            cy = contour_centroid_y(outer_idx)
+            mapping[str(ri)] = SMART_COLOR_ABOVE if cy > base_cy else SMART_COLOR_BELOW
+
+        for hi, hole_ci in enumerate(hole_indices):
+            ar = contour_aspect(hole_ci)
+            mapping[f"{ri}.h{hi}"] = SMART_COLOR_CIRCULAR if ar < SMART_ASPECT_THRESHOLD else SMART_COLOR_ELLIPTICAL
+
+    return mapping
+
+
+def _extract_contours_ufo(ufo_font, glyph_name, contour_indices):
+    """Extract specific contours from a UFO glyph and return a TrueType Glyph object."""
+    glyphset = ufo_font.layers.defaultLayer
+    glyph = glyphset[glyph_name]
+    contours = list(glyph.contours)
+
+    tt_pen = TTGlyphPen(None)
+    cu2qu_pen = Cu2QuPen(tt_pen, max_err=1.0, reverse_direction=False)
+    for ci in sorted(contour_indices):
+        contours[ci].draw(cu2qu_pen)
+    tt_glyph = tt_pen.glyph()
+    tt_glyph.recalcBounds({"glyf": None})
+    return tt_glyph
+
+
 # --- Style: region (split by size) ---
 
 def build_region_style(font, targets):
@@ -373,13 +496,15 @@ def _regions_to_contour_indices(regions_list, region_indices):
     return contour_indices
 
 
-def build_manual_style(font, targets, mapping_data):
+def build_manual_style(font, targets, mapping_data, ufo_font=None):
     glyf = font["glyf"]
     hmtx = font["hmtx"]
 
     defaults = mapping_data.get("defaults", {})
     unmapped_strategy = defaults.get("unmapped_glyphs", "auto:region")
     glyph_mappings = mapping_data.get("glyphs", {})
+
+    ufo_glyphset = ufo_font.layers.defaultLayer if ufo_font else None
 
     # First pass: determine all layer glyph names needed
     layer_plan = []
@@ -390,22 +515,24 @@ def build_manual_style(font, targets, mapping_data):
         if glyph.numberOfContours is None or glyph.numberOfContours < 1:
             continue
 
-        num_contours = glyph.numberOfContours
-        regions = detect_regions(glyph)
+        # Use UFO for region detection when available (sees pre-overlap-removal contours)
+        use_ufo_for_glyph = (ufo_font and ufo_glyphset and name in ufo_glyphset)
+        if use_ufo_for_glyph:
+            ufo_contours = list(ufo_glyphset[name].contours)
+            num_contours = len(ufo_contours)
+            regions = detect_regions_ufo(ufo_font, name)
+        else:
+            num_contours = glyph.numberOfContours
+            regions = detect_regions(glyph)
 
         if name in glyph_mappings:
             groups = _parse_glyph_mapping(glyph_mappings[name], regions)
         elif unmapped_strategy in ("auto:region", "auto:contour") and len(regions) >= 2:
-            # Largest region gets color 0, rest get color 1
-            region_areas = [(ri, contour_bbox_area(glyph, outer)) for ri, (outer, _) in enumerate(regions)]
-            region_areas.sort(key=lambda x: x[1], reverse=True)
-            largest_ri = region_areas[0][0]
-            largest_contours = _regions_to_contour_indices(regions, [largest_ri])
-            rest_contours = _regions_to_contour_indices(regions, [ri for ri, _ in region_areas[1:]])
-            groups = [
-                (largest_contours, 0),
-                (rest_contours, 1),
-            ]
+            if use_ufo_for_glyph:
+                smart_map = classify_regions_smart_ufo(ufo_font, name, regions)
+            else:
+                smart_map = classify_regions_smart(glyph)
+            groups = list(_parse_glyph_mapping({"regions": smart_map}, regions))
         elif unmapped_strategy == "auto:ats":
             fill_color_idx = ATS_FILL_COLORS[i % len(ATS_FILL_COLORS)]
             groups = [(list(range(num_contours)), fill_color_idx)]
@@ -425,7 +552,7 @@ def build_manual_style(font, targets, mapping_data):
                 layer_name = f"{name}.c{palette_idx}_{suffix}"
 
             new_glyph_names.append(layer_name)
-            glyph_layers.append((layer_name, valid_indices, palette_idx))
+            glyph_layers.append((layer_name, valid_indices, palette_idx, use_ufo_for_glyph))
 
         if glyph_layers:
             layer_plan.append((name, glyph_layers))
@@ -438,8 +565,11 @@ def build_manual_style(font, targets, mapping_data):
     for name, glyph_layers in layer_plan:
         glyph = glyf[name]
         layers = []
-        for layer_name, valid_indices, palette_idx in glyph_layers:
-            layer_glyph = _extract_contours(glyph, valid_indices)
+        for layer_name, valid_indices, palette_idx, from_ufo in glyph_layers:
+            if from_ufo:
+                layer_glyph = _extract_contours_ufo(ufo_font, name, valid_indices)
+            else:
+                layer_glyph = _extract_contours(glyph, valid_indices)
             glyf[layer_name] = layer_glyph
 
             width, lsb = hmtx[name]
@@ -502,6 +632,7 @@ def main():
     parser.add_argument("--style", choices=["region", "ats", "manual", "contour"], default="region",
                         help="Color style: region (split by size), ats (fill, 9 colors), manual (JSON mapping)")
     parser.add_argument("--mapping", type=Path, help="JSON color mapping file (default: color_mapping.json next to input TTF)")
+    parser.add_argument("--ufo", type=Path, help="UFO source for layer glyph extraction (sees contours before overlap removal)")
     parser.add_argument("--family-suffix", default="Color", help="Suffix for color font family name (default: Color)")
     args = parser.parse_args()
 
@@ -557,12 +688,17 @@ def main():
 
     print(f"Found {len(targets)} target Telugu glyphs (style: {args.style})")
 
+    ufo_font = None
+    if args.ufo:
+        print(f"Loading UFO source {args.ufo}")
+        ufo_font = ufoLib2.Font.open(str(args.ufo))
+
     if args.style == "region":
         count = build_region_style(font, targets)
     elif args.style == "ats":
         count = build_ats_style(font, targets)
     else:
-        count = build_manual_style(font, targets, mapping_data)
+        count = build_manual_style(font, targets, mapping_data, ufo_font=ufo_font)
 
     print(f"Added color layers for {count} glyphs")
 

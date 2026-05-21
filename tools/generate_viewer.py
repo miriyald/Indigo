@@ -1,15 +1,15 @@
 """
 Generate an interactive HTML viewer for color mapping review.
 
-Reads the compiled TTF, extracts region/hole data for each Telugu glyph,
-and produces a self-contained HTML file with:
+Reads a UFO source or compiled TTF, extracts region/hole data for each
+Telugu glyph, and produces a self-contained HTML file with:
 - One glyph at a time with regions/holes colored and labeled
 - ATS palette reference bar
 - JSON snippet with default mapping, ready to copy
 - Prev/next navigation and search
 
 Usage:
-    python tools/generate_viewer.py [input.ttf] --output output/color-mapping-viewer.html
+    python tools/generate_viewer.py [input.ufo|input.ttf] --output output/color-mapping-viewer.html
 """
 
 import argparse
@@ -17,10 +17,16 @@ import json
 import sys
 from pathlib import Path
 
+import ufoLib2
+from fontTools.pens.boundsPen import BoundsPen
+from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.ttLib import TTFont
 
 sys.path.insert(0, str(Path(__file__).parent))
-from add_color import is_telugu_glyph, contour_bbox_area, detect_regions, classify_regions_smart, ATS_PALETTE
+from add_color import (
+    is_telugu_glyph, contour_bbox_area, detect_regions, classify_regions_smart,
+    detect_regions_ufo, classify_regions_smart_ufo, ATS_PALETTE,
+)
 
 
 def ttf_contour_to_svg_path(glyph, contour_idx):
@@ -85,6 +91,69 @@ def contour_bounds(glyph, contour_idx):
     return [min(xs), min(ys), max(xs), max(ys)]
 
 
+def _ufo_contour_to_svg_path(contour, glyphset):
+    pen = SVGPathPen(glyphset)
+    contour.draw(pen)
+    return pen.getCommands()
+
+
+def _ufo_contour_bounds(contour, glyphset):
+    pen = BoundsPen(glyphset)
+    contour.draw(pen)
+    b = pen.bounds
+    if b is None:
+        return None
+    return [b[0], b[1], b[2], b[3]]
+
+
+def extract_glyph_data_ufo(ufo_font):
+    glyphset = ufo_font.layers.defaultLayer
+    glyphs_data = []
+
+    names = sorted(name for name in glyphset.keys()
+                   if is_telugu_glyph(name) and len(list(glyphset[name].contours)) >= 2)
+
+    for name in names:
+        glyph = glyphset[name]
+        contours = list(glyph.contours)
+
+        regions = detect_regions_ufo(ufo_font, name)
+
+        width = glyph.width if glyph.width else 600
+
+        contour_paths = []
+        contour_bounds_list = []
+        for contour in contours:
+            contour_paths.append(_ufo_contour_to_svg_path(contour, glyphset))
+            contour_bounds_list.append(_ufo_contour_bounds(contour, glyphset))
+
+        region_data = []
+        for outer_idx, hole_indices in regions:
+            region_data.append({"outer": outer_idx, "holes": hole_indices})
+
+        default_mapping = classify_regions_smart_ufo(ufo_font, name, regions)
+
+        region_info_parts = []
+        for ri, (outer_idx, hole_indices) in enumerate(regions):
+            b = _ufo_contour_bounds(contours[outer_idx], glyphset)
+            area = int((b[2] - b[0]) * (b[3] - b[1])) if b else 0
+            holes_str = f"+{len(hole_indices)} holes" if hole_indices else ""
+            region_info_parts.append(f"r{ri}(area={area}{holes_str})")
+        info_str = f"{len(regions)} regions: {', '.join(region_info_parts)}"
+
+        glyphs_data.append({
+            "name": name,
+            "width": width,
+            "contourPaths": contour_paths,
+            "contourBounds": contour_bounds_list,
+            "regions": region_data,
+            "defaultMapping": default_mapping,
+            "info": info_str
+        })
+
+    return glyphs_data
+
+
 def extract_glyph_data(font):
     glyf = font["glyf"]
     hmtx = font["hmtx"]
@@ -96,13 +165,10 @@ def extract_glyph_data(font):
         if not is_telugu_glyph(name):
             continue
         glyph = glyf[name]
-        if glyph.numberOfContours is None or glyph.numberOfContours < 1:
+        if glyph.numberOfContours is None or glyph.numberOfContours < 2:
             continue
 
         regions = detect_regions(glyph)
-        has_holes = any(len(holes) > 0 for _, holes in regions)
-        if not has_holes:
-            continue
 
         try:
             width = hmtx[name][0]
