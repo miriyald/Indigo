@@ -23,9 +23,12 @@ def _generate_telugu_comprehensive_test():
         "ప్రతి వ్యక్తికిని భావస్వాతంత్ర్య, అంతఃకరణస్వాతంత్ర్య, మతస్వాతంత్ర్యములకు హక్కు గలదు.",
     ]
 
-    vowels = [chr(c) for c in range(0x0C05, 0x0C15)]
-    vowels += [chr(c) for c in range(0x0C61, 0x0C64)]
-    groups["Vowels (U+0C05–0C14, U+0C61–0C63)"] = vowels
+    vowels = [chr(c)
+              for c in range(0x0C05, 0x0C15)
+              if c not in (0x0C0D, 0x0C11)]
+    vowels += [chr(c) 
+               for c in range(0x0C61, 0x0C64)]
+    groups["Vowels (U+0C05–0C14 except U+0C0D/U+0C11, U+0C61–0C63)"] = vowels
 
     special = [f"◌{chr(c)}" for c in range(0x0C00, 0x0C05)]
     groups["Special Marks (U+0C00–0C04)"] = special

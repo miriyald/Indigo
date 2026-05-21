@@ -105,6 +105,8 @@ The smart heuristic assigns:
 | Circular holes (aspect < 1.5) | 2 | Yellow |
 | Elliptical holes (aspect >= 1.5) | 4 | Purple |
 
+**Re-running is safe:** `generate_mapping.py` preserves existing manual edits (both `regions` and `ufo_contours` values) when re-run — it only fills in defaults for new glyphs.
+
 The JSON structure:
 ```json
 {
@@ -115,13 +117,17 @@ The JSON structure:
       "_info": "3 regions: r0(area=222480), r1(area=25857), r2(area=71224)",
       "regions": { "0": 0, "1": 5, "2": 5 }
     },
-    "tKha": {
-      "_info": "2 regions: r0(area=371520+2 holes), r1(area=15480)",
-      "regions": { "0": 0, "0.h0": 4, "0.h1": 2, "1": 3 }
+    "tJha": {
+      "_info": "2 regions: r0(area=957971+1 holes), r1(area=15480)",
+      "regions": { "0": 0, "0.h0": 2, "1": 3 },
+      "ufo_contours": { "0": 0, "1": 5, "2": 5, "3": 3, "4": 3, "5": 5, "6": 3 },
+      "_ufo_info": "7 contours: uc0(287820),uc1(166530),..."
     }
   }
 }
 ```
+
+Glyphs where overlap removal merged UFO contours get both `regions` (TTF topology) and `ufo_contours` (per-contour from UFO source). When `--ufo` is passed to `add_color.py`, the `ufo_contours` mapping takes priority, giving finer color control.
 
 ---
 
@@ -139,8 +145,9 @@ Open in a browser. Features:
 - Navigate glyphs with arrow keys or Prev/Next buttons
 - Search by glyph name
 - See regions/holes colored and labeled on the left
+- **TTF/UFO toggle** — for glyphs where overlap removal merged contours, switch between TTF region view and UFO per-contour view to choose your coloring granularity
 - **Edit the JSON directly** in the right panel (changes persist as you navigate)
-- Copy single glyph or full mapping to clipboard
+- Copy single glyph or full mapping to clipboard (exports correct format per view: `regions` for TTF, `_source: ufo` + `contours` for UFO)
 - Palette reference bar showing all 9 ATS colors
 
 **Editing workflow:**
