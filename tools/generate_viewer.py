@@ -625,23 +625,34 @@ renderGlyph(0);
 
 def main():
     parser = argparse.ArgumentParser(description="Generate interactive color mapping viewer HTML")
-    parser.add_argument("input", nargs="?", help="Input TTF path")
-    parser.add_argument("--output", "-o", help="Output HTML path (default: next to input TTF)")
+    parser.add_argument("input", nargs="?", help="Input UFO or TTF path")
+    parser.add_argument("--output", "-o", help="Output HTML path (default: next to input)")
     args = parser.parse_args()
 
     base_dir = Path(__file__).parent.parent
-    input_path = Path(args.input) if args.input else base_dir / "output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf"
+    input_path = Path(args.input) if args.input else base_dir / "source" / "TiroTelugu-Regular.ufo"
+    use_ufo = input_path.suffix == ".ufo" or input_path.is_dir()
+
     if args.output:
         output_path = Path(args.output)
+    elif use_ufo:
+        ttf_dir = base_dir / "output/indigo-telugu/TiroTelugu/TTF"
+        output_path = ttf_dir / (input_path.stem.replace(".ufo", "") + "-viewer.html")
     else:
         output_path = input_path.parent / (input_path.stem + "-viewer.html")
 
     print(f"Loading {input_path}")
-    font = TTFont(str(input_path))
 
-    print("Extracting glyph data...")
-    glyphs_data = extract_glyph_data(font)
-    print(f"  {len(glyphs_data)} glyphs with holes")
+    if use_ufo:
+        ufo_font = ufoLib2.Font.open(str(input_path))
+        print("Extracting glyph data from UFO...")
+        glyphs_data = extract_glyph_data_ufo(ufo_font)
+    else:
+        font = TTFont(str(input_path))
+        print("Extracting glyph data from TTF...")
+        glyphs_data = extract_glyph_data(font)
+
+    print(f"  {len(glyphs_data)} glyphs")
 
     # Generate HTML
     glyphs_json = json.dumps(glyphs_data, ensure_ascii=False)
