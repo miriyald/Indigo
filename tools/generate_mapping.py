@@ -32,6 +32,7 @@ from add_color import (
     SMART_COLOR_BELOW,
     SMART_ASPECT_THRESHOLD,
 )
+from telugu_sort import sort_telugu_glyphs
 
 
 def classify_contours_ufo(ufo_font, glyph_name):
@@ -107,12 +108,12 @@ def main():
     glyf = font["glyf"]
     glyph_order = font.getGlyphOrder()
 
-    targets = [
+    targets = sort_telugu_glyphs([
         name for name in glyph_order
         if is_telugu_glyph(name)
         and glyf[name].numberOfContours is not None
         and glyf[name].numberOfContours >= 1
-    ]
+    ])
 
     # Load existing mapping to preserve manual edits
     existing_glyphs = {}

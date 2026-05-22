@@ -21,6 +21,7 @@ from fontTools.ttLib import TTFont
 sys.path.insert(0, str(Path(__file__).parent))
 from add_color import is_telugu_glyph, contour_bbox_area, detect_regions, classify_regions_smart, ATS_PALETTE
 from generate_mapping import classify_contours_ufo
+from telugu_sort import sort_telugu_glyphs
 
 
 def ttf_contour_to_svg_path(glyph, contour_idx):
@@ -111,12 +112,15 @@ def extract_glyph_data(font, ufo_font=None, mapping_data=None):
 
     glyphs_data = []
 
-    for name in glyph_order:
-        if not is_telugu_glyph(name):
-            continue
+    sorted_names = sort_telugu_glyphs([
+        name for name in glyph_order
+        if is_telugu_glyph(name)
+        and glyf[name].numberOfContours is not None
+        and glyf[name].numberOfContours >= 1
+    ])
+
+    for name in sorted_names:
         glyph = glyf[name]
-        if glyph.numberOfContours is None or glyph.numberOfContours < 1:
-            continue
 
         ttf_contours = glyph.numberOfContours
         ufo_contour_count = 0
