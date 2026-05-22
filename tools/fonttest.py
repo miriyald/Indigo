@@ -22,10 +22,11 @@ def _generate_telugu_comprehensive_test():
               for c in range(0x0C05, 0x0C15)
               if c not in (0x0C0D, 0x0C11)]
     vowels += [chr(c)
-               for c in range(0x0C60, 0x0C64)]
+               for c in range(0x0C60, 0x0C64)
+               if c not in (0x0C62, 0x0C63)]
 
     special = [f"◌{chr(c)}"
-               for c in range(0x0C00, 0x0C05)]
+               for c in list(range(0x0C00, 0x0C05)) + list(range(0x0C62, 0x0C64))]
 
     consonants = [chr(c)
                   for c in range(0x0C15, 0x0C3A)

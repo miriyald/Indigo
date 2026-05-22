@@ -12,30 +12,30 @@
     "tCandrabindu": {
       "_info": "2 regions: r0(area=72400), r1(area=13688)",
       "regions": {
-        "0": 0,
-        "1": 5
+        "0": 5,
+        "1": 2
       }
     },
     "tAnusvara": {
       "_info": "1 regions: r0(area=288360+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2
       }
     },
     "tAnusvaraAbove": {
       "_info": "1 regions: r0(area=42228+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2
       }
     },
     "tVisarga": {
       "_info": "2 regions: r0(area=54978+1 holes), r1(area=54978+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2,
-        "1": 0,
+        "1": 5,
         "1.h0": 2
       }
     },
@@ -43,15 +43,15 @@
       "_info": "1 ttf-contour, 3 ufo-contours: uc0(area=118144), uc1(area=74880), uc2(area=75660)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
-        "1": 0,
-        "2": 0
+        "0": 5,
+        "1": 5,
+        "2": 5
       }
     },
     "tNukta": {
       "_info": "1 regions: r0(area=42228+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2
       }
     },
@@ -59,22 +59,22 @@
       "_info": "1 ttf-contour, 2 ufo-contours: uc0(area=99858), uc1(area=66780)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
-        "1": 0
+        "0": 5,
+        "1": 5
       }
     },
     "tAiLengthMark": {
       "_info": "1 regions: r0(area=153925+1 holes)",
       "regions": {
-        "0": 0,
-        "0.h0": 0
+        "0": 5,
+        "0.h0": 2
       }
     },
     "tTuumu": {
       "_info": "1 regions: r0(area=348840+1 holes)",
       "regions": {
-        "0": 0,
-        "0.h0": 0
+        "0": 5,
+        "0.h0": 2
       }
     },
     "tA": {
@@ -331,8 +331,8 @@
       "_source": "ufo",
       "contours": {
         "0": 0,
-        "1": 0,
-        "2": 0
+        "1": 5,
+        "2": 5
       }
     },
     "tKa.post": {
