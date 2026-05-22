@@ -217,6 +217,19 @@ def main():
             }
             ufo_count += 1
 
+        else:
+            # Single contour in both TTF and UFO — simple single-region entry
+            if "regions" in existing_entry:
+                region_map = existing_entry["regions"]
+            else:
+                region_map = {"0": SMART_COLOR_ABOVE}
+
+            mapping["glyphs"][name] = {
+                "_info": f"1 region: r0(area={contour_bbox_area(glyph, 0)})",
+                "regions": region_map
+            }
+            ttf_count += 1
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(mapping, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Saved mapping scaffold to {output_path}")
