@@ -10,11 +10,6 @@ python tools/add_color.py --style manual --ufo %UFO% %TTF%
 if errorlevel 1 goto :error
 
 echo.
-echo === Generate viewer ===
-python tools/generate_viewer.py %TTF% --ufo %UFO%
-if errorlevel 1 goto :error
-
-echo.
 echo === Generate test page ===
 python tools/fonttest.py output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular-ColorManual.ttf
 if errorlevel 1 goto :error

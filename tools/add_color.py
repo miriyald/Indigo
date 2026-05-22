@@ -40,10 +40,10 @@ REGION_PALETTE = [
 # --- ATS-Chikkamagaluru 9-color palette ---
 ATS_PALETTE = [
     (0x1D/255, 0x1D/255, 0x1D/255, 1.0),  # [0] dark outline
-    (0xEE/255, 0x34/255, 0x41/255, 1.0),  # [1] red
-    (0xF1/255, 0xF0/255, 0x9A/255, 1.0),  # [2] light yellow
+    (0xEE/255, 0x34/255, 0x41/255, 1.0),  # [1] 
+    (0xBB/255, 0x9C/255, 0xD4/255, 1.0),  # [2] lavender
     (0xF7/255, 0xAC/255, 0xBA/255, 1.0),  # [3] pink
-    (0xBB/255, 0x9C/255, 0xD4/255, 1.0),  # [4] lavender
+    (0xF1/255, 0xF0/255, 0x9A/255, 1.0),  # [4] light yellow
     (0xEB/255, 0xA7/255, 0xD1/255, 1.0),  # [5] magenta
     (0xFB/255, 0xB8/255, 0x8F/255, 1.0),  # [6] peach
     (0x93/255, 0xD4/255, 0x9B/255, 1.0),  # [7] green

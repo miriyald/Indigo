@@ -44,8 +44,8 @@
       "_source": "ufo",
       "contours": {
         "0": 0,
-        "1": 3,
-        "2": 3
+        "1": 0,
+        "2": 0
       }
     },
     "tNukta": {
@@ -60,21 +60,21 @@
       "_source": "ufo",
       "contours": {
         "0": 0,
-        "1": 3
+        "1": 0
       }
     },
     "tAiLengthMark": {
       "_info": "1 regions: r0(area=153925+1 holes)",
       "regions": {
         "0": 0,
-        "0.h0": 2
+        "0.h0": 0
       }
     },
     "tTuumu": {
       "_info": "1 regions: r0(area=348840+1 holes)",
       "regions": {
         "0": 0,
-        "0.h0": 2
+        "0.h0": 0
       }
     },
     "tA": {
@@ -107,14 +107,6 @@
         "0.h1": 4,
         "0.h2": 2
       },
-      "ufo_contours": {
-        "0": 0,
-        "1": 5,
-        "2": 3,
-        "3": 5,
-        "4": 5,
-        "5": 5
-      },
       "_ufo_info": "6 contours: uc0(288360),uc1(169807),uc2(202895),uc3(26026),uc4(74576),uc5(41820)"
     },
     "tU": {
@@ -122,12 +114,6 @@
       "regions": {
         "0": 0,
         "0.h0": 2
-      },
-      "ufo_contours": {
-        "0": 0,
-        "1": 3,
-        "2": 5,
-        "3": 5
       },
       "_ufo_info": "4 contours: uc0(283500),uc1(118976),uc2(32852),uc3(14212)"
     },
@@ -138,22 +124,14 @@
         "0.h0": 2,
         "0.h1": 2
       },
-      "ufo_contours": {
-        "0": 0,
-        "1": 3,
-        "2": 5,
-        "3": 5,
-        "4": 5,
-        "5": 5
-      },
       "_ufo_info": "6 contours: uc0(282420),uc1(117962),uc2(216349),uc3(14430),uc4(14504),uc5(38800)"
     },
     "tVocalicR": {
       "_info": "1 ttf-contour, 4 ufo-contours: uc0(area=201960), uc1(area=191160), uc2(area=184680), uc3(area=197640)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
-        "1": 3,
+        "0": 3,
+        "1": 0,
         "2": 3,
         "3": 3
       }
@@ -163,22 +141,14 @@
       "regions": {
         "0": 0,
         "0.h0": 2
-      },
-      "ufo_contours": {
-        "0": 0,
-        "1": 3,
-        "2": 3,
-        "3": 3,
-        "4": 5
-      },
-      "_ufo_info": "5 contours: uc0(207360),uc1(190080),uc2(186840),uc3(185368),uc4(136771)"
+      }
     },
     "tVocalicL": {
       "_info": "1 ttf-contour, 2 ufo-contours: uc0(area=488250), uc1(area=75075)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
-        "1": 5
+        "0": 5,
+        "1": 0
       }
     },
     "tVocalicLl": {
@@ -186,26 +156,14 @@
       "regions": {
         "0": 0,
         "0.h0": 2
-      },
-      "ufo_contours": {
-        "0": 0,
-        "1": 5,
-        "2": 5
-      },
-      "_ufo_info": "3 contours: uc0(488250),uc1(72303),uc2(119380)"
+      }
     },
     "tE": {
       "_info": "1 regions: r0(area=532827+1 holes)",
       "regions": {
         "0": 0,
         "0.h0": 2
-      },
-      "ufo_contours": {
-        "0": 0,
-        "1": 3,
-        "2": 3
-      },
-      "_ufo_info": "3 contours: uc0(369005),uc1(85824),uc2(30810)"
+      }
     },
     "tEe": {
       "_info": "2 regions: r0(area=532827+1 holes), r1(area=43555)",
@@ -213,14 +171,7 @@
         "0": 0,
         "0.h0": 2,
         "1": 5
-      },
-      "ufo_contours": {
-        "0": 0,
-        "1": 3,
-        "2": 3,
-        "3": 5
-      },
-      "_ufo_info": "4 contours: uc0(369005),uc1(85824),uc2(30810),uc3(43555)"
+      }
     },
     "tAi": {
       "_info": "1 regions: r0(area=356940+1 holes)",
@@ -263,7 +214,7 @@
     "tSignAa": {
       "_info": "1 regions: r0(area=188000+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2
       }
     },
@@ -271,95 +222,79 @@
       "_info": "1 ttf-contour, 2 ufo-contours: uc0(area=114375), uc1(area=44091)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
+        "0": 5,
         "1": 5
       }
     },
     "tSignUu": {
       "_info": "1 regions: r0(area=380385+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2
       }
     },
     "tSignVocalicR": {
       "_info": "1 regions: r0(area=424203+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2
       }
     },
     "tSignVocalicR.pvsp": {
       "_info": "1 regions: r0(area=424203+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2
       }
     },
     "tSignVocalicRr": {
       "_info": "1 regions: r0(area=628238+2 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2,
         "0.h1": 2
-      },
-      "ufo_contours": {
-        "0": 0,
-        "1": 5
-      },
-      "_ufo_info": "2 contours: uc0(404982),uc1(137710)"
+      }
     },
     "tSignVocalicRr.pvsp": {
       "_info": "1 regions: r0(area=628238+2 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2,
         "0.h1": 2
-      },
-      "ufo_contours": {
-        "0": 0,
-        "1": 5
-      },
-      "_ufo_info": "2 contours: uc0(404982),uc1(137710)"
+      }
     },
     "tSignVocalicL": {
       "_info": "1 ttf-contour, 2 ufo-contours: uc0(area=204376), uc1(area=35259)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
+        "0": 5,
         "1": 5
       }
     },
     "tSignVocalicLl": {
       "_info": "1 regions: r0(area=387512+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2
-      },
-      "ufo_contours": {
-        "0": 0,
-        "1": 5,
-        "2": 5
-      },
-      "_ufo_info": "3 contours: uc0(204376),uc1(34776),uc2(66198)"
+      }
     },
     "tSignEe": {
       "_info": "1 ttf-contour, 2 ufo-contours: uc0(area=123435), uc1(area=47174)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
+        "0": 5,
         "1": 5
       }
     },
     "tSignAi": {
       "_info": "2 regions: r0(area=153925+1 holes), r1(area=123435)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2,
         "1": 5
       },
       "ufo_contours": {
-        "0": 0,
+        "0": 5,
         "1": 5
       },
       "_ufo_info": "2 contours: uc0(153925),uc1(123435)"
@@ -367,19 +302,19 @@
     "tSignO": {
       "_info": "1 regions: r0(area=155428+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2
       }
     },
     "tSignOo": {
       "_info": "1 regions: r0(area=266903+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2
       },
       "ufo_contours": {
-        "0": 0,
-        "1": 3,
+        "0": 5,
+        "1": 5,
         "2": 5
       },
       "_ufo_info": "3 contours: uc0(86996),uc1(75396),uc2(42848)"
@@ -387,7 +322,7 @@
     "tSignAu": {
       "_info": "1 regions: r0(area=185650+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2
       }
     },
@@ -396,47 +331,47 @@
       "_source": "ufo",
       "contours": {
         "0": 0,
-        "1": 5,
-        "2": 5
+        "1": 0,
+        "2": 0
       }
     },
     "tKa.post": {
       "_info": "1 ttf-contour, 2 ufo-contours: uc0(area=353192), uc1(area=18612)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
-        "1": 3
+        "0": 5,
+        "1": 5
       }
     },
     "tKa.post2": {
       "_info": "1 ttf-contour, 2 ufo-contours: uc0(area=336497), uc1(area=18612)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
-        "1": 3
+        "0": 5,
+        "1": 5
       }
     },
     "tKa.pssp": {
       "_info": "1 ttf-contour, 2 ufo-contours: uc0(area=353192), uc1(area=18612)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
-        "1": 3
+        "0": 5,
+        "1": 5
       }
     },
     "tKa.pssp2": {
       "_info": "1 ttf-contour, 2 ufo-contours: uc0(area=336497), uc1(area=18612)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
-        "1": 3
+        "0": 5,
+        "1": 5
       }
     },
     "tKa.sub.ss02": {
       "_info": "1 ttf-contour, 3 ufo-contours: uc0(area=68310), uc1(area=12597), uc2(area=12750)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
+        "0": 5,
         "1": 5,
         "2": 5
       }
@@ -476,10 +411,7 @@
     },
     "tKuu": {
       "_info": "1 regions: r0(area=899549+1 holes)",
-      "regions": {
-        "0": 0,
-        "0.h0": 2
-      },
+      
       "ufo_contours": {
         "0": 0,
         "1": 5,
@@ -565,16 +497,9 @@
     "tKRa.sub.ss03": {
       "_info": "2 regions: r0(area=279654), r1(area=137085)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "1": 5
-      },
-      "ufo_contours": {
-        "0": 0,
-        "1": 5,
-        "2": 5,
-        "3": 5
-      },
-      "_ufo_info": "4 contours: uc0(279654),uc1(11123),uc2(51067),uc3(11270)"
+      }
     },
     "tKha": {
       "_info": "2 regions: r0(area=371520+2 holes), r1(area=15480)",
@@ -593,16 +518,11 @@
     "tKha.sub": {
       "_info": "2 regions: r0(area=168618+2 holes), r1(area=10224)",
       "regions": {
-        "0": 0,
-        "0.h0": 4,
+        "0": 5,
+        "0.h0": 2,
         "0.h1": 2,
-        "1": 3
-      },
-      "ufo_contours": {
-        "0": 0,
-        "1": 3
-      },
-      "_ufo_info": "2 contours: uc0(168618),uc1(10224)"
+        "1": 5
+      }
     },
     "tKha.presub": {
       "_info": "2 regions: r0(area=371520+2 holes), r1(area=11398)",
@@ -1129,18 +1049,10 @@
     "tGha.sub": {
       "_info": "2 regions: r0(area=235316+1 holes), r1(area=10224)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2,
-        "1": 3
-      },
-      "ufo_contours": {
-        "0": 0,
-        "1": 3,
-        "2": 3,
-        "3": 3,
-        "4": 3
-      },
-      "_ufo_info": "5 contours: uc0(93628),uc1(10224),uc2(39788),uc3(12078),uc4(86152)"
+        "1": 5
+      }
     },
     "tGha.presub": {
       "_info": "3 regions: r0(area=540000+1 holes), r1(area=107598), r2(area=11398)",
@@ -1630,8 +1542,8 @@
       "_info": "1 ttf-contour, 4 ufo-contours: uc0(area=88288), uc1(area=40228), uc2(area=8136), uc3(area=7680)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
-        "1": 3,
+        "0": 5,
+        "1": 5,
         "2": 5,
         "3": 5
       }
@@ -2485,24 +2397,17 @@
       "_info": "1 ttf-contour, 3 ufo-contours: uc0(area=88288), uc1(area=40228), uc2(area=38356)",
       "_source": "ufo",
       "contours": {
-        "0": 0,
-        "1": 3,
+        "0": 5,
+        "1": 5,
         "2": 5
       }
     },
     "tJaa": {
       "_info": "1 regions: r0(area=517320+1 holes)",
       "regions": {
-        "0": 0,
+        "0": 5,
         "0.h0": 2
-      },
-      "ufo_contours": {
-        "0": 0,
-        "1": 3,
-        "2": 5,
-        "3": 5
-      },
-      "_ufo_info": "4 contours: uc0(189000),uc1(89866),uc2(70384),uc3(118205)"
+      }
     },
     "tJi": {
       "_info": "1 regions: r0(area=452785+1 holes)",

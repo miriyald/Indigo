@@ -8,7 +8,7 @@ Usage:
 import argparse
 from pathlib import Path
 
-SIZES = [36]
+SIZES = [72]
 
 
 def _generate_telugu_comprehensive_test():
@@ -18,48 +18,53 @@ def _generate_telugu_comprehensive_test():
     from collections import OrderedDict
     groups = OrderedDict()
 
-    groups["Text"] = [
-        "ఆంతరంగిక, కుటుంబ, గృహ, లేఖావ్యవహారములలో, విధి విరుద్ధమయిన జోక్యమునకుగాని, గౌరవప్రతిష్థలను భంగపరచు ప్రచారములకుగాని యెవరిని గురిచేయరాదు.",
-        "ప్రతి వ్యక్తికిని భావస్వాతంత్ర్య, అంతఃకరణస్వాతంత్ర్య, మతస్వాతంత్ర్యములకు హక్కు గలదు.",
-    ]
-
     vowels = [chr(c)
               for c in range(0x0C05, 0x0C15)
               if c not in (0x0C0D, 0x0C11)]
-    vowels += [chr(c) 
-               for c in range(0x0C61, 0x0C64)]
-    groups["Vowels (U+0C05–0C14 except U+0C0D/U+0C11, U+0C61–0C63)"] = vowels
+    vowels += [chr(c)
+               for c in range(0x0C60, 0x0C64)]
 
-    special = [f"◌{chr(c)}" for c in range(0x0C00, 0x0C05)]
-    groups["Special Marks (U+0C00–0C04)"] = special
+    special = [f"◌{chr(c)}"
+               for c in range(0x0C00, 0x0C05)]
 
-    consonants = [chr(c) for c in range(0x0C15, 0x0C3A) if c != 0x0C29]
+    consonants = [chr(c)
+                  for c in range(0x0C15, 0x0C3A)
+                  if c != 0x0C29]
     consonants += [chr(0x0C58), chr(0x0C59)]
-    groups["Consonants (U+0C15–0C39, U+0C58, U+0C59)"] = consonants
 
-    extenders = [chr(c) for c in range(0x0C3E, 0x0C4E)
+    extenders = [chr(c)
+                 for c in range(0x0C3E, 0x0C4E)
                  if c not in (0x0C45, 0x0C49)]
     extenders += [chr(0x0C55), chr(0x0C56)]
     extenders += [chr(0x0C5D)]
-    groups["Extenders (U+0C3E–0C4D, U+0C55, U+0C56, U+0C5D)"] = [
-        f"◌{e}" for e in extenders]
 
-    numbers = [chr(c) for c in range(0x0C66, 0x0C70)]
-    groups["Numbers (U+0C66–0C6F)"] = numbers
+    numbers = [chr(c)
+               for c in range(0x0C66, 0x0C70)]
 
     siddham = [chr(c) for c in range(0x0C77, 0x0C80)]
-    groups["Siddham (U+0C77–0C7F)"] = siddham
+
+    groups["అచ్చులు"] = vowels
+    groups["ప్రత్యేకం"] = special
+    groups["హల్లులు"] = consonants
+    groups["గుణింతాలు"] = [f"◌{e}"
+                           for e in extenders]
+    groups["సంఖ్యలు"] = numbers
+    groups["సిద్ధం"] = siddham
 
     for cons in consonants:
-        combos = [f"{cons}{ext}" for ext in extenders]
-        groups[f"Composites: {cons}"] = combos
+        combos = [f"{cons}{ext}"
+                  for ext in extenders]
+        groups[f"గుణింతాలు: {cons}"] = combos
 
     virama = chr(0x0C4D)
     for c1 in consonants:
-        conjuncts = [f"{c1}{virama}{c2}" for c2 in consonants if c2 not in (
-            chr(0x0C58), chr(0x0C59))]
-        groups[f"Conjuncts: {c1}+్"] = conjuncts
+        conjuncts = [f"{c1}{virama}{c2}"
+                     for c2 in consonants
+                     if c2 not in (chr(0x0C58), chr(0x0C59))]
+        groups[f"ఒత్తులు: {c1}+్"] = conjuncts
 
+    groups["Sample Text"] = ["ఆంతరంగిక, కుటుంబ, గృహ, లేఖావ్యవహారములలో, విధి విరుద్ధమయిన జోక్యమునకుగాని, గౌరవప్రతిష్థలను భంగపరచు ప్రచారములకుగాని యెవరిని గురిచేయరాదు.",
+                             "ప్రతి వ్యక్తికిని భావస్వాతంత్ర్య, అంతఃకరణస్వాతంత్ర్య, మతస్వాతంత్ర్యములకు హక్కు గలదు."]
     return groups
 
 
