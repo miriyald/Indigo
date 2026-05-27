@@ -4,13 +4,8 @@ setlocal
 set TTF=output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf
 set UFO=source/TiroTelugu-Regular.ufo
 
-echo === Generate mapping ===
-python tools/generate_mapping.py %TTF% --ufo %UFO% --holes-only
-if errorlevel 1 goto :error
-
-echo.
-echo === Apply color ===
-python tools/add_color.py --style manual --ufo %UFO% %TTF%
+echo === Colorize ===
+python tools/colorize.py %TTF% --ufo %UFO% -v
 if errorlevel 1 goto :error
 
 echo.
@@ -20,7 +15,7 @@ if errorlevel 1 goto :error
 
 echo.
 echo === Generate test page ===
-python tools/fonttest.py output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular-ColorManual.ttf
+python tools/fonttest.py output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular-Colorized.ttf
 if errorlevel 1 goto :error
 
 echo.
