@@ -629,7 +629,7 @@ def export_classification(glyph_plans, output_path, preserve_existing=True):
             else:
                 cat_name = region_cats[idx]
 
-            bbox_str = f"({region.bbox[0]:.0f},{region.bbox[1]:.0f},{region.bbox[2]:.0f},{region.bbox[3]:.0f})"
+            bbox_str = f"\"({region.bbox[0]:.0f},{region.bbox[1]:.0f},{region.bbox[2]:.0f},{region.bbox[3]:.0f})\""
             info = "largest" if idx == 0 and cat_name == "base" else ""
             lines.append(f"{glyph_name},{idx},{cat_name},{bbox_str},{info}")
 
@@ -642,25 +642,25 @@ def export_classification(glyph_plans, output_path, preserve_existing=True):
 
 def load_overrides(path):
     """Load CSV overrides. Returns {glyph_name: {region_idx: category_name}}."""
+    import csv
     overrides = {}
     if not path.exists():
         return overrides
 
     valid_cats = set(CATEGORY_NAMES)
     with open(path, "r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith("#") or line.startswith("glyph,"):
+        reader = csv.reader(f)
+        for row in reader:
+            if not row or row[0].startswith("#") or row[0] == "glyph":
                 continue
-            parts = line.split(",")
-            if len(parts) < 3:
+            if len(row) < 3:
                 continue
-            glyph_name = parts[0]
+            glyph_name = row[0]
             try:
-                region_idx = int(parts[1])
+                region_idx = int(row[1])
             except ValueError:
                 continue
-            cat_name = parts[2]
+            cat_name = row[2]
             if cat_name not in valid_cats:
                 continue
             if glyph_name not in overrides:
