@@ -217,28 +217,26 @@ def generate_html(font_path, output_path=None, download_link=None, author=None, 
     if download_link:
         header_extra += f'<p class="download"><a href="{download_link}" download>Download {font_path.name}</a></p>\n'
 
-    def _render_groups(groups, size_rem):
+    def _render_groups(groups):
         html = ""
         for group_name, items in groups.items():
             html += f'<h3>{group_name}</h3>\n'
             is_text = all(len(item) > 5 for item in items)
             if is_text:
                 for item in items:
-                    html += f'<p class="sample-text" style="font-size: {size_rem}rem;">{item}</p>\n'
+                    html += f'<p class="sample-text">{item}</p>\n'
             else:
-                html += f'<div class="grid" style="font-size: {size_rem}rem;">\n'
+                html += '<div class="grid">\n'
                 for item in items:
                     html += f'<span class="cell">{item}</span>\n'
                 html += '</div>\n'
         return html
 
-    # Use only one size block, controlled by slider (default 1rem)
-    default_rem = 1
-    samples_html = f'<div class="size-block">\n'
-    samples_html += _render_groups(script_data, default_rem)
+    samples_html = '<div class="size-block">\n'
+    samples_html += _render_groups(script_data)
     if latn_data:
         samples_html += "<hr>\n"
-        samples_html += _render_groups(latn_data, default_rem)
+        samples_html += _render_groups(latn_data)
     samples_html += "</div>\n"
 
     html = f"""<!DOCTYPE html>
@@ -261,8 +259,8 @@ body {{
     transition: font-size 0.2s;
 }}
 h1 {{
-    font-family: system-ui, sans-serif;
-    font-size: 2rem;
+    font-family: "TestFont", serif;
+    font-size: 32px;
     color: #555;
     border-bottom: 1px solid #ccc;
     padding-bottom: 8px;
@@ -295,13 +293,13 @@ h1 {{
     background: #0250a3;
 }}
 h2 {{
-    font-family: system-ui, sans-serif;
+    font-family: "TestFont", serif;
     font-size: 1.25rem;
     color: #888;
     margin: 32px 0 8px;
 }}
 h3 {{
-    font-family: system-ui, sans-serif;
+    font-family: "TestFont", serif;
     font-size: 1.1rem;
     color: #666;
     margin: 20px 0 4px;
@@ -371,14 +369,14 @@ input[type=range] {{
 <script>
 const slider = document.getElementById('fontSizeSlider');
 const valueDisplay = document.getElementById('fontSizeValue');
-slider.addEventListener('input', function() {
-  document.body.style.fontSize = slider.value + 'rem';
-  valueDisplay.textContent = parseFloat(slider.value).toFixed(2) + 'rem';
-});
+slider.addEventListener('input', function() {{
+  var px = Math.round(parseFloat(slider.value) * 16);
+  document.documentElement.style.fontSize = px + 'px';
+  valueDisplay.textContent = parseFloat(slider.value).toFixed(2) + 'rem (' + px + 'px)';
+}});
 </script>
 </body>
 </html>"""
-"""
 
     resolved_output.write_text(html, encoding="utf-8")
     print(f"Generated: {resolved_output}")
