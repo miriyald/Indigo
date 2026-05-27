@@ -217,35 +217,34 @@ def generate_html(font_path, output_path=None, download_link=None, author=None, 
     if download_link:
         header_extra += f'<p class="download"><a href="{download_link}" download>Download {font_path.name}</a></p>\n'
 
-    def _render_groups(groups, size):
+    def _render_groups(groups, size_rem):
         html = ""
         for group_name, items in groups.items():
             html += f'<h3>{group_name}</h3>\n'
             is_text = all(len(item) > 5 for item in items)
             if is_text:
                 for item in items:
-                    html += f'<p style="font-size: {size}px;">{item}</p>\n'
+                    html += f'<p class="sample-text" style="font-size: {size_rem}rem;">{item}</p>\n'
             else:
-                html += f'<div class="grid" style="font-size: {size}px;">\n'
+                html += f'<div class="grid" style="font-size: {size_rem}rem;">\n'
                 for item in items:
                     html += f'<span class="cell">{item}</span>\n'
                 html += '</div>\n'
         return html
 
-    samples_html = ""
-    for size in SIZES:
-        samples_html += f'<div class="size-block">\n'
-        samples_html += f'<h2>{size}pt</h2>\n'
-        samples_html += _render_groups(script_data, size)
-        if latn_data:
-            samples_html += "<hr>\n"
-            samples_html += _render_groups(latn_data, size)
-        samples_html += "</div>\n"
+    # Use only one size block, controlled by slider (default 1rem)
+    default_rem = 1
+    samples_html = f'<div class="size-block">\n'
+    samples_html += _render_groups(script_data, default_rem)
+    if latn_data:
+        samples_html += "<hr>\n"
+        samples_html += _render_groups(latn_data, default_rem)
+    samples_html += "</div>\n"
 
     html = f"""<!DOCTYPE html>
-<html lang="en">
+<html lang=\"en\">
 <head>
-<meta charset="UTF-8">
+<meta charset=\"UTF-8\">
 <title>Font Test — {font_name}</title>
 <style>
 @font-face {{
@@ -258,17 +257,20 @@ body {{
     padding: 0;
     background: #fff;
     color: #000;
+    font-size: 1rem;
+    transition: font-size 0.2s;
 }}
 h1 {{
     font-family: system-ui, sans-serif;
-    font-size: 16px;
+    font-size: 2rem;
     color: #555;
     border-bottom: 1px solid #ccc;
     padding-bottom: 8px;
+    margin-bottom: 16px;
 }}
 .author {{
     font-family: system-ui, sans-serif;
-    font-size: 14px;
+    font-size: 1rem;
     color: #333;
     margin: 8px 0;
 }}
@@ -287,20 +289,20 @@ h1 {{
     color: #fff;
     border-radius: 4px;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 1rem;
 }}
 .download a:hover {{
     background: #0250a3;
 }}
 h2 {{
     font-family: system-ui, sans-serif;
-    font-size: 13px;
+    font-size: 1.25rem;
     color: #888;
     margin: 32px 0 8px;
 }}
 h3 {{
     font-family: system-ui, sans-serif;
-    font-size: 12px;
+    font-size: 1.1rem;
     color: #666;
     margin: 20px 0 4px;
     font-weight: normal;
@@ -326,7 +328,7 @@ h3 {{
 }}
 .row-label {{
     font-family: system-ui, sans-serif;
-    font-size: 12px !important;
+    font-size: 0.9rem !important;
     color: #999;
     margin: 8px 0 2px;
 }}
@@ -338,6 +340,20 @@ hr {{
 .size-block {{
     margin-bottom: 40px;
 }}
+.slider-container {{
+    margin: 16px 0 24px 0;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}}
+.slider-label {{
+    font-family: system-ui, sans-serif;
+    font-size: 1rem;
+    color: #333;
+}}
+input[type=range] {{
+    width: 200px;
+}}
 @media print {{
     body {{ margin: 10px; }}
     .cell {{ border-color: #ddd; }}
@@ -346,9 +362,22 @@ hr {{
 </head>
 <body>
 <h1>{font_name} &mdash; {font_path.name} &mdash; Script: {script}</h1>
+<div class="slider-container">
+  <label for="fontSizeSlider" class="slider-label">Font size:</label>
+  <input type="range" id="fontSizeSlider" min="0.5" max="3" value="1" step="0.01">
+  <span id="fontSizeValue">1.00rem</span>
+</div>
 {header_extra}{samples_html}
+<script>
+const slider = document.getElementById('fontSizeSlider');
+const valueDisplay = document.getElementById('fontSizeValue');
+slider.addEventListener('input', function() {
+  document.body.style.fontSize = slider.value + 'rem';
+  valueDisplay.textContent = parseFloat(slider.value).toFixed(2) + 'rem';
+});
+</script>
 </body>
-</html>
+</html>"""
 """
 
     resolved_output.write_text(html, encoding="utf-8")

@@ -242,23 +242,42 @@ def detect_regions_ufo(ufo_font, glyph_name):
 
 
 TOUCHING_Y_OVERLAP = 0.5  # y-ranges must overlap by 50% of smaller height to be "same stroke"
+TOUCHING_Y_OVERLAP_LENIENT = 0.01  # for substantial regions: any bbox overlap = connected
+SUBSTANTIAL_SIZE_RATIO = 0.30  # region > 30% of base area = structural part, not a mark
 
 
-def _regions_connected(r1, r2, tolerance):
-    """Two regions are connected if their bboxes overlap AND they share significant vertical range."""
+def _regions_connected(r1, r2, tolerance, base_area=None):
+    """Two regions are connected if their bboxes overlap AND they share significant vertical range.
+    For substantial regions (>30% of base), use lenient threshold since vertically stacked
+    connected strokes barely overlap at their junction point — but NOT if the smaller region
+    is positioned above the larger (that's a separate mark, not a connected stroke)."""
     if not bboxes_overlap(r1.bbox, r2.bbox, tolerance):
         return False
-    # Check vertical overlap ratio (same stroke = similar y-range)
     y_overlap = max(0, min(r1.bbox[3], r2.bbox[3]) - max(r1.bbox[1], r2.bbox[1]))
     h1 = r1.bbox[3] - r1.bbox[1]
     h2 = r2.bbox[3] - r2.bbox[1]
     smaller_h = min(h1, h2)
     if smaller_h == 0:
         return False
-    return (y_overlap / smaller_h) >= TOUCHING_Y_OVERLAP
+    y_ratio = y_overlap / smaller_h
+
+    # For substantial regions, any bbox overlap means they're physically connected
+    # UNLESS the smaller region sits above the larger one (separate mark)
+    if base_area and base_area > 0:
+        smaller_area = min(r1.area, r2.area)
+        if smaller_area / base_area >= SUBSTANTIAL_SIZE_RATIO:
+            # Determine which is the smaller region
+            smaller_r = r1 if r1.area <= r2.area else r2
+            larger_r = r2 if r1.area <= r2.area else r1
+            # If smaller region's centroid is above the larger's top edge, it's a mark
+            if smaller_r.centroid[1] > larger_r.bbox[3]:
+                return y_ratio >= TOUCHING_Y_OVERLAP
+            return y_ratio >= TOUCHING_Y_OVERLAP_LENIENT
+
+    return y_ratio >= TOUCHING_Y_OVERLAP
 
 
-def _find_touching_group(regions, seed_indices, tolerance):
+def _find_touching_group(regions, seed_indices, tolerance, base_area=None):
     """Transitively find all regions connected to the seed group."""
     group = set(seed_indices)
     changed = True
@@ -268,7 +287,7 @@ def _find_touching_group(regions, seed_indices, tolerance):
             if i in group or region.is_hole_only:
                 continue
             for gi in list(group):
-                if _regions_connected(region, regions[gi], tolerance):
+                if _regions_connected(region, regions[gi], tolerance, base_area):
                     group.add(i)
                     changed = True
                     break
@@ -288,7 +307,7 @@ def classify_regions(regions, transitive=True):
 
     # Find all regions that are part of the base (touching chain)
     if transitive:
-        base_group = _find_touching_group(regions, {base_idx}, BBOX_OVERLAP_TOLERANCE)
+        base_group = _find_touching_group(regions, {base_idx}, BBOX_OVERLAP_TOLERANCE, base.area)
     else:
         base_group = {base_idx}
         for i, region in enumerate(regions):
@@ -301,6 +320,16 @@ def classify_regions(regions, transitive=True):
     for i in base_group:
         result[CAT_BASE].append(regions[i])
 
+    # Compute combined base group bbox for positional classification
+    base_group_bboxes = [regions[i].bbox for i in base_group]
+    combined_base_bbox = (
+        min(b[0] for b in base_group_bboxes),
+        min(b[1] for b in base_group_bboxes),
+        max(b[2] for b in base_group_bboxes),
+        max(b[3] for b in base_group_bboxes),
+    )
+    combined_base_centroid = bbox_centroid(combined_base_bbox)
+
     for i, region in enumerate(regions):
         if i in base_group:
             continue
@@ -309,15 +338,22 @@ def classify_regions(regions, transitive=True):
             result[CAT_HOLE].append(region)
             continue
 
-        if not bboxes_overlap(region.bbox, base.bbox, BBOX_OVERLAP_TOLERANCE):
+        # Check if region's x-range overlaps the combined base x-range
+        x_overlaps_base = not (
+            region.bbox[2] < combined_base_bbox[0] - BBOX_OVERLAP_TOLERANCE or
+            region.bbox[0] > combined_base_bbox[2] + BBOX_OVERLAP_TOLERANCE
+        )
+
+        # Truly disconnected: no bbox overlap AND no x-range overlap with base
+        if not bboxes_overlap(region.bbox, combined_base_bbox, BBOX_OVERLAP_TOLERANCE) and not x_overlaps_base:
             result[CAT_DISCONNECTED].append(region)
         else:
-            base_width = base.bbox[2] - base.bbox[0]
-            x_threshold = base.bbox[0] + POSTBASE_X_THRESHOLD * base_width
+            base_width = combined_base_bbox[2] - combined_base_bbox[0]
+            x_threshold = combined_base_bbox[0] + POSTBASE_X_THRESHOLD * base_width
 
-            if region.centroid[0] > x_threshold and region.centroid[1] < base.centroid[1]:
+            if region.centroid[0] > x_threshold and region.centroid[1] < combined_base_centroid[1]:
                 result[CAT_POSTBASE].append(region)
-            elif region.centroid[1] > base.centroid[1]:
+            elif region.centroid[1] > combined_base_centroid[1]:
                 result[CAT_ABOVE].append(region)
             else:
                 result[CAT_BELOW].append(region)
