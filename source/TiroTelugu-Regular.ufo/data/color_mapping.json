@@ -19,23 +19,23 @@
     "tAnusvara": {
       "_info": "1 regions: r0(area=288360+1 holes)",
       "regions": {
-        "0": 5,
+        "0": 0,
         "0.h0": 2
       }
     },
     "tAnusvaraAbove": {
       "_info": "1 regions: r0(area=42228+1 holes)",
       "regions": {
-        "0": 5,
+        "0": 0,
         "0.h0": 2
       }
     },
     "tVisarga": {
       "_info": "2 regions: r0(area=54978+1 holes), r1(area=54978+1 holes)",
       "regions": {
-        "0": 5,
+        "0": 0,
         "0.h0": 2,
-        "1": 5,
+        "1": 0,
         "1.h0": 2
       }
     },
@@ -96,7 +96,7 @@
       "_info": "1 regions: r0(area=366836+1 holes)",
       "regions": {
         "0": 0,
-        "0.h0": 4
+        "0.h0": 2
       }
     },
     "tIi": {
@@ -194,7 +194,7 @@
       "contours": {
         "0": 0,
         "1": 0,
-        "2": 5
+        "2": 0
       }
     },
     "tAu": {
@@ -267,7 +267,7 @@
     "tSignVocalicLl": {
       "_info": "1 regions: r0(area=387512+1 holes)",
       "regions": {
-        "0": 5,
+        "0": 0,
         "0.h0": 2
       }
     },
