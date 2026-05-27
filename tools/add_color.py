@@ -181,6 +181,21 @@ def classify_regions_smart(glyph):
     return mapping
 
 
+def classify_regions_holes_only(glyph):
+    """Simplified classification: all regions=0, all holes=2."""
+    regions = detect_regions(glyph)
+    if not regions:
+        return {}
+
+    mapping = {}
+    for ri, (outer_idx, hole_indices) in enumerate(regions):
+        mapping[str(ri)] = SMART_COLOR_BASE
+        for hi, hole_ci in enumerate(hole_indices):
+            mapping[f"{ri}.h{hi}"] = SMART_COLOR_CIRCULAR
+
+    return mapping
+
+
 def _extract_contours(source_glyph, contour_indices):
     new_glyph = Glyph()
     new_glyph.numberOfContours = len(contour_indices)

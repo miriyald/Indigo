@@ -5,7 +5,7 @@ set TTF=output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf
 set UFO=source/TiroTelugu-Regular.ufo
 
 echo === Generate mapping ===
-python tools/generate_mapping.py %TTF% --ufo %UFO%
+python tools/generate_mapping.py %TTF% --ufo %UFO% --holes-only
 if errorlevel 1 goto :error
 
 echo.

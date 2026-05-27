@@ -27,6 +27,7 @@ from add_color import (
     contour_bbox_area,
     detect_regions,
     classify_regions_smart,
+    classify_regions_holes_only,
     SMART_COLOR_BASE,
     SMART_COLOR_ABOVE,
     SMART_COLOR_BELOW,
@@ -70,11 +71,34 @@ def classify_contours_ufo(ufo_font, glyph_name):
     return mapping
 
 
+def classify_contours_ufo_holes_only(ufo_font, glyph_name):
+    """Assign colors to UFO contours by winding: CW (outer)=0, CCW (hole)=2."""
+    glyphset = ufo_font.layers.defaultLayer
+    glyph = glyphset[glyph_name]
+    contours = list(glyph.contours)
+    if len(contours) < 2:
+        return {}
+
+    mapping = {}
+    for ci, contour in enumerate(contours):
+        pts = [(pt.x, pt.y) for pt in contour]
+        signed_area = 0
+        for j in range(len(pts)):
+            x1, y1 = pts[j]
+            x2, y2 = pts[(j + 1) % len(pts)]
+            signed_area += (x2 - x1) * (y2 + y1)
+        mapping[str(ci)] = SMART_COLOR_BASE if signed_area > 0 else 2
+
+    return mapping
+
+
 def main():
     parser = argparse.ArgumentParser(description="Generate color mapping scaffold JSON")
     parser.add_argument("input", nargs="?", help="Input TTF path")
     parser.add_argument("--ufo", type=Path, help="UFO source (for glyphs where TTF merged contours)")
     parser.add_argument("--output", "-o", help="Output JSON path")
+    parser.add_argument("--holes-only", action="store_true",
+                        help="Simplified scaffold: regions=0, holes=2 only")
     args = parser.parse_args()
 
     base_dir = Path(__file__).parent.parent
@@ -164,6 +188,8 @@ def main():
             # Preserve existing region mapping if present, otherwise generate
             if "regions" in existing_entry:
                 region_map = existing_entry["regions"]
+            elif args.holes_only:
+                region_map = classify_regions_holes_only(glyph)
             else:
                 region_map = classify_regions_smart(glyph)
 
@@ -176,6 +202,8 @@ def main():
             if ufo_contour_count >= 2 and ufo_contour_count != ttf_contours:
                 if "ufo_contours" in existing_entry:
                     entry["ufo_contours"] = existing_entry["ufo_contours"]
+                elif args.holes_only:
+                    entry["ufo_contours"] = classify_contours_ufo_holes_only(ufo_font, name)
                 else:
                     entry["ufo_contours"] = classify_contours_ufo(ufo_font, name)
 
@@ -207,6 +235,8 @@ def main():
             # Preserve existing contour mapping if present
             if "contours" in existing_entry:
                 contour_map = existing_entry["contours"]
+            elif args.holes_only:
+                contour_map = classify_contours_ufo_holes_only(ufo_font, name)
             else:
                 contour_map = classify_contours_ufo(ufo_font, name)
 
@@ -221,6 +251,8 @@ def main():
             # Single contour in both TTF and UFO — simple single-region entry
             if "regions" in existing_entry:
                 region_map = existing_entry["regions"]
+            elif args.holes_only:
+                region_map = {"0": SMART_COLOR_BASE}
             else:
                 region_map = {"0": SMART_COLOR_ABOVE}
 
