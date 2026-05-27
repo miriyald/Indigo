@@ -196,7 +196,9 @@ def generate_html(font_path, output_path=None, download_link=None, author=None, 
     font_name = font_path.stem
 
     if output_path is None:
-        resolved_output = font_path.parent / f"{font_name}-test.html"
+        output_dir = Path("output")
+        output_dir.mkdir(parents=True, exist_ok=True)
+        resolved_output = output_dir / f"{font_name}-test.html"
     else:
         resolved_output = Path(output_path).resolve()
 

@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-set TTF=output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf
+set TTF=source/TiroTelugu-Regular.input.ttf
 set UFO=source/TiroTelugu-Regular.ufo
 
 echo.
@@ -11,7 +11,7 @@ if errorlevel 1 goto :error
 
 echo.
 echo === Generate test page ===
-python tools/fonttest.py output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular-Colorized.ttf
+python tools/fonttest.py output/TiroTelugu-Regular.input-Colorized.ttf
 if errorlevel 1 goto :error
 
 echo.

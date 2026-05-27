@@ -38,23 +38,27 @@ jobs:
       - name: Build base TTF from UFO source
         run: python tools/tirobuild.py indigo-telugu.yml
 
-      - name: Apply color tables (manual style)
-        run: python tools/add_color.py --style manual
+      - name: Apply color tables
+        run: |
+          python tools/colorize.py \
+            output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf \
+            --ufo source/TiroTelugu-Regular.ufo \
+            -o output/TiroTelugu-Regular-Colorized.ttf
 
       - name: Generate test page
         run: |
           python tools/fonttest.py \
-            output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular-ColorManual.ttf \
-            -o output/indigo-telugu/TiroTelugu/TTF/index.html \
+            output/TiroTelugu-Regular-Colorized.ttf \
+            -o output/index.html \
             --author "Dileep Miriyala" \
             --project-url "https://github.com/miriyald/Indigo" \
-            --download-link "TiroTelugu-Regular-ColorManual.ttf"
+            --download-link "TiroTelugu-Regular-Colorized.ttf"
 
       - name: Prepare pages directory
         run: |
           mkdir -p _site
-          cp output/indigo-telugu/TiroTelugu/TTF/index.html _site/
-          cp output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular-ColorManual.ttf _site/
+          cp output/index.html _site/
+          cp output/TiroTelugu-Regular-Colorized.ttf _site/
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
