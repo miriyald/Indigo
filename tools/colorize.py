@@ -6,7 +6,9 @@ based on geometry: Base, Above, Disconnected, Below, Post-base, Holes.
 """
 
 import argparse
+import json
 from dataclasses import dataclass, field
+from datetime import datetime
 from pathlib import Path
 
 import ufoLib2
@@ -690,6 +692,41 @@ def apply_overrides(regions, classified, overrides_for_glyph):
     return new_classified
 
 
+META_FILENAME = "color-font-meta.json"
+
+
+def load_meta(path):
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def rename_font(font, meta):
+    name_table = font["name"]
+    family = meta["familyName"]
+    version = datetime.now().strftime("%Y%m%d.%H%M%S")
+
+    entries = {
+        1: family,
+        4: f"{family} Regular",
+        5: f"Version {version}",
+        6: meta.get("postscriptName", family.replace(" ", "") + "-Regular"),
+        16: family,
+    }
+    if "designer" in meta:
+        entries[9] = meta["designer"]
+    if "designerURL" in meta:
+        entries[11] = meta["designerURL"]
+    if "license" in meta:
+        entries[13] = meta["license"]
+    if "licenseURL" in meta:
+        entries[14] = meta["licenseURL"]
+
+    for name_id, value in entries.items():
+        name_table.setName(value, name_id, 3, 1, 0x409)
+
+    print(f"Font renamed to: {family} (version {version})")
+
+
 def assemble_color_tables(font, color_layers):
     font["CPAL"] = buildCPAL([PALETTE])
     font["COLR"] = buildCOLR(color_layers)
@@ -708,6 +745,8 @@ def main():
                         help="Export classification to TSV (optionally specify path)")
     parser.add_argument("--overrides", type=Path,
                         help="Path to overrides TSV (auto-discovered from UFO data/ if not specified)")
+    parser.add_argument("--meta", type=Path,
+                        help="Path to metadata JSON (auto-discovered from UFO data/ if not specified)")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()
 
@@ -749,8 +788,18 @@ def main():
 
     assemble_color_tables(font, color_layers)
 
+    meta_path = args.meta
+    if not meta_path and args.ufo:
+        candidate = args.ufo / "data" / META_FILENAME
+        if candidate.exists():
+            meta_path = candidate
+    if meta_path and meta_path.exists():
+        meta = load_meta(meta_path)
+        rename_font(font, meta)
+
     if args.output:
         output_path = args.output
+        output_path.parent.mkdir(parents=True, exist_ok=True)
     else:
         p = Path(args.ttf)
         output_dir = Path("output")

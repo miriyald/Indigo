@@ -18,6 +18,9 @@ def _generate_telugu_comprehensive_test():
     from collections import OrderedDict
     groups = OrderedDict()
 
+    groups["Sample Text"] = ["ఆంతరంగిక, కుటుంబ, గృహ, లేఖావ్యవహారములలో, విధి విరుద్ధమయిన జోక్యమునకుగాని, గౌరవప్రతిష్థలను భంగపరచు ప్రచారములకుగాని యెవరిని గురిచేయరాదు.",
+                             "ప్రతి వ్యక్తికిని భావస్వాతంత్ర్య, అంతఃకరణస్వాతంత్ర్య, మతస్వాతంత్ర్యములకు హక్కు గలదు."]
+
     vowels = [chr(c)
               for c in range(0x0C05, 0x0C15)
               if c not in (0x0C0D, 0x0C11)]
@@ -64,8 +67,6 @@ def _generate_telugu_comprehensive_test():
                      if c2 not in (chr(0x0C58), chr(0x0C59))]
         groups[f"ఒత్తులు: {c1}+్"] = conjuncts
 
-    groups["Sample Text"] = ["ఆంతరంగిక, కుటుంబ, గృహ, లేఖావ్యవహారములలో, విధి విరుద్ధమయిన జోక్యమునకుగాని, గౌరవప్రతిష్థలను భంగపరచు ప్రచారములకుగాని యెవరిని గురిచేయరాదు.",
-                             "ప్రతి వ్యక్తికిని భావస్వాతంత్ర్య, అంతఃకరణస్వాతంత్ర్య, మతస్వాతంత్ర్యములకు హక్కు గలదు."]
     return groups
 
 
@@ -344,12 +345,17 @@ hr {{
     margin: 16px 0 24px 0;
     display: flex;
     align-items: center;
-    gap: 1em;
+    gap: 16px;
+    font-size: 14px;
 }}
 .slider-label {{
     font-family: system-ui, sans-serif;
-    font-size: 1rem;
+    font-size: 14px;
     color: #333;
+}}
+#fontSizeValue {{
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
 }}
 input[type=range] {{
     width: 200px;
