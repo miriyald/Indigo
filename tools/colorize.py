@@ -449,7 +449,7 @@ def is_telugu_glyph(name):
     return name[1].isupper()
 
 
-def colorize_font(font, ufo_font, targets, tolerance=BBOX_OVERLAP_TOLERANCE, verbose=False, overrides=None):
+def colorize_font(font, ufo_font, targets, tolerance=BBOX_OVERLAP_TOLERANCE, verbose=False, overrides=None, radial_holes=False):
     glyf = font["glyf"]
     hmtx = font["hmtx"]
 
@@ -544,6 +544,7 @@ def colorize_font(font, ufo_font, targets, tolerance=BBOX_OVERLAP_TOLERANCE, ver
         ttf_glyph = glyf[glyph_name]
 
         layers_for_glyph = []
+        has_hole = False
         width = hmtx[glyph_name][0]
 
         for cat in layer_order:
@@ -552,7 +553,6 @@ def colorize_font(font, ufo_font, targets, tolerance=BBOX_OVERLAP_TOLERANCE, ver
                 continue
 
             if cat == CAT_HOLE:
-                # Holes always extracted from TTF (post-overlap-removal = true visual holes)
                 indices = hole_contour_indices_ttf
                 if not indices:
                     continue
@@ -571,10 +571,8 @@ def colorize_font(font, ufo_font, targets, tolerance=BBOX_OVERLAP_TOLERANCE, ver
             layer_name = f"{glyph_name}.{CATEGORY_NAMES[cat]}"
 
             if cat == CAT_HOLE:
-                # Holes always from TTF, reversed winding to render filled
                 layer_glyph = extract_contours_ttf_reversed(ttf_glyph, indices)
             elif cat == CAT_BASE:
-                # Base always from TTF (includes proper hole cutouts from overlap removal)
                 ttf_base_region = plan["ttf_regions"][0] if plan["ttf_regions"] else None
                 if ttf_base_region:
                     base_indices = [ttf_base_region.outer_idx] + ttf_base_region.hole_indices
@@ -588,14 +586,23 @@ def colorize_font(font, ufo_font, targets, tolerance=BBOX_OVERLAP_TOLERANCE, ver
 
             glyf[layer_name] = layer_glyph
             hmtx[layer_name] = (width, layer_glyph.xMin if hasattr(layer_glyph, 'xMin') else 0)
-            layers_for_glyph.append((layer_name, cat))
+
+            hole_bbox = None
+            if cat == CAT_HOLE:
+                has_hole = True
+                hole_bbox = (layer_glyph.xMin, layer_glyph.yMin, layer_glyph.xMax, layer_glyph.yMax)
+
+            layers_for_glyph.append({"layer_name": layer_name, "cat": cat, "hole_bbox": hole_bbox})
             stats[CATEGORY_NAMES[cat]] += 1
 
         if layers_for_glyph:
-            color_layers[glyph_name] = layers_for_glyph
+            if has_hole and radial_holes:
+                color_layers[glyph_name] = _build_v1_paint_layers(layers_for_glyph)
+            else:
+                color_layers[glyph_name] = [(info["layer_name"], info["cat"]) for info in layers_for_glyph]
 
         if verbose:
-            cats_present = [CATEGORY_NAMES[cat] for _, cat in layers_for_glyph]
+            cats_present = [CATEGORY_NAMES[info["cat"]] for info in layers_for_glyph]
             src = "ufo" if use_ufo else "ttf"
             print(f"  {glyph_name} [{src}]: {', '.join(cats_present)}")
 
@@ -727,6 +734,54 @@ def rename_font(font, meta):
     print(f"Font renamed to: {family} (version {version})")
 
 
+def _build_v1_paint_layers(layers_info):
+    """Convert a glyph's layer list to COLRv1 paint graph with radial gradient for holes."""
+    paint_layers = []
+    for info in layers_info:
+        layer_name = info["layer_name"]
+        cat = info["cat"]
+
+        if cat == CAT_HOLE and info.get("hole_bbox"):
+            bbox = info["hole_bbox"]
+            cx = int((bbox[0] + bbox[2]) / 2)
+            cy = int((bbox[1] + bbox[3]) / 2)
+            width = bbox[2] - bbox[0]
+            height = bbox[3] - bbox[1]
+            radius = max(int(max(width, height) / 2), 1)
+
+            paint = {
+                "Format": 10,
+                "Glyph": layer_name,
+                "Paint": {
+                    "Format": 6,
+                    "ColorLine": {
+                        "Extend": "pad",
+                        "ColorStop": [
+                            {"StopOffset": 0.0, "PaletteIndex": CAT_HOLE, "Alpha": 1.0},
+                            {"StopOffset": 1.0, "PaletteIndex": CAT_BASE, "Alpha": 1.0},
+                        ],
+                    },
+                    "x0": cx, "y0": cy, "r0": 0,
+                    "x1": cx, "y1": cy, "r1": radius,
+                },
+            }
+        else:
+            paint = {
+                "Format": 10,
+                "Glyph": layer_name,
+                "Paint": {
+                    "Format": 2,
+                    "PaletteIndex": cat,
+                    "Alpha": 1.0,
+                },
+            }
+        paint_layers.append(paint)
+
+    if len(paint_layers) == 1:
+        return paint_layers[0]
+    return {"Format": 1, "Layers": paint_layers}
+
+
 def assemble_color_tables(font, color_layers):
     font["CPAL"] = buildCPAL([PALETTE])
     font["COLR"] = buildCOLR(color_layers)
@@ -734,7 +789,7 @@ def assemble_color_tables(font, color_layers):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Colorize Telugu font glyphs (COLR v0 + CPAL, 6-category auto-classification)"
+        description="Colorize Telugu font glyphs (COLR v0/v1 + CPAL, 6-category auto-classification)"
     )
     parser.add_argument("ttf", help="Input TTF font path")
     parser.add_argument("--ufo", type=Path, help="UFO source directory")
@@ -747,6 +802,8 @@ def main():
                         help="Path to overrides TSV (auto-discovered from UFO data/ if not specified)")
     parser.add_argument("--meta", type=Path,
                         help="Path to metadata JSON (auto-discovered from UFO data/ if not specified)")
+    parser.add_argument("--radial-holes", action="store_true",
+                        help="Use COLRv1 radial gradient (center glow) for hole regions")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()
 
@@ -772,7 +829,7 @@ def main():
     print(f"Found {len(targets)} Telugu glyphs")
 
     color_layers, stats, glyph_plans = colorize_font(
-        font, ufo_font, targets, args.tolerance, args.verbose, overrides
+        font, ufo_font, targets, args.tolerance, args.verbose, overrides, args.radial_holes
     )
 
     # Export mode: write TSV and exit

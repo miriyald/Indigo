@@ -29,7 +29,8 @@ jobs:
           python tools/colorize.py \
             output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf \
             --ufo source/TiroTelugu-Regular.ufo \
-            -o output/TiroSundaraTelugu-Regular.ttf
+            -o output/TiroSundaraTelugu-Regular.ttf \
+            --radial-holes
 
       - name: Generate test page
         run: |
