@@ -6,12 +6,12 @@ set UFO=source/TiroTelugu-Regular.ufo
 
 echo.
 echo === Colorize ===
-python tools/colorize.py %TTF% --ufo %UFO%
+python tools/colorize.py %TTF% --ufo %UFO% -o output/TiroSundaraTelugu-Regular.ttf
 if errorlevel 1 goto :error
 
 echo.
 echo === Generate test page ===
-python tools/fonttest.py output/TiroTelugu-Regular.input-Colorized.ttf
+python tools/fonttest.py output/TiroSundaraTelugu-Regular.ttf
 if errorlevel 1 goto :error
 
 echo.

@@ -2,27 +2,13 @@ name: Publish Telugu Color Font
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Release version (e.g., v1.65-color)'
-        required: true
-        default: 'v1.65-color'
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
+  contents: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -43,28 +29,27 @@ jobs:
           python tools/colorize.py \
             output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf \
             --ufo source/TiroTelugu-Regular.ufo \
-            -o output/TiroTelugu-Regular-Colorized.ttf
+            -o output/TiroSundaraTelugu-Regular.ttf
 
       - name: Generate test page
         run: |
           python tools/fonttest.py \
-            output/TiroTelugu-Regular-Colorized.ttf \
+            output/TiroSundaraTelugu-Regular.ttf \
             -o output/index.html \
             --author "Dileep Miriyala" \
             --project-url "https://github.com/miriyald/Indigo" \
-            --download-link "TiroTelugu-Regular-Colorized.ttf"
+            --download-link "TiroSundaraTelugu-Regular.ttf"
 
-      - name: Prepare pages directory
+      - name: Deploy to gh-pages
         run: |
           mkdir -p _site
           cp output/index.html _site/
-          cp output/TiroTelugu-Regular-Colorized.ttf _site/
-
-      - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          cp output/index.html _site/404.html
+          cp output/TiroSundaraTelugu-Regular.ttf _site/
+          cd _site
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Deploy color font"
+          git push --force "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:gh-pages
