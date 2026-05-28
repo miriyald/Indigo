@@ -1,0 +1,70 @@
+name: Publish Telugu Color Font
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., v1.65-color)'
+        required: true
+        default: 'v1.65-color'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build base TTF from UFO source
+        run: python tools/tirobuild.py indigo-telugu.yml
+
+      - name: Apply color tables
+        run: |
+          python tools/colorize.py \
+            output/indigo-telugu/TiroTelugu/TTF/TiroTelugu-Regular.ttf \
+            --ufo source/TiroTelugu-Regular.ufo \
+            -o output/TiroTelugu-Regular-Colorized.ttf
+
+      - name: Generate test page
+        run: |
+          python tools/fonttest.py \
+            output/TiroTelugu-Regular-Colorized.ttf \
+            -o output/index.html \
+            --author "Dileep Miriyala" \
+            --project-url "https://github.com/miriyald/Indigo" \
+            --download-link "TiroTelugu-Regular-Colorized.ttf"
+
+      - name: Prepare pages directory
+        run: |
+          mkdir -p _site
+          cp output/index.html _site/
+          cp output/TiroTelugu-Regular-Colorized.ttf _site/
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
